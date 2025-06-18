@@ -1,0 +1,16 @@
+import React from 'react'
+import { ReferralCode, ReferralReport, ReferralsTable } from '../../components'
+
+function ReferralManagement() {
+  return (
+    <div>
+      <ReferralCode />
+      <div className='mt-10 border border-gray-200 dark:border-gray-700 rounded-2xl p-6'>
+      <ReferralReport />
+      </div>
+      <ReferralsTable />
+    </div>
+  )
+}
+
+export default ReferralManagement
