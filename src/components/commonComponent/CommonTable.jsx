@@ -12,7 +12,7 @@ const SearchInput = React.memo(({ value, onChange }) => (
       placeholder="Search..."
       value={value || ''}
       onChange={e => onChange(e.target.value)}
-      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
+      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
       aria-label="Search table"
     />
     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true">
@@ -48,7 +48,7 @@ const FilterDropdown = React.memo(({ value, options, onChange }) => {
     <div className="relative min-w-[180px]" ref={filterRef}>
       <button
         type="button"
-        className="w-full flex items-center justify-between bg-gray-50 dark:bg-[#232323] text-gray-700 dark:text-white px-4 py-2.5 rounded-xl text-sm border-2 border-gray-200 dark:border-gray-700 hover:border-pink-500 dark:hover:border-pink-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
+        className="w-full flex items-center justify-between bg-gray-50 dark:bg-[#232323] text-gray-700 dark:text-white px-4 py-2.5 rounded-xl text-sm border-2 border-gray-200 dark:border-customBorderColor hover:border-pink-500 dark:hover:border-pink-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
         onClick={() => setIsOpen(o => !o)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -58,7 +58,7 @@ const FilterDropdown = React.memo(({ value, options, onChange }) => {
       </button>
       {isOpen && (
         <div 
-          className="absolute right-0 mt-2 w-full bg-white dark:bg-[#232323] border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-20 animate-fadeIn overflow-hidden"
+          className="absolute right-0 mt-2 w-full bg-white dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor rounded-xl shadow-lg z-20 animate-fadeIn overflow-hidden"
           role="listbox"
         >
           {options.map(option => (
@@ -162,11 +162,11 @@ const CommonTable = ({
       <div className="overflow-x-auto">
         <table className="min-w-full text-sm table-auto" role="grid">
           <thead>
-            <tr className="border-b border-gray-200 dark:border-gray-700">
+            <tr className="border-b border-gray-200 dark:border-customBorderColor">
               {columns.map(col => (
                 <th
                   key={col.key}
-                  className={`py-3 px-2 text-left font-semibold text-gray-700 dark:text-gray-300 ${col.className || ''} ${col.sortable ? 'cursor-pointer select-none' : ''}`}
+                  className={`py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300 ${col.className || ''} ${col.sortable ? 'cursor-pointer select-none' : ''}`}
                   onClick={() => col.sortable && handleSort(col.key)}
                   aria-sort={sortConfig?.key === col.key ? sortConfig.direction : undefined}
                 >
@@ -191,7 +191,7 @@ const CommonTable = ({
                   </div>
                 </th>
               ))}
-              {renderActions && <th className="py-3 px-2 text-left font-semibold text-gray-700 dark:text-gray-300">Action</th>}
+              {renderActions && <th className="py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300">Action</th>}
             </tr>
           </thead>
           <tbody>
@@ -217,14 +217,14 @@ const CommonTable = ({
                   {columns.map(col => (
                     <td 
                       key={col.key}
-                      className={`py-2 px-2 ${col.className || ''}`}
+                      className={`py-3 px-4 ${col.className || ''}`}
                       role="gridcell"
                     >
                       {col.render ? col.render(row, idx) : row[col.key]}
                     </td>
                   ))}
                   {renderActions && (
-                    <td className="py-2 px-2" role="gridcell">
+                    <td className="py-3 px-4" role="gridcell">
                       {renderActions(row, idx)}
                     </td>
                   )}
@@ -235,17 +235,17 @@ const CommonTable = ({
         </table>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 px-2">
-        <div className="flex items-center gap-4">
-          <label className="text-sm text-gray-600 dark:text-gray-400">
-            Rows per page
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-6 px-2">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-4">
+          <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
+            <span className="hidden sm:inline mr-2">Rows per page</span>
             <select
               value={pageSize}
               onChange={(e) => {
                 const newSize = Number(e.target.value);
                 onPageSizeChange?.(newSize);
               }}
-              className="ml-2 bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white text-sm rounded-lg focus:border-pink-500 focus:ring-1 focus:ring-pink-500 p-2 pr-8 transition-all duration-200"
+              className="bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor text-gray-900 dark:text-white text-sm rounded-lg focus:border-pink-500 focus:ring-1 focus:ring-pink-500 p-2 pr-8 transition-all duration-200"
             >
               {PAGE_SIZES.map(size => (
                 <option key={size} value={size}>{size}</option>
@@ -261,7 +261,7 @@ const CommonTable = ({
             type="button"
             onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className="p-1 border rounded-full border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
+            className="p-1.5 border rounded-full border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
             aria-label="Previous page"
           >
           <FaAngleLeft className="w-4 h-4" />
@@ -274,11 +274,11 @@ const CommonTable = ({
                 <button
                   key={num}
                   type="button"
-                  className={`w-6 h-6 pt-[4px] flex items-center justify-center rounded-full border ${
+                  className={`w-8 h-8 flex items-center justify-center rounded-full border ${
                     currentPage === num
                       ? 'bg-customRed text-white border-customRed'
-                      : 'border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-customRed hover:text-customRed'
-                  } transition-all duration-200`}
+                      : 'border-gray-200 dark:border-customBorderColor text-gray-700 dark:text-gray-300 hover:border-customRed hover:text-customRed'
+                  } transition-all duration-200 text-sm`}
                   onClick={() => onPageChange?.(Number(num))}
                   aria-label={`Go to page ${num}`}
                   aria-current={currentPage === num ? 'page' : undefined}
@@ -292,7 +292,7 @@ const CommonTable = ({
             type="button"
             onClick={() => onPageChange?.(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
-            className="p-1 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
+            className="p-1.5 rounded-full border border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
             aria-label="Next page"
           >
           <FaAngleRight className="w-4 h-4" />

@@ -56,7 +56,7 @@ function ReferralsTable() {
     {
       key: 'id',
       label: 'No.',
-      className: 'text-left font-medium w-16'
+      className: 'text-left font-medium w-16 text-white'
     },
     {
       key: 'name',
@@ -108,7 +108,7 @@ function ReferralsTable() {
     {
       key: 'commission',
       label: 'Commission',
-      className: 'text-right min-w-[120px]',
+      className: 'min-w-[120px]',
       render: (row) => (
         <span className="font-medium text-gray-900 dark:text-white">
           {row.commission}
@@ -128,7 +128,7 @@ function ReferralsTable() {
             <HiDotsHorizontal className="w-5 h-5" />
           </button>
           {openAction === idx && (
-            <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 py-1">
+            <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 border border-gray-200 dark:border-customBorderColor rounded-lg shadow-lg z-20 py-1">
               <button
                 className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                 onClick={() => { setOpenAction(null); alert('View clicked!'); }}
@@ -144,7 +144,7 @@ function ReferralsTable() {
 
   return (
     <div className="w-full mt-10">
-      <div className="bg-white dark:bg-customBrown border border-gray-200 dark:border-gray-700 rounded-2xl">
+      <div className="bg-white dark:bg-customBrown border border-gray-200 dark:border-customBorderColor rounded-2xl">
         <div className="p-6">
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-4">

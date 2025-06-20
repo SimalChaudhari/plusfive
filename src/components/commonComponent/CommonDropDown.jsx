@@ -54,7 +54,7 @@ function CommonDropDown({
           className="
             absolute top-full left-0 right-0 mt-2
             bg-[#232323] rounded-xl
-            border border-gray-700
+            border border-customBorderColor
             shadow-xl z-50
             max-h-60 overflow-y-auto
             scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-transparent

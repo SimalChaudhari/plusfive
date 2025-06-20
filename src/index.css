@@ -53,3 +53,7 @@ body {
   /* border-image-slice: 1; */
 }
 
+.py-1 {
+  padding-top: 0.5rem !important;
+}
+

@@ -15,7 +15,7 @@ function ReferralCode() {
 
   return (
     <div className="">
-      <div className="dark:bg-customBrown bg-white border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+      <div className="dark:bg-customBrown bg-white border border-gray-200 dark:border-customBorderColor rounded-2xl p-6">
         <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
           My Referral Code
         </h2>
@@ -27,7 +27,7 @@ function ReferralCode() {
               Referral Code
             </p>
             <div className="flex items-center gap-2 ">
-              <div className="border dark:border-gray-700 border-gray-200 flex-1 bg-gray-50 dark:bg-[#1C1C1C] rounded-lg px-4 py-3 text-gray-900 dark:text-white font-medium">
+              <div className="border dark:border-customBorderColor border-gray-200 flex-1 bg-gray-50 dark:bg-[#1C1C1C] rounded-lg px-4 py-3 text-gray-900 dark:text-white font-medium">
                 PLUSFIVE2025
               </div>
               <button 
@@ -36,7 +36,7 @@ function ReferralCode() {
                   p-3 bg-gray-50 dark:bg-[#1C1C1C] text-gray-700 dark:text-white rounded-lg
                   hover:bg-gray-100 dark:hover:bg-[#2C2C2C] transition-colors duration-200
                   active:scale-95
-                  border dark:border-gray-700 border-gray-200
+                  border dark:border-customBorderColor border-gray-200
                 "
                 title="Copy referral code"
               >
@@ -51,7 +51,7 @@ function ReferralCode() {
               Referral Link
             </p>
             <div className="flex items-center gap-2">
-              <div className="border dark:border-gray-700 border-gray-200 flex-1 bg-gray-50 dark:bg-[#1C1C1C] rounded-lg px-4 py-3 text-gray-900 dark:text-white font-medium overflow-hidden text-ellipsis whitespace-nowrap">
+              <div className="border dark:border-customBorderColor border-gray-200 flex-1 bg-gray-50 dark:bg-[#1C1C1C] rounded-lg px-4 py-3 text-gray-900 dark:text-white font-medium overflow-hidden text-ellipsis whitespace-nowrap">
                 https://plusfive.io/ref/plusfive2025
               </div>
               <button 
@@ -60,7 +60,7 @@ function ReferralCode() {
                   p-3 bg-gray-50 dark:bg-[#1C1C1C] text-gray-700 dark:text-white rounded-lg
                   hover:bg-gray-100 dark:hover:bg-[#2C2C2C] transition-colors duration-200
                   active:scale-95
-                  border dark:border-gray-700 border-gray-200
+                  border dark:border-customBorderColor border-gray-200
                 "
                 title="Copy referral link"
               >

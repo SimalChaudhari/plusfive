@@ -3,12 +3,12 @@ import { StatSingleBarChart, StatPieChart } from '../index';
 
 const monthlyData = [
   { month: 'Jan', value: 32 },
-  { month: 'Feb', value: 24 },
+  { month: 'Feb', value: 25 },
   { month: 'Mar', value: 42 },
   { month: 'Apr', value: 18 },
   { month: 'May', value: 28 },
-  { month: 'Jun', value: 24 },
-  { month: 'Jul', value: 34 },
+  { month: 'Jun', value: 25 },
+  { month: 'Jul', value: 32 },
 ];
 
 const weeklyData = [
@@ -47,26 +47,26 @@ const dataMap = {
 };
 
 const pieChartData = [
-  { name: 'Active', value: 680, percentage: '22%', color: '#6366F1' },
-  { name: 'At Risk', value: 75, percentage: '10%', color: '#F97316' },
-  { name: 'Lost', value: 58, percentage: '8%', color: '#EF4444' },
-  { name: 'Recovered', value: 240, percentage: '15%', color: '#EC4899' },
+    { name: 'Active', value: 680, percentage: '22%', color: '#6366F1' },
+    { name: 'At Risk', value: 75, percentage: '10%', color: '#F97316' },
+    { name: 'Lost', value: 58, percentage: '8%', color: '#EF4444' },
+    { name: 'Recovered', value: 240, percentage: '15%', color: '#EC4899' },
 ];
 
-function RevenueImpactCustomerStatus() {
+function AnalyticsRevenueAndCustomerStatus() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 font-ttcommons">
-      <StatSingleBarChart 
-        title="Revenue Impact" 
-        dataMap={dataMap}
-        filters={FILTERS}
-      />
-      <StatPieChart 
-        title="Customer Status Breakdown"
-        data={pieChartData}
-      />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 font-ttcommons mt-6">
+        <StatSingleBarChart 
+            title="Revenue Impact" 
+            dataMap={dataMap}
+            filters={FILTERS}
+        />
+        <StatPieChart 
+            title="Customer Status Breakdown"
+            data={pieChartData}
+        />
     </div>
-  );
+  )
 }
 
-export default RevenueImpactCustomerStatus;
+export default AnalyticsRevenueAndCustomerStatus;

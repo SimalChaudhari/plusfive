@@ -64,7 +64,7 @@ function QRManagement() {
               <CommonButton
                 text="Generate QR Code"
                 onClick={handleGenerateQR}
-                className="w-full py-3"
+                className="rounded-xl w-full py-3"
               />
             </div>
           </div>
@@ -88,12 +88,12 @@ function QRManagement() {
           <div className="flex gap-3">
             <CommonButton
               text="Download QR Code"
-              className="!py-2.5 !text-[15px] w-auto"
+              className="!py-2.5 !text-[15px] w-auto rounded-xl"
               icon={<LuDownload className="text-lg font-bold" />}
             />
             <CommonOutlineButton
               text="Share WhatsApp"
-              className="!py-2.5 !text-[15px] w-auto"
+              className="!py-2.5 !text-[15px] w-auto rounded-xl"
               icon={<PiShareFatBold className="text-lg" />}
             />
           </div>

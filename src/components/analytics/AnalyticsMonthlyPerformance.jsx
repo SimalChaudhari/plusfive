@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StatChartCard } from '../index';
 
-const timeOptions = [
-  { value: 'monthly', label: 'Monthly' },
-  { value: 'quarterly', label: 'Quarterly' },
-  { value: 'yearly', label: 'Yearly' }
-];
-
-function MonthlyPerformance() {
-  const [timeFrame, setTimeFrame] = useState('monthly');
+function AnalyticsMonthlyPerformance() {
 
   return (
     <div className="w-full">
@@ -51,4 +44,4 @@ function MonthlyPerformance() {
   );
 }
 
-export default MonthlyPerformance;
+export default AnalyticsMonthlyPerformance;

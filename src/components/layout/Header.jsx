@@ -31,10 +31,10 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search"
-              className="bg-gray-100 dark:bg-customBlack text-gray-900 dark:text-white rounded-lg pl-10 pr-4 py-2 w-64 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-600 placeholder-gray-500 transition-colors duration-200 border border-gray-200 dark:border-gray-700"
+              className="bg-gray-100 dark:bg-customBlack text-gray-900 dark:text-white rounded-lg pl-10 pr-4 py-2 w-64 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-600 placeholder-gray-500 transition-colors duration-200 border border-gray-200 dark:border-customBorderColor"
             />
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-700 dark:text-white  bg-gray-200 dark:bg-customBlack px-1.5 py-0.5 rounded border border-gray-200 dark:border-gray-700">
+            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-700 dark:text-white  bg-gray-200 dark:bg-customBlack px-1.5 py-0.5 rounded border border-gray-200 dark:border-customBorderColor">
               ⌘K
             </button>
           </div>
@@ -45,7 +45,7 @@ const Header = () => {
           </button>
 
           {/* Language selector - Hidden on mobile */}
-          <div className="hidden lg:flex items-center text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-full px-3 py-2 cursor-pointer transition-colors duration-200 border border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-customBlack">
+          <div className="hidden lg:flex items-center text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-full px-3 py-2 cursor-pointer transition-colors duration-200 border border-gray-200 dark:border-customBorderColor bg-gray-100 dark:bg-customBlack">
             <FiGlobe className="text-lg" />
             <span className="mx-2">En</span>
             <IoChevronDownOutline className="text-sm" />
