@@ -27,6 +27,22 @@ export { default as AnalyticsRevenueAndCustomerStatus } from "./analytics/Analyt
 export { default as CurrentActiveSubscription } from "./subscriptionAndBilling/CurrentActiveSubscription";
 export { default as Pricing } from "./subscriptionAndBilling/Pricing";
 export { default as PaymentHistoryTable } from "./subscriptionAndBilling/PaymentHistoryTable";
+export { default as UpdatePayment } from "./subscriptionAndBilling/UpdatePayment";
+export { default as AddNewCreditCard } from "./subscriptionAndBilling/AddNewCreditCard";
+export { default as BillingInformation } from "./subscriptionAndBilling/BillingInformation";
+
+// Account Settings Components
+export { default as PersonalInformation } from "./accountSettings/PersonalInformation";
+export { default as ChangePassword } from "./accountSettings/ChangePassword";
+export { default as DeleteAccount } from "./accountSettings/DeleteAccount";
+
+// Support and Help Components
+export { default as ContactAndSubmitTicket } from "./supportAndHelp/ContactAndSubmitTicket";
+export { default as FAQ } from "./supportAndHelp/FAQ";
+
+// Notifications Components
+export { default as NotificationSettings } from "./Notifications/NotificationSettings";
+export { default as RecentNotifications } from "./Notifications/RecentNotifications";
 
 // Common Components
 export { default as CommonTable } from "./commonComponent/CommonTable";
@@ -34,6 +50,7 @@ export { default as CommonButton } from "./commonComponent/CommonButton";
 export { default as CommonOutlineButton } from "./commonComponent/CommonOutlineButton";
 export { default as CommonCustomOutlineButton } from "./commonComponent/CommonCustomOutlineButton";
 export { default as CommonDropDown } from "./commonComponent/CommonDropDown";
+export { default as CommonInput } from "./commonComponent/CommonInput";
 export { default as StatChartCard } from "./commonComponent/StatChartCard";
 export { default as StatIconCard } from "./commonComponent/StatIconCard";
 export { default as StatSingleBarChart } from "./commonComponent/StatSingleBarChart";

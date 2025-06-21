@@ -4,24 +4,38 @@ import {
   FiBell, 
   FiMoon,
   FiSun,
-  FiGlobe
+  FiGlobe,
+  FiMenu
 } from 'react-icons/fi';
 import { IoChevronDownOutline } from 'react-icons/io5';
 import { useTheme } from '../../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ onMobileMenuToggle }) => {
   const [userName] = useState('Noor');
   const { isDarkMode, toggleTheme } = useTheme();
-
+  const navigate = useNavigate();
+  const handleNotifications = () => {
+    navigate('/notifications');
+  }
   return (
     <header className="bg-white dark:bg-customBlack px-4 lg:px-6 py-4 border-b border-gray-200 dark:border-gray-800 font-ttcommons transition-colors duration-200">
       <div className="flex items-center justify-between">
-        {/* Left side - Welcome message */}
-        <div className="hidden lg:block">
-          <p className="text-gray-600 dark:text-white">Hi {userName},</p>
-          <h1 className="text-gray-900 dark:text-white text-xl font-semibold flex items-center">
-            Welcome back<span className="font-sans">!</span> <span className="ml-2">👋</span>
-          </h1>
+        <div className="flex items-center">
+          <button 
+            onClick={onMobileMenuToggle}
+            className="p-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-lg lg:hidden transition-colors duration-200 mr-2"
+            aria-label="Open sidebar"
+          >
+            <FiMenu size={24} />
+          </button>
+          
+          <div className="hidden lg:block">
+            <p className="text-gray-600 dark:text-white">Hi {userName},</p>
+            <h1 className="text-gray-900 dark:text-white text-xl font-semibold flex items-center">
+              Welcome back<span className="font-sans">!</span> <span className="ml-2">👋</span>
+            </h1>
+          </div>
         </div>
 
         {/* Right side - Search and icons */}
@@ -65,7 +79,7 @@ const Header = () => {
           </button>
 
           {/* Notifications */}
-          <button className="p-2 bg-gray-100 dark:bg-[#2C2C2C] rounded-full relative transition-colors duration-200">
+          <button className="p-2 bg-gray-100 dark:bg-[#2C2C2C] rounded-full relative transition-colors duration-200" onClick={handleNotifications}>
             <FiBell className="text-xl text-gray-700 dark:text-white" />
             {/* <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span> */}
           </button>

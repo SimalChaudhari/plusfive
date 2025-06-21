@@ -56,7 +56,7 @@ function ReferralsTable() {
     {
       key: 'id',
       label: 'No.',
-      className: 'text-left font-medium w-16 text-white'
+      className: 'text-left font-medium w-16 dark:text-white'
     },
     {
       key: 'name',

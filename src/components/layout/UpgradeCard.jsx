@@ -20,7 +20,7 @@ const UpgradeCard = () => {
       </div>
       <CommonButton 
         text="Upgrade now"
-        className="w-full rounded-xl"
+        className="w-full rounded-lg px-4 py-2"
       />
     </div>
   );

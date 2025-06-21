@@ -73,7 +73,7 @@ const PaymentHistoryTable = () => {
     }, [filteredData, currentPage, pageSize]);
     
     return (
-        <div className="bg-white dark:bg-customBrown p-4 sm:p-6 rounded-2xl">
+        <div className="bg-white dark:bg-customBrown p-4 sm:p-6 rounded-2xl border border-gray-200 dark:border-customBorderColor">
             <h2 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">Payment History</h2>
             
             <HistoryTable 

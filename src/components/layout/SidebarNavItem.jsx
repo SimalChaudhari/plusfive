@@ -29,7 +29,7 @@ const SidebarNavItem = ({ to, icon: Icon, label, isCollapsed, specialPaths = [] 
     }
 
     return (
-        <li className="relative">
+        <li className="relative list-none">
             <Link to={to} className={getLinkClasses()}>
                 <Icon className={getIconClasses()} />
                 <span className={`text-gray-700 dark:text-white transition-opacity duration-300 ${isCollapsed ? 'hidden' : 'inline'}`}>

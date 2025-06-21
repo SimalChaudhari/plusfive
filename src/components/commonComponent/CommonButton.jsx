@@ -8,9 +8,8 @@ function CommonButton({ text, onClick, className = '', type = 'button', icon }) 
       onClick={onClick}
       className={`
         relative overflow-hidden
-        px-8 py-2
         bg-gradient-to-r from-[#DF64CC] via-[#FF2380] to-[#FE5D39]
-        text-white text-xl font-ttcommons font-medium
+        text-white font-ttcommons font-medium
         transition-all duration-300 ease-in-out
         hover:shadow-lg hover:scale-[1.02]
         active:scale-[0.98]

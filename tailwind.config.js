@@ -14,6 +14,7 @@ export default {
         customGray2: '#E9E9E9',
         customBorderColor: '#414044',
         customWhite: '#F4EBFF',
+        customBody: '#F9FAFB',
         customGreen: '#099250',
         customRed: '#FF542A',
         customViolet: '#7E3AF2',
