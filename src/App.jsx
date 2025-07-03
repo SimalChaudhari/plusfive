@@ -1,40 +1,59 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import Home from './pages/home';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import QRManagement from './pages/qrManagement';
-import ReferralManagement from './pages/ReferralManagement';
-import CustomerManagement from './pages/customerManagement';
-import Analytics from './pages/analytics';
-import SubscriptionAndBilling from './pages/subscriptionAndBilling';
-import AccountSettings from './pages/accountSettings';
-import SupportAndHelp from './pages/supportAndHelp';
-import UpdatePaymentPage from './pages/updatePayment';
-import AddCard from './pages/addCard';
-import Notifications from './pages/notifications';
+import UserRoutes from './routes/userRoutes';
+import AdminRoutes from './routes/adminRoutes';
+import ProtectedRoute from './routes/ProtectedRoute';
+import CommonToastify from './components/commonComponent/CommonToastify';
+import PublicRoutes from './routes/publicRoutes';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { AdminLayout, Layout } from './components';
 // import './App.css'
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const user = useSelector(state => state.auth.user);
+
+  useEffect(() => {
+    // If user is authenticated and is on the root path, redirect to the correct dashboard based on their role
+    if (isAuthenticated) {
+      if (location.pathname === '/') {
+        if (user && user.role === 'admin') {
+          navigate('/admin', { replace: true });
+        } else {
+          navigate('/app', { replace: true });
+        }
+      }
+    }
+  }, [isAuthenticated, user, location, navigate]);
+
   return (
     <ThemeProvider>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Home />} />
-            <Route path="/qr-management" element={<QRManagement />} />
-            <Route path="/referral" element={<ReferralManagement />} />
-            <Route path="/customers" element={<CustomerManagement />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/subscription-and-billing" element={<SubscriptionAndBilling />} />
-            <Route path="/account-settings" element={<AccountSettings />} />
-            <Route path="/support-and-help" element={<SupportAndHelp />} />
-            <Route path="/update-payment" element={<UpdatePaymentPage />} />
-            <Route path="/add-card" element={<AddCard />} />
-            <Route path="/notifications" element={<Notifications />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <CommonToastify />
+      <Routes>
+        {/* Public routes (no layout) */}
+        <Route path="/*" element={<PublicRoutes />} />
+
+        {/* User protected routes (with layout) */}
+        <Route path="/app/*" element={
+          <ProtectedRoute>
+            <Layout>
+              <UserRoutes />
+            </Layout>
+          </ProtectedRoute>
+        } />
+
+        {/* Admin protected routes (with layout) */}
+        <Route path="/admin/*" element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminRoutes />
+            </AdminLayout>
+          </ProtectedRoute>
+        } />
+      </Routes>
     </ThemeProvider>
   );
 }

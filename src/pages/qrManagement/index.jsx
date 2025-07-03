@@ -28,7 +28,7 @@ function QRManagement() {
       <div className="dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
           {/* QR Generator Section */}
-          <div className='p-8 dark:text-white text-black dark:bg-customBrown bg-customBody rounded-2xl border dark:border-gray-800 border-gray-200'>
+          <div className='md:p-8 p-0 dark:text-white text-black dark:bg-customBrown bg-customBody rounded-2xl md:border dark:border-gray-800 border-gray-200'>
             <h2 className="text-[22px] font-medium mb-8">
               QR Generator
             </h2>
@@ -70,11 +70,11 @@ function QRManagement() {
           </div>
 
           {/* QR Code Display Section */}
-          <div className='p-8 dark:text-white text-black dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200'>
+          <div className='md:p-8 p-0 dark:text-white text-black dark:bg-customBrown bg-white rounded-2xl md:border dark:border-gray-800 border-gray-200'>
             <h2 className="text-[22px] font-medium mb-8">
               My QR Codes
             </h2>
-            <div className="flex flex-col items-center justify-center h-[320px] rounded-lg dark:bg-customBrown bg-customBody border dark:border-gray-800 border-gray-200 border-dashed">
+            <div className="md:p-0 p-10 flex flex-col items-center justify-center h-[320px] rounded-lg dark:bg-customBrown bg-customBody border dark:border-gray-800 border-gray-200 border-dashed">
               <MdQrCode2 className="text-6xl dark:text-white text-black mb-4" />
               <p className="dark:text-white text-black text-[18px]">
                 Generated QR codes will appear here
@@ -85,7 +85,7 @@ function QRManagement() {
 
         <div className='px-8 pb-8'>
           {/* Action Buttons */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 md:flex-row flex-col">
             <CommonButton
               text="Download QR Code"
               className="!py-2.5 !text-[15px] w-auto rounded-xl px-4 py-2"

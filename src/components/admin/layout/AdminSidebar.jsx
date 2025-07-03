@@ -5,24 +5,24 @@ import {
   MdOutlineAdd
 } from 'react-icons/md';
 import { IoHomeOutline } from 'react-icons/io5';
-import UpgradeCard from './UpgradeCard';
-import SidebarNavItem from './SidebarNavItem';
+import UpgradeCard from '../../layout/UpgradeCard';
+import SidebarNavItem from '../../layout/SidebarNavItem';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/actions/authActions';
+import { logoutUser } from '../../../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { to: '/app/dashboard', icon: IoHomeOutline, label: 'Dashboard', specialPaths: ['/','/app'] },
-  { to: '/app/qr-management', icon: MdQrCode2, label: 'QR Management' },
-  { to: '/app/referral', icon: MdShare, label: 'Referral Program' },
-  { to: '/app/customers', icon: MdPeople, label: 'Customer Management' },
-  { to: '/app/analytics', icon: MdAnalytics, label: 'Analytics' },
-  { to: '/app/subscription-and-billing', icon: MdCreditCard, label: <>Subscription <span className="font-sans">&</span> Billing</>, specialPaths: ['/app/update-payment', '/app/add-card'] },
-  { to: '/app/account-settings', icon: MdSettings, label: 'Account Settings' },
-  { to: '/app/support-and-help', icon: MdHelp, label: <>Support <span className="font-sans">&</span> Help</> },
+  { to: '/admin/dashboard', icon: IoHomeOutline, label: 'Dashboard', specialPaths: ['/','/admin'] },
+  { to: '/admin/qr-management', icon: MdQrCode2, label: 'QR Management' },
+  { to: '/admin/referral', icon: MdShare, label: 'Referral Program' },
+  { to: '/admin/user-management', icon: MdPeople, label: 'User Management' },
+  { to: '/admin/analytics', icon: MdAnalytics, label: 'Analytics' },
+  { to: '/admin/subscription-and-billing', icon: MdCreditCard, label: <>Subscription <span className="font-sans">&</span> Billing</>, specialPaths: ['/admin/update-payment', '/admin/add-card'] },
+  { to: '/admin/account-settings', icon: MdSettings, label: 'Account Settings' },
+  { to: '/admin/support-and-help', icon: MdHelp, label: <>Support <span className="font-sans">&</span> Help</> },
 ];
 
-const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
+const AdminSidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const toggleDesktopSidebar = () => {
     onCollapse(!isCollapsed);
   };
@@ -117,4 +117,4 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
   );
 };
 
-export default Sidebar; 
+export default AdminSidebar; 

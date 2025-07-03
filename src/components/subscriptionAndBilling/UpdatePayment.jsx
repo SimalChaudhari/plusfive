@@ -8,7 +8,7 @@ import { BillingInformation } from '../index';
 function UpdatePayment() {
     const navigate = useNavigate();
     const handleAddCard = () => {
-        navigate('/add-card');
+        navigate('/app/add-card');
     }
     return (
         <div className='text-black dark:text-white'>

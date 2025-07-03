@@ -29,7 +29,7 @@ function FaqItem({ faq, index, openIndex, setOpenIndex }) {
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 className="w-full flex justify-between items-center text-left p-4"
             >
-                <span className="text-xl font-medium">{faq.question}</span>
+                <span className="md:text-xl text-lg font-medium">{faq.question}</span>
                 <FiChevronDown
                     className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
                 />
@@ -38,7 +38,7 @@ function FaqItem({ faq, index, openIndex, setOpenIndex }) {
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'
                     }`}
             >
-                <p className="text-black dark:text-customWhite text-lg p-4 pt-0">
+                <p className="text-black dark:text-customWhite md:text-lg text-base p-4 pt-0">
                     {faq.answer}
                 </p>
             </div>

@@ -1,3 +1,14 @@
+// Admin Components
+export { default as AdminLayout } from "./admin/layout/AdminLayout";
+export { default as AdminHeader } from "./admin/layout/AdminHeader";
+export { default as AdminSidebar } from "./admin/layout/AdminSidebar";
+export { default as AdminFooter } from "./admin/layout/AdminFooter";
+
+// Layout Components
+export { default as Layout } from "./layout/Layout";
+export { default as Sidebar } from "./layout/Sidebar";
+export { default as Footer } from "./layout/Footer";
+
 // Home Components
 export { default as MonthlyPerformance } from "./home/MonthlyPerformance";
 export { default as RevenueImpactCustomerStatus } from "./home/RevenueImpactCustomerStatus";
@@ -44,8 +55,12 @@ export { default as FAQ } from "./supportAndHelp/FAQ";
 export { default as NotificationSettings } from "./Notifications/NotificationSettings";
 export { default as RecentNotifications } from "./Notifications/RecentNotifications";
 
+// Admin Customer Management Components
+export { default as AdminCustomerTable } from "./admin/customerManagement/AdminCustomerTable";
+
 // Common Components
 export { default as CommonTable } from "./commonComponent/CommonTable";
+export { default as CommonAdminTable } from "./commonComponent/CommonAdminTable";
 export { default as CommonButton } from "./commonComponent/CommonButton";
 export { default as CommonOutlineButton } from "./commonComponent/CommonOutlineButton";
 export { default as CommonCustomOutlineButton } from "./commonComponent/CommonCustomOutlineButton";

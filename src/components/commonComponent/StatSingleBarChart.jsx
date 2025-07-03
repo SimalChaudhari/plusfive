@@ -26,7 +26,7 @@ const StatSingleBarChart = ({ title, dataMap, filters }) => {
   const chartData = dataMap?.[selectedFilter] || [];
 
   const getValueIndicator = (entry) => (
-    <div className="bg-gray-100 dark:bg-[#2C2C2C] px-4 py-2 rounded-lg shadow-lg transition-colors duration-200">
+    <div className="bg-gray-100 dark:bg-customGray px-4 py-2 rounded-lg shadow-lg transition-colors duration-200">
       <div className="text-gray-900 dark:text-white text-xl font-medium">
         ${entry.value * 500 + 10000}
       </div>
@@ -49,11 +49,11 @@ const StatSingleBarChart = ({ title, dataMap, filters }) => {
           />
         )}
       </div>
-      <div className="h-[300px] w-full relative">
+      <div className="h-[300px] md:w-full relative">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={chartData}
-            margin={{ top: 10, right: 30, left: 40, bottom: 20 }}
+            margin={{ top: 10, right: 30, left: 0, bottom: 20 }}
             onMouseLeave={() => setActiveIndex(null)}
           >
             <CartesianGrid 

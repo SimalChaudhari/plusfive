@@ -21,7 +21,7 @@ function CommonInput({
 
   return (
     <div>
-      <label htmlFor={id} className="block text-xl font-medium mb-2">
+      <label htmlFor={id} className="block text-xl font-medium mb-2 dark:text-white text-black">
         {label}
       </label>
       <div className="relative">
@@ -34,6 +34,7 @@ function CommonInput({
             placeholder={placeholder}
             rows={rows || 5}
             className={commonClasses}
+            autoComplete="off"
           />
         ) : (
           <input
@@ -44,6 +45,7 @@ function CommonInput({
             onChange={onChange}
             placeholder={placeholder}
             className={commonClasses}
+            autoComplete="off"
           />
         )}
         {error && (

@@ -20,10 +20,10 @@ function CommonDropDown({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`
-          w-auto px-3 py-1
+          w-auto px-3 py-1 whitespace-nowrap
           flex items-center justify-between
           rounded-full
-        dark:text-white text-black text-xl font-ttcommons font-medium
+        dark:text-white text-black md:text-xl font-ttcommons font-medium
           transition-all duration-300
           bg-[#121212]
           border-2 border-transparent
@@ -43,7 +43,7 @@ function CommonDropDown({
         <span>{selectedOption?.label || placeholder}</span>
         <IoChevronDownOutline 
           className={`
-            ml-2 text-2xl transition-transform duration-300
+            ml-2 md:text-2xl transition-transform duration-300
             ${isOpen ? 'rotate-180' : ''}
           `}
         />
@@ -68,7 +68,7 @@ function CommonDropDown({
                 setIsOpen(false)
               }}
               className={`
-                w-full px-4 py-3
+                w-full px-4 py-3 whitespace-nowrap
                 flex items-center
                 text-left text-lg
                 transition-colors duration-200

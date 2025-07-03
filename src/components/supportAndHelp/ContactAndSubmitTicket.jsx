@@ -63,15 +63,19 @@ function ContactAndSubmitTicket() {
                 <h2 className="text-3xl font-bold mb-8">Contact</h2>
                 <div className="space-y-6">
                     {contactMethods.map((method, index) => (
-                        <div key={index} className="dark:bg-customBrown bg-customBody border border-gray-200 dark:border-customBorderColor p-6 rounded-xl flex items-center justify-between">
-                            <div className="flex items-center flex-1 min-w-0 mr-4">
-                                <div className="mr-6 md:text-2xl border border-gray-200 dark:border-customBorderColor rounded-lg md:p-3 p-2 bg-white dark:bg-customBrown">{method.icon}</div>
-                                <div>
-                                    <h3 className="font-bold md:text-xl">{method.title}</h3>
-                                    <p className="text-gray-500 dark:text-white md:text-lg">{method.detail}</p>
+                        <div key={index} className="dark:bg-customBrown bg-customBody border border-gray-200 dark:border-customBorderColor p-6 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between">
+                            <div className="flex flex-row items-start flex-1 min-w-0 mr-0 sm:mr-4">
+                                <div className="mr-4 md:text-2xl border border-gray-200 dark:border-customBorderColor rounded-lg md:p-3 p-2 bg-white dark:bg-customBrown flex-shrink-0">{method.icon}</div>
+                                <div className="flex flex-col">
+                                    <h3 className="font-bold md:text-xl leading-tight">{method.title}</h3>
+                                    <p className="text-gray-500 dark:text-white md:text-lg leading-tight">{method.detail}</p>
+                                    {method.action && (
+                                        <div className="mt-4">
+                                            {method.action}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
-                            {method.action}
                         </div>
                     ))}
                 </div>
