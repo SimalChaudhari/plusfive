@@ -16,7 +16,7 @@ function BillingInformation() {
     };
 
     return (
-        <div className="dark:bg-customBrown bg-white p-8 rounded-2xl border border-gray-200 dark:border-customBorderColor mt-8">
+        <div className="dark:text-white dark:bg-customBrown bg-white p-8 rounded-2xl border border-gray-200 dark:border-customBorderColor mt-8 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
             <h2 className="text-2xl font-bold mb-8">Billing Information</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <BillingInfoItem label="Current Billing Cycle" value={billingData.cycle} />

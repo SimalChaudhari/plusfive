@@ -69,7 +69,7 @@ function AddNewCreditCard() {
     };
 
     return (
-        <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor">
+        <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack shadow-md hover:shadow-sm">
             <h2 className="text-3xl font-bold mb-8">Add New Credit Card</h2>
             <form onSubmit={handleSubmit}>
                 <div className="space-y-6">

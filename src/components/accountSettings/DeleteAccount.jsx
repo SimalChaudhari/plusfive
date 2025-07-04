@@ -8,7 +8,7 @@ function DeleteAccount() {
   };
 
   return (
-    <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto mt-8">
+    <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto mt-8 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
       <h2 className="text-2xl font-bold text-customRed mb-4">Delete Account</h2>
       <p className="text-black dark:text-gray-400 mb-6 text-lg">
         Deleting your account will permanently remove all your data and cannot be recovered. This action is irreversible.

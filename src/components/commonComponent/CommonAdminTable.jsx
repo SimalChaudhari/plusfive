@@ -5,6 +5,7 @@ import CommonDateRange from './CommonDateRange';
 import CommonButton from './CommonButton';
 import CommonOutlineButton from './CommonOutlineButton';
 import { FiUpload } from 'react-icons/fi';
+import CommonPagination from './CommonPagination';
 
 const PAGE_SIZES = [7, 10, 20, 30, 50];
 
@@ -172,37 +173,41 @@ const CommonAdminTable = ({
   return (
     <div className={`shadow-sm dark:shadow-none transition-colors duration-200 font-ttcommons bg-white dark:bg-customBrown ${className}`}>
       <div className="flex flex-wrap gap-4 mb-6 items-center justify-between">
-        {/* Search bar + filters left aligned */}
-        <div className="flex flex-col md:flex-row gap-3 md:gap-4 items-center flex-shrink-0 w-full md:w-auto">
+        {/* Filters */}
+        <div className="flex flex-col xl:flex-row gap-3 md:gap-4 items-center flex-shrink-0 w-full md:w-auto">
+          {/* हर filter को min-w-[150px] या w-48 दें */}
           {onSearchChange && (
-            <div className="w-full">
+            <div className="w-full xl:w-56">
               <SearchInput value={searchValue} onChange={onSearchChange} />
             </div>
           )}
-          {/* Plan filter - always visible */}
-          {onPlanChange && planOptions && (
-            <div className="w-full">
-              <FilterDropdown value={planValue} options={['', ...planOptions]} onChange={onPlanChange} placeholder="Plan" />
-            </div>
-          )}
-          {/* Status filter - always visible */}
-          {onFilterChange && filterOptions && (
-            <div className="w-full">
-              <FilterDropdown value={filterValue} options={['', ...filterOptions]} onChange={onFilterChange} placeholder="Status" />
-            </div>
-          )}
-          {/* Role & Date - only md+ or in More Filters */}
-          {/* Desktop: show all, Mobile: hide */}
+          <div className='flex flex-col sm:flex-row gap-3 md:gap-4 items-center flex-shrink-0 w-full md:w-auto'>
+            {onPlanChange && planOptions && (
+              <div className="w-full md:w-48">
+                <FilterDropdown value={planValue} options={['', ...planOptions]} onChange={onPlanChange} placeholder="Plan" />
+              </div>
+            )}
+            {onFilterChange && filterOptions && (
+              <div className="w-full md:w-48">
+                <FilterDropdown value={filterValue} options={['', ...filterOptions]} onChange={onFilterChange} placeholder="Status" />
+              </div>
+            )}
+          </div>
+          {/* Desktop: Role & Date */}
           <div className="hidden md:flex gap-4">
             {onRoleChange && roleOptions && (
-              <FilterDropdown value={roleValue} options={['', ...roleOptions]} onChange={onRoleChange} placeholder="Role" />
+              <div className="w-48">
+                <FilterDropdown value={roleValue} options={['', ...roleOptions]} onChange={onRoleChange} placeholder="Role" />
+              </div>
             )}
             {onDateRangeChange && (
-              <CommonDateRange
-                startDate={dateRange?.startDate}
-                endDate={dateRange?.endDate}
-                onChange={onDateRangeChange}
-              />
+              <div className="w-48">
+                <CommonDateRange
+                  startDate={dateRange?.startDate}
+                  endDate={dateRange?.endDate}
+                  onChange={onDateRangeChange}
+                />
+              </div>
             )}
           </div>
           {/* Mobile: More/Less Filters logic */}
@@ -271,10 +276,10 @@ const CommonAdminTable = ({
                     {col.sortable && (
                       <svg
                         className={`w-4 h-4 transition-transform ${sortConfig?.key === col.key
-                            ? sortConfig.direction === 'asc'
-                              ? 'transform rotate-180'
-                              : ''
+                          ? sortConfig.direction === 'asc'
+                            ? 'transform rotate-180'
                             : ''
+                          : ''
                           }`}
                         fill="none"
                         stroke="currentColor"
@@ -306,7 +311,13 @@ const CommonAdminTable = ({
               data.map((row, idx) => (
                 <tr
                   key={idx}
-                  className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#181818] transition-colors"
+
+
+                  className={
+                    idx % 2 === 0
+                      ? "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors dark:bg-[#181818] bg-gray-100"
+                      : "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors"
+                  }
                   role="row"
                 >
                   {columns.map(col => (
@@ -330,48 +341,14 @@ const CommonAdminTable = ({
         </table>
       </div>
 
-      <div className="flex justify-end items-center gap-2 mt-6 px-2">
-        <nav className="flex items-center gap-2" aria-label="Table navigation">
-          <button
-            type="button"
-            onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
-            disabled={currentPage === 1}
-            className="p-1.5 border rounded-full border-gray-200 dark:border-gray-800 text-gray-500 dark:text-gray-300 hover:border-pink-500 dark:hover:border-pink-500 hover:text-pink-500 dark:hover:text-pink-400 disabled:opacity-50 transition-all duration-200"
-            aria-label="Previous page"
-          >
-            <FaAngleLeft className="w-4 h-4" />
-          </button>
-          <div className="flex items-center gap-1">
-            {paginationNumbers.map((num, i) =>
-              num === '...' ? (
-                <span key={i} className="px-2 py-1 text-gray-400 dark:text-gray-500">...</span>
-              ) : (
-                <button
-                  key={num}
-                  type="button"
-                  className={`w-8 h-8 flex items-center justify-center rounded-full border ${currentPage === num
-                      ? 'bg-customRed text-white border-customRed'
-                      : 'border-gray-200 dark:border-[#232323] text-gray-700 dark:text-gray-300 hover:border-customRed hover:text-customRed dark:hover:border-pink-500 dark:hover:text-pink-400'
-                    } transition-all duration-200 text-sm`}
-                  onClick={() => onPageChange?.(Number(num))}
-                  aria-label={`Go to page ${num}`}
-                  aria-current={currentPage === num ? 'page' : undefined}
-                >
-                  {num}
-                </button>
-              )
-            )}
-          </div>
-          <button
-            type="button"
-            onClick={() => onPageChange?.(Math.min(totalPages, currentPage + 1))}
-            disabled={currentPage === totalPages}
-            className="p-1.5 rounded-full border border-gray-200 dark:border-[#232323] text-gray-500 dark:text-gray-300 hover:border-pink-500 dark:hover:border-pink-500 hover:text-pink-500 dark:hover:text-pink-400 disabled:opacity-50 transition-all duration-200"
-            aria-label="Next page"
-          >
-            <FaAngleRight className="w-4 h-4" />
-          </button>
-        </nav>
+      <div className="mt-6">
+        <CommonPagination
+          currentPage={currentPage}
+          pageSize={pageSize}
+          total={total}
+          onPageChange={onPageChange}
+          onPageSizeChange={onPageSizeChange}
+        />
       </div>
     </div>
   );

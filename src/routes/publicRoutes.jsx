@@ -34,7 +34,7 @@ function PublicRoutes() {
         </PublicRouteGuard>
       } />
       {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
-      {/* Yahan future me aur public routes add kar sakte hain */}
+      {/* Add more public routes here in the future */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -15,7 +15,7 @@ function ReferralCode() {
 
   return (
     <div className="">
-      <div className="dark:bg-customBrown bg-white border border-gray-200 dark:border-customBorderColor rounded-2xl p-6">
+      <div className="dark:bg-customBrown bg-white border border-gray-200 dark:border-customBorderColor rounded-2xl p-6 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
         <h2 className="text-xl font-medium text-gray-900 dark:text-white mb-6">
           My Referral Code
         </h2>

@@ -72,8 +72,10 @@ function CommonDropDown({
                 flex items-center
                 text-left text-lg
                 transition-colors duration-200
-                hover:bg-gray-800
-                ${value === option.value ? 'text-pink-500' : 'text-white'}
+                dark:text-white text-black
+                dark:hover:bg-gray-800 hover:bg-gray-100
+                dark:bg-customBrown bg-white
+                ${value === option.value ? 'text-pink-500' : 'dark:text-white'}
               `}
             >
               {option.label}

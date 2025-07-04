@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 const navLinks = [
   { to: '/admin/dashboard', icon: IoHomeOutline, label: 'Dashboard', specialPaths: ['/','/admin'] },
   { to: '/admin/qr-management', icon: MdQrCode2, label: 'QR Management' },
-  { to: '/admin/referral', icon: MdShare, label: 'Referral Program' },
+  { to: '/admin/referral-management', icon: MdShare, label: 'Referral Program' },
   { to: '/admin/user-management', icon: MdPeople, label: 'User Management' },
   { to: '/admin/analytics', icon: MdAnalytics, label: 'Analytics' },
   { to: '/admin/subscription-and-billing', icon: MdCreditCard, label: <>Subscription <span className="font-sans">&</span> Billing</>, specialPaths: ['/admin/update-payment', '/admin/add-card'] },

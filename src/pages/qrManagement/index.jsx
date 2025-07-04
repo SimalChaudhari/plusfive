@@ -25,7 +25,7 @@ function QRManagement() {
   return (
     <div className="">
       {/* Main content boxes */}
-      <div className="dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200">
+      <div className="dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
           {/* QR Generator Section */}
           <div className='md:p-8 p-0 dark:text-white text-black dark:bg-customBrown bg-customBody rounded-2xl md:border dark:border-gray-800 border-gray-200'>
@@ -99,7 +99,7 @@ function QRManagement() {
           </div>
         </div>
       </div>
-      <div className="dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200 p-8 mt-8">
+      <div className="dark:bg-customBrown bg-white rounded-2xl border dark:border-gray-800 border-gray-200 p-8 mt-8 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
       <ReportsandAnalyticsTitle />
       </div>
     </div>

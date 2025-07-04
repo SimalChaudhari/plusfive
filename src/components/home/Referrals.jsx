@@ -172,12 +172,12 @@ function Referrals() {
     };
 
     return (
-        <div className={`bg-white dark:bg-customBrown rounded-2xl p-4 md:p-6 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 font-ttcommons ${isDark ? 'dark' : ''}`}>
+        <div className={`bg-white dark:bg-customBrown rounded-2xl p-4 md:p-6 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 font-ttcommons dark:hover:bg-customBlack shadow-md hover:shadow-sm ${isDark ? 'dark' : ''}`}>
             <div className="flex flex-col gap-4 mb-6">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                            Referrals
+                            Admin
                         </h2>
                         <span className="px-2 py-1 rounded text-xs font-medium bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400">
                             {filteredAndSortedData.length} Total

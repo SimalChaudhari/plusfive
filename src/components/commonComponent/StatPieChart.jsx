@@ -27,7 +27,7 @@ const StatPieChart = ({ title, data }) => {
   const customerData = data || [];
 
   return (
-    <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none transition-colors duration-200">
+    <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none transition-colors duration-200 dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
       <h2 className="text-xl text-gray-900 dark:text-white mb-6">{title}</h2>
       
       <div className="flex justify-center">

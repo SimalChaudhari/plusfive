@@ -38,7 +38,7 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-customBody via-customBrown to-black dark:from-black dark:via-customBrown dark:to-customBlack px-4 py-8">
+    <div className="min-h-screen flex flex-col items-center justify-center dark:from-black dark:via-customBrown dark:to-customBlack px-4 py-8">
       <div className="w-full max-w-md bg-white/90 dark:bg-customBrown/90 rounded-2xl shadow-2xl border border-gray-200 dark:border-customBorderColor backdrop-blur-md p-8">
         <h2 className="text-3xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 drop-shadow">
           Register

@@ -59,7 +59,7 @@ function ContactAndSubmitTicket() {
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Contact Section */}
-            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor">
+            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack shadow-md hover:shadow-sm">
                 <h2 className="text-3xl font-bold mb-8">Contact</h2>
                 <div className="space-y-6">
                     {contactMethods.map((method, index) => (
@@ -82,7 +82,7 @@ function ContactAndSubmitTicket() {
             </div>
 
             {/* Submit Ticket Section */}
-            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor">
+            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack shadow-md hover:shadow-sm">
                 <h2 className="text-3xl font-bold mb-8">Submit Ticket</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <CommonInput

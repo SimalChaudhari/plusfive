@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CommonButton, CommonInput } from '../index';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,12 @@ function ChangePassword() {
   });
 
   const [errors, setErrors] = useState({});
+  // Password visibility state
+  const [showPassword, setShowPassword] = useState({
+    current: false,
+    new: false,
+    confirm: false,
+  });
 
   const validate = () => {
     const newErrors = {};
@@ -52,43 +59,74 @@ function ChangePassword() {
     }
   };
 
+  // Helper to render password input with eye icon
+  const renderPasswordInput = ({
+    label, id, name, value, onChange, error, placeholder, show, setShow
+  }) => (
+    <div className="relative">
+      <CommonInput
+        label={label}
+        type={show ? 'text' : 'password'}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        error={error}
+        placeholder={placeholder}
+        autoComplete="off"
+      />
+      <button
+        type="button"
+        className="absolute right-5 top-[3.3rem] text-gray-400 hover:text-pink-500 focus:outline-none"
+        tabIndex={-1}
+        onClick={() => setShow(s => !s)}
+        aria-label={show ? 'Hide password' : 'Show password'}
+      >
+        {show ? <BsEyeSlash className='text-xl' /> : <BsEye className='text-xl' />}
+      </button>
+    </div>
+  );
+
   return (
-    <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto mt-8">
+    <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto mt-8 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
       <h2 className="text-3xl font-bold mb-8">Change Password</h2>
       <form onSubmit={handleSubmit}>
         <div className="mt-6">
-          <CommonInput
-            label="Current Password"
-            type="password"
-            id="currentPassword"
-            name="currentPassword"
-            value={formData.currentPassword}
-            onChange={handleChange}
-            error={errors.currentPassword}
-            placeholder="current password"
-          />
+          {renderPasswordInput({
+            label: 'Current Password',
+            id: 'currentPassword',
+            name: 'currentPassword',
+            value: formData.currentPassword,
+            onChange: handleChange,
+            error: errors.currentPassword,
+            placeholder: 'current password',
+            show: showPassword.current,
+            setShow: (fn) => setShowPassword(p => ({ ...p, current: typeof fn === 'function' ? fn(p.current) : fn })),
+          })}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <CommonInput
-            label="New Password"
-            type="password"
-            id="newPassword"
-            name="newPassword"
-            value={formData.newPassword}
-            onChange={handleChange}
-            error={errors.newPassword}
-            placeholder="new password"
-          />
-          <CommonInput
-            label="Confirm Password"
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            error={errors.confirmPassword}
-            placeholder="confirm password"
-          />
+          {renderPasswordInput({
+            label: 'New Password',
+            id: 'newPassword',
+            name: 'newPassword',
+            value: formData.newPassword,
+            onChange: handleChange,
+            error: errors.newPassword,
+            placeholder: 'new password',
+            show: showPassword.new,
+            setShow: (fn) => setShowPassword(p => ({ ...p, new: typeof fn === 'function' ? fn(p.new) : fn })),
+          })}
+          {renderPasswordInput({
+            label: 'Confirm Password',
+            id: 'confirmPassword',
+            name: 'confirmPassword',
+            value: formData.confirmPassword,
+            onChange: handleChange,
+            error: errors.confirmPassword,
+            placeholder: 'confirm password',
+            show: showPassword.confirm,
+            setShow: (fn) => setShowPassword(p => ({ ...p, confirm: typeof fn === 'function' ? fn(p.confirm) : fn })),
+          })}
         </div>
         <div className="mt-8">
           <CommonButton

@@ -65,25 +65,30 @@ function AnalyticsSecontChart() {
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 font-ttcommons mt-7">
-            <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor">
+            <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl font-semibold text-gray-900 dark:text-white">QR Code</h2>
                     <CommonDropDown options={FILTER_OPTIONS} value={filter} onChange={setFilter} />
                 </div>
                 <div className="h-[250px]">
                     <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={qrData} margin={{ top: 5, right: 0, left: -20, bottom: 5 }} barGap={10} onMouseLeave={() => setHoveredBar(null)}>
-                            <CartesianGrid strokeDasharray="3 0" vertical={false} stroke="#444" />
-                            <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: '#888', fontSize: 12 }} dy={10} />
-                            <YAxis tickLine={false} axisLine={false} tick={<CustomYAxisTick />} domain={[0, 'dataMax']} />
-                            <Tooltip content={<CustomBarTooltip />} cursor={{ fill: 'rgba(255,255,255,0.05)' }} isAnimationActive={false} />
-                            <Bar dataKey="lastYear" fill="#4A4A4A" radius={[4, 4, 0, 0]} barSize={12} onMouseOver={() => setHoveredBar('lastYear')} />
-                            <Bar dataKey="thisYear" fill="#FF2380" radius={[4, 4, 0, 0]} barSize={12} onMouseOver={() => setHoveredBar('thisYear')} />
-                        </BarChart>
+                    <BarChart data={qrData} margin={{ top: 5, right: 0, left: -20, bottom: 5 }} barGap={10} onMouseLeave={() => setHoveredBar(null)}>
+                    <CartesianGrid
+                        strokeDasharray="6 6"
+                        vertical={false}
+                        stroke="#fff"
+                        strokeOpacity={0.15}
+                    />
+                    <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: '#888', fontSize: 12 }} dy={10} />
+                    <YAxis tickLine={false} axisLine={false} tick={<CustomYAxisTick />} domain={[0, 'dataMax']} />
+                    <Tooltip content={<CustomBarTooltip />} cursor={{ fill: 'rgba(255,255,255,0.05)' }} isAnimationActive={false} />
+                    <Bar dataKey="lastYear" fill="#4A4A4A" radius={[4, 4, 0, 0]} barSize={12} onMouseOver={() => setHoveredBar('lastYear')} />
+                    <Bar dataKey="thisYear" fill="#FF2380" radius={[4, 4, 0, 0]} barSize={12} onMouseOver={() => setHoveredBar('thisYear')} />
+                </BarChart>
                     </ResponsiveContainer>
                 </div>
             </div>
-            <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor">
+            <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Average Rating Over Time</h2>
                 <div className="h-[250px]">
                     <ResponsiveContainer width="100%" height="100%">
@@ -94,7 +99,12 @@ function AnalyticsSecontChart() {
                                     <stop offset="95%" stopColor="#FF2380" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
-                            <CartesianGrid strokeDasharray="3 0" vertical={false} stroke="#444" />
+                            <CartesianGrid
+                                strokeDasharray="6 6"
+                                vertical={true}
+                                stroke="#fff"
+                                strokeOpacity={0.15}
+                            />
                             <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#888', fontSize: 12 }} dy={10} />
                             <YAxis tickLine={false} axisLine={false} domain={[1, 5]} tick={<CustomRatingYTick />} />
                             <Tooltip wrapperClassName="!hidden" />

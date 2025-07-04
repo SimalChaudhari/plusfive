@@ -36,11 +36,15 @@ function LTVGrothChart() {
     return (
         <div className='mt-10'>
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">LTV Growth Over Time</h2>
-        <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor font-ttcommons">
+        <div className="bg-white dark:bg-customBrown rounded-2xl p-6 border border-gray-200 dark:border-customBorderColor font-ttcommons dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
             <div className="h-[250px]">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={ltvData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#444" />
+                        <CartesianGrid
+                            strokeDasharray="6 6"
+                            stroke="#fff"
+                            strokeOpacity={0.15}
+                        />
                         <XAxis dataKey="month" tickLine={false} axisLine={{ stroke: '#444' }} tick={{ fill: '#888', fontSize: 12 }} dy={10} />
                         <YAxis
                             tickLine={false}

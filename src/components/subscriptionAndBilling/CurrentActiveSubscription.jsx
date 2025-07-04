@@ -24,7 +24,7 @@ function CurrentActiveSubscription() {
   };
 
   return (
-    <div className="font-ttcommons dark:bg-customBrown bg-white border border-gray-200 dark:border-customBorderColor rounded-2xl p-6 dark:text-white">
+    <div className="font-ttcommons dark:bg-customBrown bg-white border border-gray-200 dark:border-customBorderColor rounded-2xl p-6 dark:text-white dark:hover:bg-customBlack shadow-md hover:shadow-sm">
       <h2 className="text-xl font-semibold mb-6">Current Active Subscription</h2>
 
       <div className="md:p-6 rounded-xl md:border dark:border-gray-800 border-gray-200 dark:bg-customBrown bg-customBody">

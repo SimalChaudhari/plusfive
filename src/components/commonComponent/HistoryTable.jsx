@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import CommonOutlineButton from './CommonOutlineButton';
-import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import CommonPagination from './CommonPagination';
 
 const SearchInput = React.memo(({ value, onChange }) => (
     <div className="relative flex-1">
@@ -56,35 +55,6 @@ FilterDropdown.displayName = 'FilterDropdown';
 
 const PAGE_SIZES = [7, 10, 20, 30, 50];
 
-function getPagination(current, total) {
-    const delta = 2;
-    const range = [];
-    let l;
-
-    if (total <= 1) return [1];
-
-    for (let i = 1; i <= total; i++) {
-        if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
-            range.push(i);
-        }
-    }
-
-    const rangeWithDots = [];
-    for (const i of range) {
-        if (l) {
-            if (i - l === 2) {
-                rangeWithDots.push(l + 1);
-            } else if (i - l > 2) {
-                rangeWithDots.push('...');
-            }
-        }
-        rangeWithDots.push(i);
-        l = i;
-    }
-
-    return rangeWithDots;
-}
-
 const HistoryTable = ({
     data,
     total,
@@ -101,9 +71,6 @@ const HistoryTable = ({
     loadingComponent,
     noDataComponent,
 }) => {
-    const totalPages = Math.max(1, Math.ceil(total / pageSize));
-    const paginationNumbers = getPagination(currentPage, totalPages);
-
     return (
         <>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -124,9 +91,7 @@ const HistoryTable = ({
                     data.map((item, index) => (
                         <div key={index} className="flex flex-col sm:flex-row items-center justify-between bg-gray-100 dark:bg-customGray p-4 rounded-xl">
                             <div className="flex items-center space-x-4 mb-4 sm:mb-0 flex-1">
-                                <div className={`shrink-0 p-3 rounded-lg ${item.iconBgColor || 'bg-[#5965F9]'}`}>
-                                    {item.icon}
-                                </div>
+                                <div className={`shrink-0 p-3 rounded-lg ${item.iconBgColor || 'bg-[#5965F9]'}`}>{item.icon}</div>
                                 <div>
                                     <p className="font-semibold text-base text-gray-900 dark:text-white">{item.title}</p>
                                     <p className="text-sm text-gray-500 dark:text-gray-400">{item.subtitle}</p>
@@ -136,46 +101,22 @@ const HistoryTable = ({
                                 <p className="font-semibold text-lg text-gray-900 dark:text-white">{item.value}</p>
                                 {item.statusInfo && <p className={`text-sm font-semibold ${item.statusInfo.className}`}>{item.statusInfo.text}</p>}
                             </div>
-                            <div className="flex-1 flex justify-end">
-                                {item.action}
-                            </div>
+                            <div className="flex-1 flex justify-end">{item.action}</div>
                         </div>
                     ))
                 )}
             </div>
             {total > 0 && !loading && (
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-6 px-2">
-                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-4">
-                        <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
-                            <span className="hidden sm:inline mr-2">Rows per page</span>
-                            <select
-                                value={pageSize}
-                                onChange={(e) => onPageSizeChange?.(Number(e.target.value))}
-                                className="bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor text-gray-900 dark:text-white text-sm rounded-lg focus:border-pink-500 focus:ring-1 focus:ring-pink-500 p-2 pr-8 transition-all duration-200"
-                            >
-                                {PAGE_SIZES.map(size => (<option key={size} value={size}>{size}</option>))}
-                            </select>
-                        </label>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                            {`${((currentPage - 1) * pageSize) + 1}-${Math.min(currentPage * pageSize, total)} of ${total}`}
-                        </span>
-                    </div>
-                    <nav className="flex items-center gap-2" aria-label="Table navigation">
-                        <button type="button" onClick={() => onPageChange?.(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className="p-1.5 border rounded-full border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200" aria-label="Previous page">
-                            <FaAngleLeft className="w-4 h-4" />
-                        </button>
-                        <div className="flex items-center gap-1">
-                            {paginationNumbers.map((num, i) =>
-                                num === '...' ? (<span key={i} className="px-2 py-1 text-gray-400">...</span>) : (
-                                <button key={num} type="button" className={`w-8 h-8 flex items-center justify-center rounded-full border ${currentPage === num ? 'bg-customRed text-white border-customRed' : 'border-gray-200 dark:border-customBorderColor text-gray-700 dark:text-gray-300 hover:border-customRed hover:text-customRed'} transition-all duration-200 text-sm`} onClick={() => onPageChange?.(Number(num))} aria-label={`Go to page ${num}`} aria-current={currentPage === num ? 'page' : undefined}>
-                                    {num}
-                                </button>
-                            ))}
-                        </div>
-                        <button type="button" onClick={() => onPageChange?.(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} className="p-1.5 rounded-full border border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200" aria-label="Next page">
-                            <FaAngleRight className="w-4 h-4" />
-                        </button>
-                    </nav>
+                <div className="mt-6">
+                    <CommonPagination
+                        currentPage={currentPage}
+                        pageSize={pageSize}
+                        total={total}
+                        onPageChange={onPageChange}
+                        onPageSizeChange={onPageSizeChange}
+                        showPageSizeSelector={true}
+                        showPageInfo={true}
+                    />
                 </div>
             )}
         </>

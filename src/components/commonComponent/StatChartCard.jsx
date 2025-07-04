@@ -28,7 +28,7 @@ const StatChartCard = ({ title, value, change, trend, color, chartColor = "#FF54
   const gradientId = React.useId();
 
   return (
-    <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 relative">
+    <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 relative dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
       <span className="text-gray-900 dark:text-white text-xl mb-2">{title}</span>
       <div className="flex items-end justify-between">
         <div className="flex flex-col">

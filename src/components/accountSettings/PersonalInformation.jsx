@@ -68,7 +68,7 @@ function PersonalInformation() {
     };
 
     return (
-        <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto">
+        <div className="dark:bg-customBrown bg-white dark:text-white border border-gray-200 dark:border-customBorderColor p-8 rounded-2xl mx-auto dark:hover:bg-customBlack shadow-md hover:shadow-sm">
             <h2 className="text-3xl font-bold mb-8">Personal Information</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -123,7 +123,7 @@ function Pricing() {
     };
 
     return (
-        <div className="bg-white dark:bg-customBrown text-gray-900 dark:text-white font-ttcommons p-6 border border-gray-200 dark:border-customBorderColor rounded-2xl mt-7">
+        <div className="bg-white dark:bg-customBrown text-gray-900 dark:text-white font-ttcommons p-6 border border-gray-200 dark:border-customBorderColor rounded-2xl mt-7 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
             <div className="md:flex justify-between items-center gap-6">
                 <h1 className="text-4xl font-bold">Pricing</h1>
                 <BillingToggle isYearly={isYearly} onToggle={handleToggle} />

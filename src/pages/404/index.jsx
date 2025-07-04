@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,6 +19,12 @@ function NotFound() {
       navigate('/login');
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, user]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-customBody dark:bg-customBlack px-4 py-8">

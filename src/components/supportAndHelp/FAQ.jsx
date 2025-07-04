@@ -50,7 +50,7 @@ function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor mt-8">
+        <div className="dark:bg-customBrown bg-white p-8 rounded-2xl text-black dark:text-white border border-gray-200 dark:border-customBorderColor mt-8 dark:hover:bg-customBlack shadow-md hover:shadow-sm">
             <h2 className="text-3xl font-bold mb-8">FAQ</h2>
             <div className="space-y-4">
                 {faqData.map((faq, index) => (

@@ -22,7 +22,7 @@ function UpdatePayment() {
             </div>
 
             {/* Current Payment Methods Section */}
-            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl border border-gray-200 dark:border-customBorderColor">
+            <div className="dark:bg-customBrown bg-white p-8 rounded-2xl border border-gray-200 dark:border-customBorderColor dark:hover:bg-customBlack shadow-md hover:shadow-sm">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold">Current Payment Methods</h2>
                     <CommonButton

@@ -1,9 +1,12 @@
 import React from 'react'
-import { MonthlyPerformance, RevenueImpactCustomerStatus, Referrals, Users } from "../../../components";
+import { AdminMonthlyPerformance, AdminRevenueImpactCustomerStatus, AdminReferrals } from "../../../components";
 
 function AdminHome() {
   return (
     <div className="space-y-4">
+      <AdminMonthlyPerformance />
+      <AdminRevenueImpactCustomerStatus />
+      <AdminReferrals />
     </div>
   )
 }

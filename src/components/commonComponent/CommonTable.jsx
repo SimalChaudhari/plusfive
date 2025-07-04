@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import CommonPagination from './CommonPagination';
 
 const PAGE_SIZES = [7, 10, 20, 30, 50];
 
-// सर्च कंपोनेंट
+// Search component
 const SearchInput = React.memo(({ value, onChange }) => (
   <div className="relative flex-1">
     <input
@@ -26,7 +26,7 @@ SearchInput.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-// फ़िल्टर कंपोनेंट
+// Filter component
 const FilterDropdown = React.memo(({ value, options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const filterRef = useRef(null);
@@ -88,33 +88,6 @@ FilterDropdown.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-function getPagination(current, total) {
-  const delta = 2;
-  const range = [];
-  const rangeWithDots = [];
-  let l;
-
-  for (let i = 1; i <= total; i++) {
-    if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
-      range.push(i);
-    }
-  }
-
-  for (let i of range) {
-    if (l) {
-      if (i - l === 2) {
-        rangeWithDots.push(l + 1);
-      } else if (i - l > 2) {
-        rangeWithDots.push('...');
-      }
-    }
-    rangeWithDots.push(i);
-    l = i;
-  }
-
-  return rangeWithDots;
-}
-
 const CommonTable = ({
   columns,
   data,
@@ -134,6 +107,8 @@ const CommonTable = ({
   onPageSizeChange,
   currentPage = 1,
   pageSize = PAGE_SIZES[0],
+  showPagination = true,
+  paginationProps = {}
 }) => {
   const [sortConfig, setSortConfig] = useState(null);
 
@@ -144,9 +119,6 @@ const CommonTable = ({
     setSortConfig({ key, direction });
     onSort(key, direction);
   }, [sortConfig, onSort]);
-
-  const totalPages = Math.max(1, Math.ceil(total / pageSize));
-  const paginationNumbers = getPagination(currentPage, totalPages);
 
   return (
     <div className={`shadow-sm dark:shadow-none transition-colors duration-200 font-ttcommons ${className}`}>
@@ -211,7 +183,11 @@ const CommonTable = ({
               data.map((row, idx) => (
                 <tr 
                   key={idx}
-                  className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-[#181818] transition-colors"
+                  className={
+                    idx % 2 === 0
+                    ? "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors dark:bg-[#181818] bg-gray-100"
+                    : "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors"
+                  }
                   role="row"
                 >
                   {columns.map(col => (
@@ -235,70 +211,18 @@ const CommonTable = ({
         </table>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-6 px-2">
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-4">
-          <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
-            <span className="hidden sm:inline mr-2">Rows per page</span>
-            <select
-              value={pageSize}
-              onChange={(e) => {
-                const newSize = Number(e.target.value);
-                onPageSizeChange?.(newSize);
-              }}
-              className="bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor text-gray-900 dark:text-white text-sm rounded-lg focus:border-pink-500 focus:ring-1 focus:ring-pink-500 p-2 pr-8 transition-all duration-200"
-            >
-              {PAGE_SIZES.map(size => (
-                <option key={size} value={size}>{size}</option>
-              ))}
-            </select>
-          </label>
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            {((currentPage - 1) * pageSize) + 1}-{Math.min(currentPage * pageSize, total)} of {total}
-          </span>
+      {showPagination && onPageChange && (
+        <div className="mt-6">
+          <CommonPagination
+            currentPage={currentPage}
+            pageSize={pageSize}
+            total={total}
+            onPageChange={onPageChange}
+            onPageSizeChange={onPageSizeChange}
+            {...paginationProps}
+          />
         </div>
-        <nav className="flex items-center gap-2" aria-label="Table navigation">
-          <button
-            type="button"
-            onClick={() => onPageChange?.(Math.max(1, currentPage - 1))}
-            disabled={currentPage === 1}
-            className="p-1.5 border rounded-full border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
-            aria-label="Previous page"
-          >
-          <FaAngleLeft className="w-4 h-4" />
-          </button>
-          <div className="flex items-center gap-1">
-            {paginationNumbers.map((num, i) =>
-              num === '...' ? (
-                <span key={i} className="px-2 py-1 text-gray-400">...</span>
-              ) : (
-                <button
-                  key={num}
-                  type="button"
-                  className={`w-8 h-8 flex items-center justify-center rounded-full border ${
-                    currentPage === num
-                      ? 'bg-customRed text-white border-customRed'
-                      : 'border-gray-200 dark:border-customBorderColor text-gray-700 dark:text-gray-300 hover:border-customRed hover:text-customRed'
-                  } transition-all duration-200 text-sm`}
-                  onClick={() => onPageChange?.(Number(num))}
-                  aria-label={`Go to page ${num}`}
-                  aria-current={currentPage === num ? 'page' : undefined}
-                >
-                  {num}
-                </button>
-              )
-            )}
-          </div>
-          <button
-            type="button"
-            onClick={() => onPageChange?.(Math.min(totalPages, currentPage + 1))}
-            disabled={currentPage === totalPages}
-            className="p-1.5 rounded-full border border-gray-200 dark:border-customBorderColor text-gray-500 dark:text-gray-400 hover:border-pink-500 hover:text-pink-500 disabled:opacity-50 transition-all duration-200"
-            aria-label="Next page"
-          >
-          <FaAngleRight className="w-4 h-4" />
-          </button>
-        </nav>
-      </div>
+      )}
     </div>
   );
 };
@@ -329,7 +253,9 @@ CommonTable.propTypes = {
   onPageChange: PropTypes.func,
   onPageSizeChange: PropTypes.func,
   currentPage: PropTypes.number,
-  pageSize: PropTypes.number
+  pageSize: PropTypes.number,
+  showPagination: PropTypes.bool,
+  paginationProps: PropTypes.object
 };
 
 export default CommonTable; 

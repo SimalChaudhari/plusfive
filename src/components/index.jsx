@@ -10,6 +10,9 @@ export { default as Sidebar } from "./layout/Sidebar";
 export { default as Footer } from "./layout/Footer";
 
 // Home Components
+export { default as AdminMonthlyPerformance } from "./admin/home/AdminMonthlyPerformance";
+export { default as AdminRevenueImpactCustomerStatus } from "./admin/home/AdminRevenueImpactCustomerStatus";
+export { default as AdminReferrals } from "./admin/home/AdminReferrals";
 export { default as MonthlyPerformance } from "./home/MonthlyPerformance";
 export { default as RevenueImpactCustomerStatus } from "./home/RevenueImpactCustomerStatus";
 export { default as Referrals } from "./home/Referrals";
@@ -18,11 +21,16 @@ export { default as Users } from "./home/Users";
 // QR Management Components
 export { default as QRCodePage } from "./qrManagement/QRCodePage";
 export { default as ReportsandAnalyticsTitle } from "./qrManagement/ReportsandAnalyticsTitle";
+export { default as AdminQRCodePage } from "./admin/qrManagement/AdminQRCodePage";
+export { default as AdminReportsandAnalyticsTitle } from "./admin/qrManagement/AdminReportsandAnalyticsTitle";
 
 // Referral Components
 export { default as ReferralCode } from "./referral/referralCode";
 export { default as ReferralReport } from "./referral/ReferralReport";
 export { default as ReferralsTable } from "./referral/ReferralsTable";
+export { default as AdminReferralCode } from "./admin/referral/AdminReferralCode";
+export { default as AdminReferralReport } from "./admin/referral/AdminReferralReport";
+export { default as AdminReferralsTable } from "./admin/referral/AdminReferralsTable";
 
 // Customer Management Components
 export { default as ManageAndTrackCustomers } from "./customerManagement/ManageAndTrackCustomers";
@@ -33,6 +41,10 @@ export { default as AnalyticsSecontChart } from "./analytics/AnalyticsSecontChar
 export { default as LTVGrothChart } from "./analytics/LTVGrothChart";
 export { default as AnalyticsMonthlyPerformance } from "./analytics/AnalyticsMonthlyPerformance";
 export { default as AnalyticsRevenueAndCustomerStatus } from "./analytics/AnalyticsRevenueAndCustomerStatus";
+export { default as AdminAnalyticsSecontChart } from "./admin/analytics/AdminAnalyticsSecontChart";
+export { default as AdminLTVGrothChart } from "./admin/analytics/AdminLTVGrothChart";
+export { default as AdminAnalyticsMonthlyPerformance } from "./admin/analytics/AdminAnalyticsMonthlyPerformance";
+export { default as AdminAnalyticsRevenueAndCustomerStatus } from "./admin/analytics/AdminAnalyticsRevenueAndCustomerStatus";
 
 // Subscription and Billing Components
 export { default as CurrentActiveSubscription } from "./subscriptionAndBilling/CurrentActiveSubscription";
@@ -46,6 +58,9 @@ export { default as BillingInformation } from "./subscriptionAndBilling/BillingI
 export { default as PersonalInformation } from "./accountSettings/PersonalInformation";
 export { default as ChangePassword } from "./accountSettings/ChangePassword";
 export { default as DeleteAccount } from "./accountSettings/DeleteAccount";
+export { default as AdminPersonalInformation } from "./admin/accountSettings/AdminPersonalInformation";
+export { default as AdminChangePassword } from "./admin/accountSettings/AdminChangePassword";
+export { default as AdminDeleteAccount } from "./admin/accountSettings/AdminDeleteAccount";
 
 // Support and Help Components
 export { default as ContactAndSubmitTicket } from "./supportAndHelp/ContactAndSubmitTicket";
@@ -66,6 +81,7 @@ export { default as CommonOutlineButton } from "./commonComponent/CommonOutlineB
 export { default as CommonCustomOutlineButton } from "./commonComponent/CommonCustomOutlineButton";
 export { default as CommonDropDown } from "./commonComponent/CommonDropDown";
 export { default as CommonInput } from "./commonComponent/CommonInput";
+export { default as CommonPagination } from "./commonComponent/CommonPagination";
 export { default as StatChartCard } from "./commonComponent/StatChartCard";
 export { default as StatIconCard } from "./commonComponent/StatIconCard";
 export { default as StatSingleBarChart } from "./commonComponent/StatSingleBarChart";
