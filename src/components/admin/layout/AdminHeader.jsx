@@ -4,19 +4,28 @@ import {
   FiBell, 
   FiMoon,
   FiSun,
-  FiGlobe,
   FiMenu
 } from 'react-icons/fi';
-import { IoChevronDownOutline } from 'react-icons/io5';
 import { useTheme } from '../../../context/ThemeContext';
+import { CommonNormalDropDown } from '../../index';
 
 const AdminHeader = ({ onMobileMenuToggle }) => {
   const [userName] = useState('Noor');
   const { isDarkMode, toggleTheme } = useTheme();
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showSearchModal, setShowSearchModal] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const profileMenuRef = useRef(null);
 
   const notificationRef = useRef();
   const [visibleCount, setVisibleCount] = useState(4);
+
+  const languageOptions = [
+    { value: "en", label: "English", code: "en" },
+    { value: "hi", label: "Hindi", code: "hi" },
+  ];
+
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
 
   const notifications = [
     { id: 1, name: "UI/UX Design", time: "2 min ago", message: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", avatar: "https://randomuser.me/api/portraits/men/1.jpg" },
@@ -31,6 +40,12 @@ const AdminHeader = ({ onMobileMenuToggle }) => {
   const toggleNotifications = () => {
     setShowNotifications(prev => !prev);
   };
+  
+  // Toggle profile menu panel
+  const toggleProfileMenu = () => {
+    setShowProfileMenu(prev => !prev);
+  };
+
 
   return (
     <header className="bg-white dark:bg-customBlack px-4 lg:px-6 py-4 border-b border-gray-200 dark:border-gray-800 font-ttcommons transition-colors duration-200">
@@ -55,29 +70,35 @@ const AdminHeader = ({ onMobileMenuToggle }) => {
         {/* Right side - Search and icons */}
         <div className="flex items-center space-x-2 lg:space-x-4 ml-auto">
           {/* Search bar - Hidden on mobile */}
-          <div className="hidden lg:block relative">
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-gray-100 dark:bg-customBlack text-gray-900 dark:text-white rounded-lg pl-10 pr-4 py-2 w-64 focus:outline-none focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-600 placeholder-gray-500 transition-colors duration-200 border border-gray-200 dark:border-customBorderColor"
-            />
-            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-            <button className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-700 dark:text-white  bg-gray-200 dark:bg-customBlack px-1.5 py-0.5 rounded border border-gray-200 dark:border-customBorderColor">
-              ⌘K
-            </button>
+          <div className="hidden lg:block relative w-72">
+            <div className="flex items-center border border-gray-600 dark:border-gray-500 rounded-lg bg-transparent px-3 py-1.5 w-full">
+              <FiSearch className="text-xl text-gray-400 mr-2" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="flex-1 bg-transparent outline-none border-none text-gray-300 placeholder-gray-400 text-base"
+              />
+              <span className="flex items-center px-2 py-0.5 ml-2 rounded border border-gray-500 dark:text-white bg-transparent font-mono text-sm">
+                ⌘K
+              </span>
+            </div>
           </div>
 
           {/* Search icon for mobile */}
-          <button className="p-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-lg lg:hidden transition-colors duration-200">
+          <button
+            className="p-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-lg lg:hidden transition-colors duration-200"
+            onClick={() => setShowSearchModal(true)}
+          >
             <FiSearch size={20} />
           </button>
 
           {/* Language selector - Hidden on mobile */}
-          <div className="hidden lg:flex items-center text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-[#2C2C2C] rounded-full px-3 py-2 cursor-pointer transition-colors duration-200 border border-gray-200 dark:border-customBorderColor bg-gray-100 dark:bg-customBlack">
-            <FiGlobe className="text-lg" />
-            <span className="mx-2">En</span>
-            <IoChevronDownOutline className="text-sm" />
-          </div>
+          <CommonNormalDropDown
+            options={languageOptions}
+            value={selectedLanguage}
+            onChange={setSelectedLanguage}
+            className="hidden lg:flex"
+          />
 
           {/* Dark mode toggle */}
           <button 
@@ -106,15 +127,14 @@ const AdminHeader = ({ onMobileMenuToggle }) => {
               ref={notificationRef}
               className="
                 fixed
-                top-16
-                right-0
+                top-20
+                right-2
                 w-[70%]
                 sm:top-20
                 sm:right-8
                 sm:w-[420px]
                 sm:left-auto
                 sm:mx-0
-                left-0
                 mx-auto
                 sm:max-h-[80vh]
                 max-h-[60vh]
@@ -163,7 +183,10 @@ const AdminHeader = ({ onMobileMenuToggle }) => {
           )}
 
           {/* Profile */}
-          <button className="flex items-center space-x-2">
+          <button
+            className="flex items-center space-x-2"
+            onClick={toggleProfileMenu}
+          >
             <img
               src="https://ui-avatars.com/api/?name=Noor&background=random"
               alt="Profile"
@@ -172,6 +195,61 @@ const AdminHeader = ({ onMobileMenuToggle }) => {
           </button>
         </div>
       </div>
+
+      {showSearchModal && (
+        <div className="fixed inset-0 z-[2000] dark:bg-white dark:bg-opacity-20 bg-black bg-opacity-60 flex items-start justify-center pt-24">
+          <div className="bg-white dark:bg-customBlack rounded-xl p-4 w-[90vw] max-w-xs shadow-xl flex flex-col">
+            <div className="flex items-center">
+              <FiSearch className="text-xl text-gray-400 mr-2" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="flex-1 bg-transparent outline-none border-none text-gray-800 dark:text-gray-300 placeholder-gray-400 dark:placeholder-gray-500 text-base"
+                autoFocus
+              />
+              <button
+                className="ml-2 text-gray-500 dark:text-gray-400 hover:text-pink-500 text-2xl"
+                onClick={() => setShowSearchModal(false)}
+                aria-label="Close search"
+              >
+                ×
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showProfileMenu && (
+        <div
+          ref={profileMenuRef}
+          className="absolute md:right-10 right-2 mt-2 w-64 bg-white dark:bg-customBlack rounded-xl shadow-2xl border border-gray-200 dark:border-customBorderColor z-[1200] p-4"
+        >
+          <div className="flex items-center space-x-3 mb-4">
+            <img
+              src="https://ui-avatars.com/api/?name=Noor&background=random"
+              alt="Profile"
+              className="w-12 h-12 rounded-full"
+            />
+            <div>
+              <div className="font-semibold text-gray-900 dark:text-white">Noor</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">noor@email.com</div>
+            </div>
+          </div>
+          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#232323] text-gray-700 dark:text-white text-left">
+            <span>📝</span> Edit profile
+          </button>
+          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#232323] text-gray-700 dark:text-white text-left">
+            <span>⚙️</span> Account settings
+          </button>
+          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#232323] text-gray-700 dark:text-white text-left">
+            <span>❓</span> Support
+          </button>
+          <hr className="my-2 border-gray-200 dark:border-customBorderColor" />
+          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#232323] text-red-500 text-left">
+            <span>🚪</span> Sign out
+          </button>
+        </div>
+      )}
     </header>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTheme } from '../../context/ThemeContext';
 
 function CommonToastify({
   position = "top-center",
@@ -15,6 +16,7 @@ function CommonToastify({
   theme = "auto",
   ...rest
 }) {
+  const { isDarkMode } = useTheme();
   return (
     <ToastContainer
       position={position}
@@ -26,7 +28,7 @@ function CommonToastify({
       pauseOnFocusLoss={pauseOnFocusLoss}
       draggable={draggable}
       pauseOnHover={pauseOnHover}
-      theme={theme}
+      theme={isDarkMode ? "dark" : "light"}
       {...rest}
     />
   );

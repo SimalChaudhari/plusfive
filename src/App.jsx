@@ -48,9 +48,9 @@ function App() {
         {/* Admin protected routes (with layout) */}
         <Route path="/admin/*" element={
           <ProtectedRoute>
-            <AdminLayout>
+            <Layout>
               <AdminRoutes />
-            </AdminLayout>
+            </Layout>
           </ProtectedRoute>
         } />
       </Routes>

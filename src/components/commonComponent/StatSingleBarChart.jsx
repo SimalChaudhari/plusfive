@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, ResponsiveContainer, YAxis, CartesianGrid, XAxis, Tooltip } from 'recharts';
 import { CommonDropDown } from '../index';
+import { useTheme } from '../../context/ThemeContext';
 
 const CustomYAxisTick = ({ x, y, payload }) => {
   if (payload.value === 0) return <text x={x} y={y} dy={3} fill="#6B7280" fontSize={12} textAnchor="end">0%</text>;
@@ -22,6 +23,7 @@ const CustomXAxisTick = ({ x, y, payload }) => {
 const StatSingleBarChart = ({ title, dataMap, filters }) => {
   const [selectedFilter, setSelectedFilter] = useState(filters?.[0]?.value || '');
   const [activeIndex, setActiveIndex] = useState(null);
+  const { isDarkMode } = useTheme();
 
   const chartData = dataMap?.[selectedFilter] || [];
 
@@ -59,7 +61,7 @@ const StatSingleBarChart = ({ title, dataMap, filters }) => {
             <CartesianGrid 
               strokeDasharray="3 3" 
               vertical={false} 
-              stroke="#D1D5DB"
+              stroke={isDarkMode ? "#D1D5DB" : "#000"}
               opacity={0.4}
             />
             <XAxis 

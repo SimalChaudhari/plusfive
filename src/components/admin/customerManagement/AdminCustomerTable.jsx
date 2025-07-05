@@ -1,11 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import CommonAdminTable from '../../commonComponent/CommonAdminTable';
+import { CommonAdminTable, CommonDateRange } from '../../index';
 import adminData from '../../../jsonData/AdminUserData.json';
-import CommonDateRange from '../../commonComponent/CommonDateRange';
 import { format } from 'date-fns';
 import { FiSearch } from "react-icons/fi";
-import { FaUser } from "react-icons/fa";
-import { BsPatchCheck, BsTag } from "react-icons/bs";
 import { FiCalendar } from "react-icons/fi";
 
 const getUnique = (arr, key) => Array.from(new Set(arr.map(item => item[key]))).filter(Boolean);

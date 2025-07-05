@@ -1,5 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { useTheme } from '../../context/ThemeContext';
 
 const ltvData = [
     { month: 'Jan', ltv: 5.8, tooltipLTV: '5.8' },
@@ -33,6 +34,7 @@ const CustomYAxisTick = ({ x, y, payload }) => (
 );
 
 function LTVGrothChart() {
+    const { isDarkMode } = useTheme();
     return (
         <div className='mt-10'>
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">LTV Growth Over Time</h2>
@@ -42,7 +44,7 @@ function LTVGrothChart() {
                     <LineChart data={ltvData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
                         <CartesianGrid
                             strokeDasharray="6 6"
-                            stroke="#fff"
+                            stroke={isDarkMode ? "#D1D5DB" : "#000"}
                             strokeOpacity={0.15}
                         />
                         <XAxis dataKey="month" tickLine={false} axisLine={{ stroke: '#444' }} tick={{ fill: '#888', fontSize: 12 }} dy={10} />

@@ -38,7 +38,7 @@ const CommonPagination = ({
         <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-6 gap-y-4">
           <label className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
             <span className="hidden sm:inline mr-2">Rows per page</span>
-            <div className="relative min-w-[120px]">
+            <div className="relative min-w-[10px]">
               <button
                 type="button"
                 className="w-full flex items-center justify-between bg-gray-50 dark:bg-[#232323] text-gray-700 dark:text-white px-4 py-2.5 rounded-xl text-sm border-2 border-gray-200 dark:border-customBorderColor hover:border-pink-500 dark:hover:border-pink-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"

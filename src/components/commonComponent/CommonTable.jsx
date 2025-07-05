@@ -1,6 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CommonPagination from './CommonPagination';
+import { createPortal } from 'react-dom';
+import { HiDotsHorizontal } from 'react-icons/hi';
 
 const PAGE_SIZES = [7, 10, 20, 30, 50];
 
@@ -88,6 +90,70 @@ FilterDropdown.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
+function DropdownPortal({ anchorRef, open, children }) {
+  const [style, setStyle] = React.useState({});
+  const dropdownRef = React.useRef();
+
+  React.useEffect(() => {
+    if (open && anchorRef.current) {
+      const rect = anchorRef.current.getBoundingClientRect();
+      const dropdownWidth = 180;
+      let left = rect.left;
+      if (left + dropdownWidth > window.innerWidth - 8) {
+        left = window.innerWidth - dropdownWidth - 8;
+      }
+      if (left < 8) left = 8;
+
+      // Height calculation
+      let dropdownHeight = 0;
+      if (dropdownRef.current) {
+        dropdownHeight = dropdownRef.current.offsetHeight;
+      } else {
+        dropdownHeight = 60;
+      }
+
+      // Direction logic
+      let top = rect.bottom;
+      if (window.innerHeight - rect.bottom < dropdownHeight + 8) {
+        // Not enough space below, open upward
+        top = rect.top - dropdownHeight;
+        if (top < 8) top = 8;
+      }
+      setStyle({
+        position: 'fixed',
+        left,
+        top,
+        zIndex: 2147483647, // max z-index
+        width: dropdownWidth,
+        minWidth: 140,
+        maxWidth: '95vw',
+        maxHeight: '60vh',
+        overflowY: 'auto',
+      });
+    }
+  }, [open, anchorRef, children]);
+
+  // Close on scroll/resize
+  React.useEffect(() => {
+    if (!open) return;
+    const close = () => setStyle(s => ({ ...s }));
+    window.addEventListener('scroll', close, true);
+    window.addEventListener('resize', close);
+    return () => {
+      window.removeEventListener('scroll', close, true);
+      window.removeEventListener('resize', close);
+    };
+  }, [open]);
+
+  if (!open) return null;
+  return createPortal(
+    <div ref={dropdownRef} style={style} className="bg-white dark:bg-gray-800 border rounded-lg shadow-lg py-1 z-[2147483647]">
+      {children}
+    </div>,
+    document.body
+  );
+}
+
 const CommonTable = ({
   columns,
   data,
@@ -111,6 +177,9 @@ const CommonTable = ({
   paginationProps = {}
 }) => {
   const [sortConfig, setSortConfig] = useState(null);
+  const actionBtnRefs = useRef([]);
+  const [openAction, setOpenAction] = useState(null);
+  const [openUpward, setOpenUpward] = useState(false);
 
   const handleSort = useCallback((key) => {
     if (!onSort) return;
@@ -119,6 +188,18 @@ const CommonTable = ({
     setSortConfig({ key, direction });
     onSort(key, direction);
   }, [sortConfig, onSort]);
+
+  const handleActionClick = (idx) => {
+    if (openAction === idx) {
+      setOpenAction(null);
+      setOpenUpward(false);
+      return;
+    }
+    const btnRect = actionBtnRefs.current[idx]?.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - (btnRect?.bottom || 0);
+    setOpenUpward(spaceBelow < 180);
+    setOpenAction(idx);
+  };
 
   return (
     <div className={`shadow-sm dark:shadow-none transition-colors duration-200 font-ttcommons ${className}`}>
@@ -201,7 +282,23 @@ const CommonTable = ({
                   ))}
                   {renderActions && (
                     <td className="py-3 px-4" role="gridcell">
-                      {renderActions(row, idx)}
+                      <div className="text-center relative action-dropdown">
+                        <button
+                          ref={el => actionBtnRefs.current[idx] = el}
+                          className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          onClick={() => handleActionClick(idx)}
+                        >
+                          <HiDotsHorizontal className="w-5 h-5" />
+                        </button>
+                        <DropdownPortal anchorRef={{ current: actionBtnRefs.current[idx] }} open={openAction === idx} upward={openUpward}>
+                          <button
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            onClick={() => { setOpenAction(null); alert('View clicked!'); }}
+                          >
+                            View Details
+                          </button>
+                        </DropdownPortal>
+                      </div>
                     </td>
                   )}
                 </tr>

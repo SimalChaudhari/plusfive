@@ -7,20 +7,12 @@ import {
 import { IoHomeOutline } from 'react-icons/io5';
 import UpgradeCard from './UpgradeCard';
 import SidebarNavItem from './SidebarNavItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/actions/authActions';
 import { useNavigate } from 'react-router-dom';
-
-const navLinks = [
-  { to: '/app/dashboard', icon: IoHomeOutline, label: 'Dashboard', specialPaths: ['/','/app'] },
-  { to: '/app/qr-management', icon: MdQrCode2, label: 'QR Management' },
-  { to: '/app/referral', icon: MdShare, label: 'Referral Program' },
-  { to: '/app/customers', icon: MdPeople, label: 'Customer Management' },
-  { to: '/app/analytics', icon: MdAnalytics, label: 'Analytics' },
-  { to: '/app/subscription-and-billing', icon: MdCreditCard, label: <>Subscription <span className="font-sans">&</span> Billing</>, specialPaths: ['/app/update-payment', '/app/add-card'] },
-  { to: '/app/account-settings', icon: MdSettings, label: 'Account Settings' },
-  { to: '/app/support-and-help', icon: MdHelp, label: <>Support <span className="font-sans">&</span> Help</> },
-];
+import userNavLinks from './UserNavLinks';
+import adminNavLinks from './AdminNavLinks';
+import { useState } from 'react';
 
 const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const toggleDesktopSidebar = () => {
@@ -29,6 +21,8 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userRole = useSelector(state => state.auth?.user?.role);
+  const [showUpgradeCard, setShowUpgradeCard] = useState(true);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -49,6 +43,8 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
       `${isCollapsed ? 'w-16' : 'w-64'}`
     }
   `;
+
+  const navLinks = userRole === 'admin' ? adminNavLinks : userNavLinks;
 
   return (
     <>
@@ -96,10 +92,12 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
           </ul>
         </nav>
 
-        {/* Upgrade Plan Card */}
-        <div className={`text-gray-700 dark:text-white transition-opacity duration-300 ${effectiveCollapsed ? 'hidden' : 'block'} p-4`}>
-          <UpgradeCard />
-        </div>
+        {/* Upgrade Plan Card - only for user role and if not closed */}
+        {userRole !== 'admin' && showUpgradeCard && (
+          <div className={`text-gray-700 dark:text-white transition-opacity duration-300 ${effectiveCollapsed ? 'hidden' : 'block'} p-4`}>
+            <UpgradeCard onClose={() => setShowUpgradeCard(false)} />
+          </div>
+        )}
 
         {/* Logout */}
         <div className="relative m-3">

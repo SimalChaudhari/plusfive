@@ -13,6 +13,7 @@ export default {
         customGray: '#1D1C20',
         customGray2: '#E9E9E9',
         customBorderColor: '#414044',
+        customIconBgColor: '#373A41',
         customWhite: '#F4EBFF',
         customBody: '#F9FAFB',
         customGreen: '#099250',

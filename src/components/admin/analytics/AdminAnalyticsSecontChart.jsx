@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { CommonDropDown } from '../../index';
+import { useTheme } from '../../../context/ThemeContext';
 
 const monthlyQrCodeData = [
     { label: 'July', thisYear: 55, lastYear: 30 }, { label: 'Aug', thisYear: 40, lastYear: 25 }, { label: 'Sep', thisYear: 82, lastYear: 52 },
@@ -36,6 +37,7 @@ const CustomRatingYTick = ({ x, y, payload }) => (<text x={x} y={y} dy={4} fill=
 function AdminAnalyticsSecontChart() {
     const [filter, setFilter] = useState('Monthly');
     const [hoveredBar, setHoveredBar] = useState(null);
+    const { isDarkMode } = useTheme();
 
     const qrData = useMemo(() => qrCodeDataMap[filter], [filter]);
 
@@ -76,7 +78,7 @@ function AdminAnalyticsSecontChart() {
                             <CartesianGrid
                                 strokeDasharray="6 6"
                                 vertical={false}
-                                stroke="#fff"
+                                stroke={isDarkMode ? "#D1D5DB" : "#000"}
                                 strokeOpacity={0.15}
                             />
                             <XAxis dataKey="label" tickLine={false} axisLine={false} tick={{ fill: '#888', fontSize: 12 }} dy={10} />
@@ -102,7 +104,7 @@ function AdminAnalyticsSecontChart() {
                             <CartesianGrid
                                 strokeDasharray="6 6"
                                 vertical={true}
-                                stroke="#fff"
+                                stroke={isDarkMode ? "#D1D5DB" : "#000"}
                                 strokeOpacity={0.15}
                             />
                             <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: '#888', fontSize: 12 }} dy={10} />

@@ -290,7 +290,7 @@ function CommonDateRange({
     <div className="relative inline-block">
       <button
         type="button"
-        className="relative flex items-center px-4 py-2.5 bg-gray-50 dark:bg-customBrown border-2 border-gray-200 dark:border-customBorderColor rounded-xl text-gray-900 dark:text-white text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 w-56"
+        className="relative flex items-center px-4 py-2.5 bg-gray-50 dark:bg-customBrown border-2 border-gray-200 dark:border-customBorderColor rounded-xl text-gray-900 dark:text-white text-sm focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 md:w-56 w-full"
         onClick={() => setShowPicker(v => !v)}
       >
         <span className="truncate w-full text-left">
@@ -311,12 +311,23 @@ function CommonDateRange({
         </svg>
       </button>
       {showPicker && (
-        <div className="absolute z-30 mt-2 left-0 bg-white dark:bg-customBrown border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 animate-fadeIn min-w-[450px] flex flex-col">
+        <div
+          className={`
+            absolute z-30 mt-2
+            left-1/2 -translate-x-1/2
+            bg-white dark:bg-customBrown
+            border-2 border-gray-200 dark:border-gray-700
+            rounded-xl shadow-lg p-4 animate-fadeIn
+            w-[95vw] max-w-xs sm:min-w-[450px] sm:max-w-none
+            flex flex-col sm:flex-row
+          `}
+          style={{ top: '100%' }}
+        >
           {/* Main label */}
           <div className="w-full text-center font-semibold text-lg mb-4 text-gray-900 dark:text-white">Select Date Range</div>
-          <div className="flex flex-1">
+          <div className="flex flex-col sm:flex-row flex-1">
             {/* Sidebar */}
-            <div className="flex flex-col w-48 border-r border-gray-200 dark:border-gray-700 pr-4">
+            <div className="flex flex-col w-full sm:w-48 border-r border-gray-200 dark:border-gray-700 pr-0 sm:pr-4 mb-4 sm:mb-0">
               {SIDEBAR_RANGES.map((r, idx) => (
                 <button
                   key={r.label}
@@ -334,8 +345,8 @@ function CommonDateRange({
                 Custom
               </button>
             </div>
-            {/* Single Calendar always visible */}
-            <div className="flex flex-col flex-1 pl-4">
+            {/* Calendar */}
+            <div className="flex flex-col flex-1 pl-0 sm:pl-4">
               <div className="flex gap-4 justify-center items-start">
                 {/* Month navigation */}
                 <button

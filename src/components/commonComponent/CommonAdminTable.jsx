@@ -1,11 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FaAngleRight, FaAngleLeft, FaPlus } from 'react-icons/fa';
-import CommonDateRange from './CommonDateRange';
-import CommonButton from './CommonButton';
-import CommonOutlineButton from './CommonOutlineButton';
-import { FiUpload } from 'react-icons/fi';
 import CommonPagination from './CommonPagination';
+import { createPortal } from 'react-dom';
+import { HiDotsHorizontal } from 'react-icons/hi';
 
 const PAGE_SIZES = [7, 10, 20, 30, 50];
 
@@ -17,11 +14,11 @@ const SearchInput = React.memo(({ value, onChange }) => (
       placeholder="Search..."
       value={value || ''}
       onChange={e => onChange(e.target.value)}
-      className=" pl-10 pr-4 py-2.5 border border-gray-200 dark:border-gray-800 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200 dark:bg-customBrown bg-white md:w-auto w-full "
+      className="w-full pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
       aria-label="Search table"
     />
     <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true">
-      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </span>
   </div>
 ));
@@ -32,7 +29,7 @@ SearchInput.propTypes = {
 };
 
 // Filter component
-const FilterDropdown = React.memo(({ value, options, onChange, placeholder = 'Filter' }) => {
+const FilterDropdown = React.memo(({ value, options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const filterRef = useRef(null);
 
@@ -42,6 +39,7 @@ const FilterDropdown = React.memo(({ value, options, onChange, placeholder = 'Fi
         setIsOpen(false);
       }
     };
+    
     if (isOpen) {
       document.addEventListener('mousedown', handleClick);
     }
@@ -49,20 +47,20 @@ const FilterDropdown = React.memo(({ value, options, onChange, placeholder = 'Fi
   }, [isOpen]);
 
   return (
-    <div className="relative min-w-[150px]" ref={filterRef}>
+    <div className="relative min-w-[180px]" ref={filterRef}>
       <button
         type="button"
-        className="w-full flex items-center justify-between bg-gray-50 dark:bg-customBrown text-gray-700 dark:text-white px-4 py-2.5 rounded-xl text-sm border-2 border-gray-200 dark:border-customBorderColor hover:border-pink-500 dark:hover:border-pink-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
+        className="w-full flex items-center justify-between bg-gray-50 dark:bg-[#232323] text-gray-700 dark:text-white px-4 py-2.5 rounded-xl text-sm border-2 border-gray-200 dark:border-customBorderColor hover:border-pink-500 dark:hover:border-pink-500 focus:outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 transition-all duration-200"
         onClick={() => setIsOpen(o => !o)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <span>{value || placeholder}</span>
+        <span>{value || 'Filter'}</span>
         <svg className={`ml-2 transform transition-transform ${isOpen ? 'rotate-180' : ''}`} width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
       </button>
       {isOpen && (
-        <div
-          className="absolute right-0 mt-2 w-full bg-white dark:bg-customBrown border-2 border-gray-200 dark:border-customBorderColor rounded-xl shadow-lg z-20 animate-fadeIn overflow-hidden"
+        <div 
+          className="absolute right-0 mt-2 w-full bg-white dark:bg-[#232323] border-2 border-gray-200 dark:border-customBorderColor rounded-xl shadow-lg z-20 animate-fadeIn overflow-hidden"
           role="listbox"
         >
           {options.map(option => (
@@ -77,7 +75,7 @@ const FilterDropdown = React.memo(({ value, options, onChange, placeholder = 'Fi
               role="option"
               aria-selected={value === option}
             >
-              {option || placeholder}
+              {option}
             </button>
           ))}
         </div>
@@ -89,35 +87,71 @@ const FilterDropdown = React.memo(({ value, options, onChange, placeholder = 'Fi
 FilterDropdown.propTypes = {
   value: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string
+  onChange: PropTypes.func.isRequired
 };
 
-function getPagination(current, total) {
-  const delta = 2;
-  const range = [];
-  const rangeWithDots = [];
-  let l;
+function DropdownPortal({ anchorRef, open, children }) {
+  const [style, setStyle] = useState({});
+  const dropdownRef = useRef();
 
-  for (let i = 1; i <= total; i++) {
-    if (i === 1 || i === total || (i >= current - delta && i <= current + delta)) {
-      range.push(i);
-    }
-  }
-
-  for (let i of range) {
-    if (l) {
-      if (i - l === 2) {
-        rangeWithDots.push(l + 1);
-      } else if (i - l > 2) {
-        rangeWithDots.push('...');
+  useEffect(() => {
+    if (open && anchorRef.current) {
+      const rect = anchorRef.current.getBoundingClientRect();
+      const dropdownWidth = 180;
+      let left = rect.left;
+      if (left + dropdownWidth > window.innerWidth - 8) {
+        left = window.innerWidth - dropdownWidth - 8;
       }
-    }
-    rangeWithDots.push(i);
-    l = i;
-  }
+      if (left < 8) left = 8;
 
-  return rangeWithDots;
+      // Calculate dropdown height
+      let dropdownHeight = 0;
+      if (dropdownRef.current) {
+        dropdownHeight = dropdownRef.current.offsetHeight;
+      } else {
+        dropdownHeight = 60; // fallback
+      }
+
+      // Direction logic
+      let top = rect.bottom;
+      if (window.innerHeight - rect.bottom < dropdownHeight + 8) {
+        // Not enough space below, open upward
+        top = rect.top - dropdownHeight;
+        if (top < 8) top = 8; // clamp to top
+      }
+      setStyle({
+        position: 'fixed',
+        left,
+        top,
+        zIndex: 99999,
+        width: dropdownWidth,
+        minWidth: 140,
+        maxWidth: '95vw',
+        maxHeight: '60vh',
+        overflowY: 'auto',
+      });
+    }
+  }, [open, anchorRef, children]);
+
+  // Close on scroll/resize
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setStyle(s => ({ ...s }));
+    window.addEventListener('scroll', close, true);
+    window.addEventListener('resize', close);
+    return () => {
+      window.removeEventListener('scroll', close, true);
+      window.removeEventListener('resize', close);
+    };
+  }, [open]);
+
+  if (!open) return null;
+  return createPortal(
+    <div ref={dropdownRef} style={style} className="bg-white dark:bg-gray-800 border rounded-lg shadow-lg py-1 z-[99999]">
+      {children}
+    </div>,
+    document.body
+  );
 }
 
 const CommonAdminTable = ({
@@ -129,14 +163,6 @@ const CommonAdminTable = ({
   filterValue = '',
   filterOptions,
   onFilterChange,
-  planValue = '',
-  planOptions,
-  onPlanChange,
-  roleValue = '',
-  roleOptions,
-  onRoleChange,
-  dateRange,
-  onDateRangeChange,
   loading = false,
   renderActions,
   onSort,
@@ -147,117 +173,43 @@ const CommonAdminTable = ({
   onPageSizeChange,
   currentPage = 1,
   pageSize = PAGE_SIZES[0],
+  showPagination = true,
+  paginationProps = {}
 }) => {
   const [sortConfig, setSortConfig] = useState(null);
-  const [range, setRange] = useState([
-    {
-      startDate: null,
-      endDate: null,
-      key: 'selection'
-    }
-  ]);
-  const [showPicker, setShowPicker] = useState(false);
-  const [showMoreFilters, setShowMoreFilters] = useState(false);
+  const actionBtnRefs = useRef([]);
+  const [openAction, setOpenAction] = useState(null);
+  const [openUpward, setOpenUpward] = useState(false);
 
   const handleSort = useCallback((key) => {
     if (!onSort) return;
-
+    
     const direction = sortConfig?.key === key && sortConfig.direction === 'asc' ? 'desc' : 'asc';
     setSortConfig({ key, direction });
     onSort(key, direction);
   }, [sortConfig, onSort]);
 
-  const totalPages = Math.max(1, Math.ceil(total / pageSize));
-  const paginationNumbers = getPagination(currentPage, totalPages);
+  const handleActionClick = (idx) => {
+    if (openAction === idx) {
+      setOpenAction(null);
+      setOpenUpward(false);
+      return;
+    }
+    const btnRect = actionBtnRefs.current[idx]?.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - (btnRect?.bottom || 0);
+    setOpenUpward(spaceBelow < 180);
+    setOpenAction(idx);
+  };
 
   return (
-    <div className={`shadow-sm dark:shadow-none transition-colors duration-200 font-ttcommons bg-white dark:bg-customBrown ${className}`}>
-      <div className="flex flex-wrap gap-4 mb-6 items-center justify-between">
-        {/* Filters */}
-        <div className="flex flex-col xl:flex-row gap-3 md:gap-4 items-center flex-shrink-0 w-full md:w-auto">
-          {/* हर filter को min-w-[150px] या w-48 दें */}
-          {onSearchChange && (
-            <div className="w-full xl:w-56">
-              <SearchInput value={searchValue} onChange={onSearchChange} />
-            </div>
-          )}
-          <div className='flex flex-col sm:flex-row gap-3 md:gap-4 items-center flex-shrink-0 w-full md:w-auto'>
-            {onPlanChange && planOptions && (
-              <div className="w-full md:w-48">
-                <FilterDropdown value={planValue} options={['', ...planOptions]} onChange={onPlanChange} placeholder="Plan" />
-              </div>
-            )}
-            {onFilterChange && filterOptions && (
-              <div className="w-full md:w-48">
-                <FilterDropdown value={filterValue} options={['', ...filterOptions]} onChange={onFilterChange} placeholder="Status" />
-              </div>
-            )}
-          </div>
-          {/* Desktop: Role & Date */}
-          <div className="hidden md:flex gap-4">
-            {onRoleChange && roleOptions && (
-              <div className="w-48">
-                <FilterDropdown value={roleValue} options={['', ...roleOptions]} onChange={onRoleChange} placeholder="Role" />
-              </div>
-            )}
-            {onDateRangeChange && (
-              <div className="w-48">
-                <CommonDateRange
-                  startDate={dateRange?.startDate}
-                  endDate={dateRange?.endDate}
-                  onChange={onDateRangeChange}
-                />
-              </div>
-            )}
-          </div>
-          {/* Mobile: More/Less Filters logic */}
-          {(onRoleChange || onDateRangeChange) && !showMoreFilters && (
-            <button
-              className="md:hidden w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white bg-gray-50 dark:bg-customBrown font-medium flex items-center gap-2 justify-center"
-              onClick={() => setShowMoreFilters(true)}
-              type="button"
-            >
-              More Filters
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-            </button>
-          )}
-          {/* Mobile: Inline expanded filters */}
-          {showMoreFilters && (
-            <div className="w-full flex flex-col gap-3 md:hidden animate-fadeIn">
-              {onRoleChange && roleOptions && (
-                <FilterDropdown value={roleValue} options={['', ...roleOptions]} onChange={onRoleChange} placeholder="Role" />
-              )}
-              {onDateRangeChange && (
-                <CommonDateRange
-                  startDate={dateRange?.startDate}
-                  endDate={dateRange?.endDate}
-                  onChange={onDateRangeChange}
-                />
-              )}
-              <button
-                className="mt-2 w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-white bg-gray-50 dark:bg-customBrown font-medium flex items-center gap-2 justify-center"
-                onClick={() => setShowMoreFilters(false)}
-                type="button"
-              >
-                Less Filters
-                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M7 15l7-7 7 7" /></svg>
-              </button>
-            </div>
-          )}
-        </div>
-        {/* Export/Add User buttons rightmost */}
-        <div className="flex gap-3 flex-wrap">
-          <CommonOutlineButton
-            text="Export"
-            className="!py-2.5 !text-[15px] w-auto rounded-xl border-2 border-gray-200 dark:border-gray-800"
-            icon={<FiUpload className="text-lg" />}
-          />
-          <CommonButton
-            text="Add User"
-            className=" !text-[15px] w-auto rounded-xl px-4 py-2"
-            icon={<FaPlus className="text-lg font-bold" />}
-          />
-        </div>
+    <div className={`shadow-sm dark:shadow-none transition-colors duration-200 font-ttcommons ${className}`}>
+      <div className="flex flex-col sm:flex-row gap-4 mb-6 p-2">
+        {onSearchChange && (
+          <SearchInput value={searchValue} onChange={onSearchChange} />
+        )}
+        {onFilterChange && filterOptions && (
+          <FilterDropdown value={filterValue} options={filterOptions} onChange={onFilterChange} />
+        )}
       </div>
 
       <div className="overflow-x-auto">
@@ -267,7 +219,7 @@ const CommonAdminTable = ({
               {columns.map(col => (
                 <th
                   key={col.key}
-                  className={`py-3 px-4 text-left font-semibold text-black dark:text-white ${col.className || ''} ${col.sortable ? 'cursor-pointer select-none' : ''}`}
+                  className={`py-3 px-4 text-left font-semibold text-gray-700 dark:text-gray-300 ${col.className || ''} ${col.sortable ? 'cursor-pointer select-none' : ''}`}
                   onClick={() => col.sortable && handleSort(col.key)}
                   aria-sort={sortConfig?.key === col.key ? sortConfig.direction : undefined}
                 >
@@ -275,12 +227,13 @@ const CommonAdminTable = ({
                     {col.label}
                     {col.sortable && (
                       <svg
-                        className={`w-4 h-4 transition-transform ${sortConfig?.key === col.key
-                          ? sortConfig.direction === 'asc'
-                            ? 'transform rotate-180'
+                        className={`w-4 h-4 transition-transform ${
+                          sortConfig?.key === col.key
+                            ? sortConfig.direction === 'asc'
+                              ? 'transform rotate-180'
+                              : ''
                             : ''
-                          : ''
-                          }`}
+                        }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -309,21 +262,19 @@ const CommonAdminTable = ({
               </tr>
             ) : (
               data.map((row, idx) => (
-                <tr
+                <tr 
                   key={idx}
-
-
                   className={
                     idx % 2 === 0
-                      ? "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors dark:bg-[#181818] bg-gray-100"
-                      : "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors"
+                    ? "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors dark:bg-[#181818] bg-gray-100"
+                    : "border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-[#181818] transition-colors"
                   }
                   role="row"
                 >
                   {columns.map(col => (
-                    <td
+                    <td 
                       key={col.key}
-                      className={`py-3 px-4 dark:text-white text-black ${col.className || ''}`}
+                      className={`py-3 px-4 ${col.className || ''}`}
                       role="gridcell"
                     >
                       {col.render ? col.render(row, idx) : row[col.key]}
@@ -331,7 +282,23 @@ const CommonAdminTable = ({
                   ))}
                   {renderActions && (
                     <td className="py-3 px-4" role="gridcell">
-                      {renderActions(row, idx)}
+                      <div className="text-center relative action-dropdown">
+                        <button
+                          ref={el => actionBtnRefs.current[idx] = el}
+                          className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          onClick={() => handleActionClick(idx)}
+                        >
+                          <HiDotsHorizontal className="w-5 h-5" />
+                        </button>
+                        <DropdownPortal anchorRef={{ current: actionBtnRefs.current[idx] }} open={openAction === idx} upward={openUpward}>
+                          <button
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            onClick={() => { setOpenAction(null); alert('View clicked!'); }}
+                          >
+                            View Details
+                          </button>
+                        </DropdownPortal>
+                      </div>
                     </td>
                   )}
                 </tr>
@@ -341,15 +308,18 @@ const CommonAdminTable = ({
         </table>
       </div>
 
-      <div className="mt-6">
-        <CommonPagination
-          currentPage={currentPage}
-          pageSize={pageSize}
-          total={total}
-          onPageChange={onPageChange}
-          onPageSizeChange={onPageSizeChange}
-        />
-      </div>
+      {showPagination && onPageChange && (
+        <div className="mt-6">
+          <CommonPagination
+            currentPage={currentPage}
+            pageSize={pageSize}
+            total={total}
+            onPageChange={onPageChange}
+            onPageSizeChange={onPageSizeChange}
+            {...paginationProps}
+          />
+        </div>
+      )}
     </div>
   );
 };
@@ -371,17 +341,6 @@ CommonAdminTable.propTypes = {
   filterValue: PropTypes.string,
   filterOptions: PropTypes.arrayOf(PropTypes.string),
   onFilterChange: PropTypes.func,
-  planValue: PropTypes.string,
-  planOptions: PropTypes.arrayOf(PropTypes.string),
-  onPlanChange: PropTypes.func,
-  roleValue: PropTypes.string,
-  roleOptions: PropTypes.arrayOf(PropTypes.string),
-  onRoleChange: PropTypes.func,
-  dateRange: PropTypes.shape({
-    startDate: PropTypes.instanceOf(Date),
-    endDate: PropTypes.instanceOf(Date)
-  }),
-  onDateRangeChange: PropTypes.func,
   loading: PropTypes.bool,
   renderActions: PropTypes.func,
   onSort: PropTypes.func,
@@ -391,7 +350,9 @@ CommonAdminTable.propTypes = {
   onPageChange: PropTypes.func,
   onPageSizeChange: PropTypes.func,
   currentPage: PropTypes.number,
-  pageSize: PropTypes.number
+  pageSize: PropTypes.number,
+  showPagination: PropTypes.bool,
+  paginationProps: PropTypes.object
 };
 
 export default CommonAdminTable; 
