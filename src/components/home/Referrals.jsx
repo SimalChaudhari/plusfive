@@ -109,7 +109,6 @@ function Referrals() {
     const [openAction, setOpenAction] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('All');
-    const [isDark, setIsDark] = useState(false);
 
     // Filter and sort data first
     const filteredAndSortedData = React.useMemo(() => {
@@ -165,14 +164,8 @@ function Referrals() {
     // Pagination numbers with ...
     const paginationNumbers = getPagination(page, Math.ceil(filteredAndSortedData.length / pageSize));
 
-    // Dark mode toggle
-    const toggleDarkMode = () => {
-        setIsDark(!isDark);
-        document.documentElement.classList.toggle('dark');
-    };
-
     return (
-        <div className={`bg-white dark:bg-customBrown rounded-2xl p-4 md:p-6 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 font-ttcommons dark:hover:bg-customBlack shadow-md hover:shadow-sm ${isDark ? 'dark' : ''}`}>
+        <div className={`bg-white dark:bg-customBrown rounded-2xl p-4 md:p-6 border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 font-ttcommons dark:hover:bg-customBlack shadow-md hover:shadow-sm`}>
             <div className="flex flex-col gap-4 mb-6">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-4">

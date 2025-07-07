@@ -5,6 +5,7 @@ import Register from '../pages/auth/register';
 // import ForgotPassword from '../pages/auth/forgotPassword'; // Uncomment if you have this page
 import NotFound from '../pages/404';
 import { useSelector } from 'react-redux';
+import LandingPage from '../pages/landingpage';
 
 function PublicRouteGuard({ children }) {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -23,6 +24,7 @@ function PublicRouteGuard({ children }) {
 function PublicRoutes() {
   return (
     <Routes>
+    <Route path="/" element={<LandingPage />} />
       <Route path="login" element={
         <PublicRouteGuard>
           <Login />

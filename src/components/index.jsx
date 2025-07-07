@@ -1,3 +1,16 @@
+// Landing Components
+export { default as HeroComponent } from "./Landing/HeroComponent";
+export { default as LandingHeader } from "./Landing/LandingHeader";
+export { default as GrowthComponent } from "./Landing/GrowthComponent";
+export { default as AiAgent } from "./Landing/AiAgent";
+export { default as WhatHappens } from "./Landing/WhatHappens";
+export { default as BeforeVsAfter } from "./Landing/BeforeVsAfter";
+export { default as HowItWorks } from "./Landing/HowItWorks";
+export { default as Trusted } from "./Landing/Trusted";
+export { default as PricingPlans } from "./Landing/PricingPlans";
+export { default as RealResults } from "./Landing/RealResults";
+export { default as FAQ } from "./Landing/FAQ";
+
 // Admin Components
 export { default as AdminLayout } from "./admin/layout/AdminLayout";
 export { default as AdminHeader } from "./admin/layout/AdminHeader";
@@ -64,7 +77,6 @@ export { default as AdminDeleteAccount } from "./admin/accountSettings/AdminDele
 
 // Support and Help Components
 export { default as ContactAndSubmitTicket } from "./supportAndHelp/ContactAndSubmitTicket";
-export { default as FAQ } from "./supportAndHelp/FAQ";
 
 // Notifications Components
 export { default as NotificationSettings } from "./Notifications/NotificationSettings";
@@ -88,3 +100,4 @@ export { default as StatIconCard } from "./commonComponent/StatIconCard";
 export { default as StatSingleBarChart } from "./commonComponent/StatSingleBarChart";
 export { default as StatPieChart } from "./commonComponent/StatPieChart";
 export { default as CommonDateRange } from "./commonComponent/CommonDateRange";
+export { default as SquaresAnim } from "./commonComponent/SquaresAnim";

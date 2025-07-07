@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function CommonCustomOutlineButton({ text, onClick, className = '', type = 'button', icon, borderColor = 'border-red-500', textColor = 'dark:text-white text-black' }) {
+function CommonCustomOutlineButton({ text, onClick, className = '', type = 'button', icon, borderColor = 'border-red-500', textColor = 'dark:text-white text-black', bgClass = 'bg-transparent' }) {
   return (
     <button
       type={type}
@@ -9,7 +9,7 @@ function CommonCustomOutlineButton({ text, onClick, className = '', type = 'butt
       className={`
         relative overflow-hidden rounded-xl
         px-8 py-2
-        dark:bg-customBrown bg-white
+        ${bgClass}
         text-xl font-ttcommons font-medium
         transition-all duration-300 ease-in-out
         hover:shadow-lg hover:scale-[1.02]
@@ -17,7 +17,7 @@ function CommonCustomOutlineButton({ text, onClick, className = '', type = 'butt
         border-2
         ${borderColor}
         ${textColor}
-        ${className}
+        ${className}  
       `}
     >
       <div className="flex items-center justify-center gap-2">
@@ -36,6 +36,7 @@ CommonCustomOutlineButton.propTypes = {
   icon: PropTypes.node,
   borderColor: PropTypes.string,
   textColor: PropTypes.string,
+  bgClass: PropTypes.string,
 }
 
 export default CommonCustomOutlineButton
