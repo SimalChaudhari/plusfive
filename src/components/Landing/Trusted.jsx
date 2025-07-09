@@ -42,7 +42,7 @@ const bottom = [
 
 function Trusted() {
   return (
-    <section className="w-full bg-transparent py-16 md:py-24 flex flex-col items-center justify-center">
+    <section className="w-full bg-transparent py-16 md:py-24 flex flex-col items-center justify-center px-8">
       {/* Heading */}
       <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-4 tracking-tight">Trusted by Industry Leaders</h2>
       <p className="text-lg md:text-xl text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
@@ -53,10 +53,10 @@ function Trusted() {
         {stats.map((item, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center justify-center bg-gray-100 rounded-2xl shadow-lg p-8 md:p-10 min-h-[260px] transition-all border border-gray-100 dark:border-neutral-800"
+            className="flex flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800 rounded-2xl shadow-lg p-8 md:p-10 min-h-[260px] transition-all border border-gray-100 dark:border-neutral-700"
             // style={{ boxShadow: '0 4px 32px 0 rgba(0,0,0,0.06)' }}
           >
-            <div className="mb-6 flex items-center justify-center w-14 h-14 rounded-xl bg-pink-50 dark:bg-neutral-800">
+            <div className="mb-6 flex items-center justify-center w-14 h-14 rounded-xl bg-pink-50 dark:bg-neutral-700">
               {item.icon}
             </div>
             <div className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">{item.stat}</div>
@@ -71,7 +71,7 @@ function Trusted() {
           <React.Fragment key={item.label}>
             <span className="flex items-center">{item.icon}{item.label}</span>
             {idx < bottom.length - 1 && (
-              <span className="mx-2 text-gray-300 text-2xl select-none">&bull;</span>
+              <span className="mx-2 text-gray-300 dark:text-gray-600 text-2xl select-none">&bull;</span>
             )}
           </React.Fragment>
         ))}

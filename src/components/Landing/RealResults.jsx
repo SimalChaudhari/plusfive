@@ -1,117 +1,183 @@
-import React, { useState } from 'react';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
-import CommonButton from '../commonComponent/CommonButton';
+import React from "react";
+import Slider from "react-slick";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import CommonButton from "../commonComponent/CommonButton";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// Testimonial data (array for DRY carousel)
 const testimonials = [
   {
-    image: 'https://randomuser.me/api/portraits/men/32.jpg',
-    storyType: 'User Story',
-    storyTypeColor: 'text-pink-500',
-    text: 'Plusfive showed us exactly who was about to leave—and saved over $3,000 in repeat sales in the first month alone.',
-    author: 'William Kerry',
-    authorTitle: 'Cofounder, GlowUp Studio',
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "Plusfive showed us exactly who was about to leave—and saved over $3,000 in repeat sales in the first month alone.",
+    author: "William Kerry",
+    authorTitle: "Cofounder, GlowUp Studio",
   },
   {
-    image: 'https://randomuser.me/api/portraits/women/44.jpg',
-    storyType: 'User Story',
-    storyTypeColor: 'text-pink-500',
-    text: 'We increased our customer retention by 25% in just two months using PlusFive.',
-    author: 'Sarah Lee',
-    authorTitle: 'Owner, BeautyBar',
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "We increased our customer retention by 25% in just two months using PlusFive.",
+    author: "Sarah Lee",
+    authorTitle: "Owner, BeautyBar",
   },
   {
-    image: 'https://randomuser.me/api/portraits/men/65.jpg',
-    storyType: 'User Story',
-    storyTypeColor: 'text-pink-500',
-    text: 'The insights and automation are a game changer for our business.',
-    author: 'Mike Johnson',
-    authorTitle: 'Manager, FitClub',
+    image: "https://randomuser.me/api/portraits/men/65.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "The insights and automation are a game changer for our business.",
+    author: "Mike Johnson",
+    authorTitle: "Manager, FitClub",
+  },
+  {
+    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "With PlusFive, our team can focus on growth instead of chasing churned customers.",
+    author: "Emily Carter",
+    authorTitle: "Head of Marketing, FreshMart",
+  },
+  {
+    image: "https://randomuser.me/api/portraits/men/77.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "The dashboard is so intuitive and the results speak for themselves.",
+    author: "David Kim",
+    authorTitle: "CEO, TechNest",
+  },
+  {
+    image: "https://randomuser.me/api/portraits/women/12.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "We saw a 40% increase in repeat purchases after using PlusFive’s recommendations.",
+    author: "Priya Singh",
+    authorTitle: "Founder, StyleHub",
+  },
+  {
+    image: "https://randomuser.me/api/portraits/men/81.jpg",
+    storyType: "User Story",
+    storyTypeColor: "text-pink-500",
+    text: "PlusFive’s analytics helped us identify our most loyal customers and reward them.",
+    author: "Carlos Rivera",
+    authorTitle: "COO, Foodies",
   },
 ];
 
-function RealResults() {
-  const [index, setIndex] = useState(0);
-  const total = testimonials.length;
+// Custom Arrow Components (for below the card)
+function NextArrow(props) {
+  const { onClick } = props;
+  return (
+    <button
+      className="mx-2 flex items-center justify-center bg-white shadow rounded-full p-2"
+      onClick={onClick}
+      aria-label="Next"
+      type="button"
+    >
+      <FaArrowRight className="text-2xl text-gray-400" />
+    </button>
+  );
+}
+function PrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <button
+      className="mx-2 flex items-center justify-center bg-white shadow rounded-full p-2"
+      onClick={onClick}
+      aria-label="Previous"
+      type="button"
+    >
+      <FaArrowLeft className="text-2xl text-gray-400" />
+    </button>
+  );
+}
 
-  // Carousel navigation
-  const prev = () => setIndex(i => (i - 1 + total) % total);
-  const next = () => setIndex(i => (i + 1) % total);
-
-  // Helper to get card style (center, left, right, hidden)
-  const getCardStyle = (i) => {
-    if (i === index) return 'z-20 scale-100 opacity-100 blur-0 translate-x-0';
-    if (i === (index - 1 + total) % total) return 'z-10 scale-95 opacity-60 blur-[2px] -translate-x-16 md:-translate-x-32';
-    if (i === (index + 1) % total) return 'z-10 scale-95 opacity-60 blur-[2px] translate-x-16 md:translate-x-32';
-    return 'hidden';
+const RealResults = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false, // Hide default arrows
+    // centerMode: false, // Only one card in center
   };
 
+  // Slider ref for custom arrows
+  const sliderRef = React.useRef();
+
   return (
-    <section className="w-full bg-transparent py-16 md:py-24 flex flex-col items-center justify-center">
-      {/* Heading */}
+    <div className="container mx-auto py-16 flex flex-col items-center justify-center px-8">
       <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white text-center mb-3 tracking-tight">
         Real Results. Real Businesses.<br />Real Revenue Saved
       </h2>
       <p className="text-lg md:text-xl text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
         We have 1k+ positive reviews from our customers whose are loving using PlusFive.
       </p>
-      {/* Carousel */}
-      <div className="relative w-full max-w-6xl flex items-center justify-center mb-8 min-h-[420px]">
-        {/* Cards */}
-        <div className="w-full flex items-center justify-center relative" style={{ minHeight: 380 }}>
+      <div className="w-full">
+        <Slider ref={sliderRef} {...settings}>
           {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className={`absolute left-0 right-0 mx-auto transition-all duration-500 ease-in-out ${getCardStyle(i)} w-full max-w-4xl bg-gray-50 dark:bg-neutral-900 rounded-3xl shadow-xl flex flex-col md:flex-row items-center px-4 md:px-12 py-10 md:py-12`}
-              style={{ minHeight: 380 }}
-            >
-              {/* Image */}
-              <div className="w-32 h-32 md:w-44 md:h-44 rounded-2xl overflow-hidden flex-shrink-0 bg-gray-200 mb-6 md:mb-0 md:mr-10 flex items-center justify-center">
-                <img src={t.image} alt={t.author} className="w-full h-full object-cover" />
-              </div>
-              {/* Text */}
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="text-sm font-bold mb-2 tracking-wide" style={{ color: '#FF2380' }}>{t.storyType}</div>
-                <div className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-white mb-6 leading-snug">{t.text}</div>
-                {/* Author & Button */}
-                <div className="flex flex-col md:flex-row items-center gap-4 mt-8">
-                  <div className="w-full flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-4 rounded-2xl md:rounded-full border border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-0 md:px-6 py-4 shadow-sm mx-auto">
-                    <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1">
-                      <span className="font-bold text-gray-900 dark:text-white text-base">{t.author}</span>
-                      <span className="text-gray-500 dark:text-gray-300 text-sm">{t.authorTitle}</span>
-                    </div>
-                    <CommonButton
-                      text="Read full"
-                      className="w-full md:w-auto px-6 py-3 text-base font-bold rounded-full mt-2 md:mt-0"
-                      icon={<FaArrowRight />}
-                      iconPosition="right"
+            <div key={i} className="flex justify-center items-center w-full md:px-4 py-5">
+              <div className="w-full max-w-7xl mx-auto px-4">
+                <div
+                  className="w-full bg-gray-50 dark:bg-neutral-800 rounded-2xl shadow-lg flex flex-col md:flex-row items-stretch p-8 md:p-12 transition-all border border-gray-100 dark:border-neutral-700"
+                  style={{ minHeight: 340 }}
+                >
+                  {/* Left: Image */}
+                  <div className="flex-shrink-0 flex items-center justify-center mb-6 md:mb-0">
+                    <img
+                      src={t.image}
+                      alt={t.author}
+                      className="w-full md:w-64 h-64 object-cover rounded-xl bg-gray-200 dark:bg-neutral-700"
+                      style={{ minWidth: 180, minHeight: 240 }}
                     />
+                  </div>
+                  {/* Right: Content */}
+                  <div className="flex flex-col justify-center flex-1 md:pl-8">
+                    <p className="text-pink-500 font-semibold mb-2">User Story</p>
+                    <p className="text-2xl font-semibold text-gray-900 dark:text-white mb-6 max-w-2xl md:max-w-3xl text-left">
+                      {t.text}
+                    </p>
+                    <div className="flex md:flex-row flex-col sm:items-center sm:justify-between bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 sm:rounded-full rounded-lg px-6 py-4 shadow-sm w-full">
+                      <div className="mr-6">
+                        <p className="font-bold text-gray-800 dark:text-white mb-0">{t.author}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">{t.authorTitle}</p>
+                      </div>
+                      <CommonButton
+                        text="Read full"
+                        icon={<FaArrowRight />}
+                        iconPosition="right"
+                        className="ml-2 px-6 py-3 text-base font-bold rounded-full"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
+        </Slider>
+        {/* Custom Arrows below the card */}
+        <div className="flex justify-center items-center mt-6">
+          <button
+            className="mx-2 flex items-center justify-center bg-white dark:bg-neutral-800 shadow rounded-full p-2"
+            onClick={() => sliderRef.current.slickPrev()}
+            aria-label="Previous"
+            type="button"
+          >
+            <FaArrowLeft className="text-2xl text-gray-400 dark:text-white" />
+          </button>
+          <button
+            className="mx-2 flex items-center justify-center bg-white dark:bg-neutral-800 shadow rounded-full p-2"
+            onClick={() => sliderRef.current.slickNext()}
+            aria-label="Next"
+            type="button"
+          >
+            <FaArrowRight className="text-2xl text-gray-400 dark:text-white" />
+          </button>
         </div>
       </div>
-      {/* Carousel Arrows (centered below cards) */}
-      <div className="flex items-center justify-center gap-4 mt-2">
-        <button
-          onClick={prev}
-          className="flex items-center justify-center bg-white dark:bg-neutral-800 rounded-full shadow-md p-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-700 transition-all z-30 border border-gray-200 dark:border-neutral-700"
-          aria-label="Previous"
-        >
-          <FaArrowLeft />
-        </button>
-        <button
-          onClick={next}
-          className="flex items-center justify-center bg-white dark:bg-neutral-800 rounded-full shadow-md p-3 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-700 transition-all z-30 border border-gray-200 dark:border-neutral-700"
-          aria-label="Next"
-        >
-          <FaArrowRight />
-        </button>
-      </div>
-    </section>
+    </div>
   );
-}
+};
 
 export default RealResults;

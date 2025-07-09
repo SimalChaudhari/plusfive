@@ -1,12 +1,12 @@
 import React from 'react'
 import { FaTimes, FaCheck } from 'react-icons/fa'
-import CommonButton from '../commonComponent/CommonButton'
+import { CommonButton } from '../index'
 
 function BeforeVsAfter() {
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center py-16 px-2 md:px-0">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center py-16 px-0 md:px-0">
       {/* Background card */}
-      <div className="w-full max-w-6xl mx-auto rounded-3xl shadow-2xl bg-gradient-to-br from-[#181926] via-[#23243a] to-[#181926] p-2 md:p-8 flex flex-col items-center">
+      <div className="w-full max-w-6xl mx-auto rounded-3xl shadow-2xl bg-gradient-to-br from-[#181926] via-[#23243a] to-[#181926] p-8 flex flex-col items-center">
         {/* Heading */}
         <h2 className="text-3xl md:text-5xl font-extrabold text-center text-white mb-4 mt-6">Before Vs After</h2>
         <p className="text-center text-gray-300 max-w-2xl mb-10 mx-auto">
@@ -22,8 +22,8 @@ function BeforeVsAfter() {
               </span>
               <span className="font-bold text-lg text-white">Before Plusfive</span>
             </div>
-            <div className="text-red-400 font-semibold mb-4 ml-11">The struggle is real</div>
-            <ul className="space-y-3 ml-11">
+            <div className="text-red-400 font-semibold my-4 md:ml-11">The struggle is real</div>
+            <ul className="space-y-3 md:ml-11">
               <li className="flex items-center gap-2 text-white/90"><FaTimes className="text-red-400" /> No idea who&apos;s about to leave</li>
               <li className="flex items-center gap-2 text-white/90"><FaTimes className="text-red-400" /> Lost clients = lost revenue</li>
               <li className="flex items-center gap-2 text-white/90"><FaTimes className="text-red-400" /> Spending $ on ads</li>
@@ -52,8 +52,8 @@ function BeforeVsAfter() {
               </span>
               <span className="font-bold text-lg text-white">After Plusfive</span>
             </div>
-            <div className="text-green-400 font-semibold mb-4 ml-11">Retention on autopilot</div>
-            <ul className="space-y-3 ml-11">
+            <div className="text-green-400 font-semibold my-4 md:ml-11">Retention on autopilot</div>
+            <ul className="space-y-3 md:ml-11">
               <li className="flex items-center gap-2 text-white/90"><FaCheck className="text-green-400" /> Instantly flagged by AI</li>
               <li className="flex items-center gap-2 text-white/90"><FaCheck className="text-green-400" /> Recovered with auto-messaging</li>
               <li className="flex items-center gap-2 text-white/90"><FaCheck className="text-green-400" /> Growing via retention</li>

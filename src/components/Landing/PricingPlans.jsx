@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
-import CommonButton from '../commonComponent/CommonButton';
-import CommonCustomOutlineButton from '../commonComponent/CommonCustomOutlineButton';
+import { CommonButton, CommonCustomOutlineButton } from '../index';
 
 const plans = [
   {
@@ -65,14 +64,14 @@ function PricingPlans() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section className="relative w-full min-h-[100vh] flex flex-col items-center justify-center px-2 py-16 md:py-24 bg-[#181828] bg-gradient-to-br from-[#181828] via-[#232347] to-[#181828] overflow-hidden">
+    <section className="relative w-full min-h-[100vh] flex flex-col items-center justify-center px-8 py-16 md:py-24 bg-[#181828] bg-gradient-to-br from-[#181828] via-[#232347] to-[#181828] overflow-hidden">
       {/* Starry effect (optional, can use bg pattern or custom) */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, rgba(24,24,40,0.9) 100%)'}} />
       {/* Heading */}
       <div className="relative z-10 flex flex-col items-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-3 tracking-tight">
-          <span className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-orange-400 bg-clip-text text-transparent">Pricing</span>
-          <span className="text-white"> Plans</span>
+        <h2 className="text-4xl md:text-5xl text-center mb-3 tracking-tight">
+          <span className="font-bold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-orange-400 bg-clip-text text-transparent">Pricing</span>
+          <span className="font-bold text-white"> Plans</span>
         </h2>
         <p className="text-lg md:text-xl text-gray-300 text-center font-medium mb-6 max-w-2xl">
           Choose the perfect plan for your business.

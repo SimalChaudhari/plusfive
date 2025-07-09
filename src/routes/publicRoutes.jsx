@@ -6,6 +6,7 @@ import Register from '../pages/auth/register';
 import NotFound from '../pages/404';
 import { useSelector } from 'react-redux';
 import LandingPage from '../pages/landingpage';
+import { useLanguage } from '../context/LanguageContext';
 
 function PublicRouteGuard({ children }) {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -22,23 +23,30 @@ function PublicRouteGuard({ children }) {
 }
 
 function PublicRoutes() {
+  const { language } = useLanguage();
+  // Demo: language ko console.log ya UI me dikha sakte hain
+  console.log('Current language (context):', language);
   return (
-    <Routes>
-    <Route path="/" element={<LandingPage />} />
-      <Route path="login" element={
-        <PublicRouteGuard>
-          <Login />
-        </PublicRouteGuard>
-      } />
-      <Route path="register" element={
-        <PublicRouteGuard>
-          <Register />
-        </PublicRouteGuard>
-      } />
-      {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
-      {/* Add more public routes here in the future */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      {/* Demo ke liye language show kar rahe hain */}
+      {/* <div>Current language: {language}</div> */}
+      <Routes>
+        <Route path="/" element={<LandingPage language={language} />} />
+        <Route path="login" element={
+          <PublicRouteGuard>
+            <Login />
+          </PublicRouteGuard>
+        } />
+        <Route path="register" element={
+          <PublicRouteGuard>
+            <Register />
+          </PublicRouteGuard>
+        } />
+        {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
+        {/* Add more public routes here in the future */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 

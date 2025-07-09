@@ -22,7 +22,7 @@ const steps = [
 
 function HowItWorks() {
   return (
-    <section className="w-full min-h-[70vh] flex flex-col items-center justify-center bg-transparent px-2 md:px-8 py-12 md:py-24">
+    <section className="w-full min-h-[70vh] flex flex-col items-center justify-center bg-transparent px-8 py-12 md:py-24">
       {/* Heading */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center mb-12">
         <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white text-center mb-2 tracking-tight">How It Works</h2>

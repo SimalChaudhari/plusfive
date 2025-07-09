@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import CommonInput from '../../components/commonComponent/CommonInput';
-import CommonButton from '../../components/commonComponent/CommonButton';
+import { CommonInput, CommonButton } from '../../components/index';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';

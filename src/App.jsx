@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 import UserRoutes from './routes/userRoutes';
 import AdminRoutes from './routes/adminRoutes';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -7,7 +8,7 @@ import CommonToastify from './components/commonComponent/CommonToastify';
 import PublicRoutes from './routes/publicRoutes';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AdminLayout, Layout } from './components';
+import { Layout } from './components';
 // import './App.css'
 
 function App() {
@@ -31,29 +32,31 @@ function App() {
 
   return (
     <ThemeProvider>
-      <CommonToastify />
-      <Routes>
-        {/* Public routes (no layout) */}
-        <Route path="/*" element={<PublicRoutes />} />
+      <LanguageProvider>
+        <CommonToastify />
+        <Routes>
+          {/* Public routes (no layout) */}
+          <Route path="/*" element={<PublicRoutes />} />
 
-        {/* User protected routes (with layout) */}
-        <Route path="/app/*" element={
-          <ProtectedRoute>
-            <Layout>
-              <UserRoutes />
-            </Layout>
-          </ProtectedRoute>
-        } />
+          {/* User protected routes (with layout) */}
+          <Route path="/app/*" element={
+            <ProtectedRoute>
+              <Layout>
+                <UserRoutes />
+              </Layout>
+            </ProtectedRoute>
+          } />
 
-        {/* Admin protected routes (with layout) */}
-        <Route path="/admin/*" element={
-          <ProtectedRoute>
-            <Layout>
-              <AdminRoutes />
-            </Layout>
-          </ProtectedRoute>
-        } />
-      </Routes>
+          {/* Admin protected routes (with layout) */}
+          <Route path="/admin/*" element={
+            <ProtectedRoute>
+              <Layout>
+                <AdminRoutes />
+              </Layout>
+            </ProtectedRoute>
+          } />
+        </Routes>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

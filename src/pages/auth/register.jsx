@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import CommonInput from '../../components/commonComponent/CommonInput';
-import CommonButton from '../../components/commonComponent/CommonButton';
+import { CommonInput, CommonButton } from '../../components/index';
 import { Link } from 'react-router-dom';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { toast } from 'react-toastify';
