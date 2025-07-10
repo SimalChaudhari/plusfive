@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroComponent, GrowthComponent, AiAgent, WhatHappens, BeforeVsAfter, HowItWorks, Trusted, PricingPlans, RealResults, FAQ } from '../../components'
+import { HeroComponent, GrowthComponent, AiAgent, WhatHappens, BeforeVsAfter, HowItWorks, Trusted, PricingPlans, RealResults, FAQ, LandingFooter } from '../../components'
 
 function LandingPage({ language }) {
   // ab aapko language prop mil gaya
@@ -23,6 +23,7 @@ function LandingPage({ language }) {
         <PricingPlans language={language} />
         <RealResults language={language} />
         <FAQ language={language} />
+        <LandingFooter language={language} />
       </div>
     </div>
   )

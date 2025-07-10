@@ -1,6 +1,7 @@
 // Landing Components
 export { default as HeroComponent } from "./Landing/HeroComponent";
 export { default as LandingHeader } from "./Landing/LandingHeader";
+export { default as LandingFooter } from "./Landing/LandingFooter"
 export { default as GrowthComponent } from "./Landing/GrowthComponent";
 export { default as AiAgent } from "./Landing/AiAgent";
 export { default as WhatHappens } from "./Landing/WhatHappens";
@@ -101,3 +102,4 @@ export { default as StatSingleBarChart } from "./commonComponent/StatSingleBarCh
 export { default as StatPieChart } from "./commonComponent/StatPieChart";
 export { default as CommonDateRange } from "./commonComponent/CommonDateRange";
 export { default as SquaresAnim } from "./commonComponent/SquaresAnim";
+export { default as CommonGradientText } from "./commonComponent/CommonGradientText";

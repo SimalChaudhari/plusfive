@@ -19,6 +19,169 @@
       "Magnolia"
     ]
   },
+  "growth": {
+    "heading": "The Silent Churn That's",
+    "heading2": "Killing Your Growth",
+    "subheading": "30% of your customers will ghost you this year.",
+    "points": [
+      "They won't say goodbye.",
+      "They just stop showing up.",
+      "You chase new leads, spend on ads,",
+      "and bleed money trying to replace customers you already earned."
+    ],
+    "cta": "But what if you could stop churn before it starts?"
+  },
+  "aiAgent": {
+    "heading1": "Meet the AI Agent That Turns Lost",
+    "heading2": "Customers",
+    "heading3": "into Cash",
+    "description": "Plusfive spots silent, unhappy, or inactive customers before they churn, then sends powerful campaign flows that win them back automatically. Built on real data, 3000+ tested variations, hundreds of businesses, thousands of customer interactions. And it gets smarter every day, optimizing itself based on your industry's live behavior.",
+    "button": "Get Started"
+  },
+  "whatHappens": {
+    "heading1": "Here's",
+    "heading2": "What Happens",
+    "heading3": "When You",
+    "heading4": "Plug In Plusfive",
+    "subheading": "Plusfive works silently in the background, analyzing user behavior and predicting churn. It sends timely messages to win back customers, recovering revenue and optimizing retention while you sleep.",
+    "rows": [
+      { "text": "Stop losing customers before it's too late", "how": "AI churn detection flags risks in real time" },
+      { "text": "Win back inactive clients", "how": "Smart, personalized campaign flows re-engage them" },
+      { "text": "See who's Active, At Risk, Lost", "how": "Live customer health scoring" },
+      { "text": "Use proven strategies", "how": "Pre-built campaigns tested in hundreds of businesses" },
+      { "text": "Track every dollar recovered", "how": "Real-time revenue recovery dashboard" },
+      { "text": "Get instant alerts when satisfaction drops", "how": "Automated service rating and notification system" },
+      { "text": "Grow without extra ad spend", "how": "Retain more customers with zero acquisition costs" },
+      { "text": "Turn visits into referrals", "how": "Smart QR code for easy customer referrals" }
+    ]
+  },
+  "beforeVsAfter": {
+    "heading": "Before Vs After",
+    "subheading": "See how businesses transform their retention strategy from reactive guesswork to proactive AI-powered growth.",
+    "beforeTitle": "Before Plusfive",
+    "beforeTagline": "The struggle is real",
+    "beforeList": [
+      "No idea who's about to leave",
+      "Lost clients = lost revenue",
+      "Spending $ on ads",
+      "Guessing customer satisfaction",
+      "Juggling multiple tools"
+    ],
+    "afterTitle": "After Plusfive",
+    "afterTagline": "Retention on autopilot",
+    "afterList": [
+      "Instantly flagged by AI",
+      "Recovered with auto-messaging",
+      "Growing via retention",
+      "Scored + tracked automatically",
+      "All-in-one retention engine"
+    ],
+    "button": "Start Your Transformation"
+  },
+  "howItWorks": {
+    "heading": "How It Works",
+    "subheading": "Step-by-Step Guide.",
+    "steps": [
+      {
+        "title": "AI analyzes customer behavior and engagement",
+        "desc": "Analyzes engagement, purchase patterns, and inactivity signals."
+      },
+      {
+        "title": "Churn risk is detected automatically",
+        "desc": "AI flags at-risk customers in real time."
+      },
+      {
+        "title": "Personalized campaigns are triggered",
+        "desc": "Smart flows send the right message at the right time."
+      },
+      {
+        "title": "Revenue and retention are optimized",
+        "desc": "Track results and see your business grow."
+      }
+    ],
+    "tagline": "Easy setup. No tech skills needed."
+  },
+  "trusted": {
+    "heading": "Trusted by Industry Leaders",
+    "subheading": "Join thousands of successful service businesses who have transformed their revenue recovery with our proven solutions.",
+    "stats": [
+      {
+        "stat": "2,300+",
+        "label": "Trusted Service Businesses",
+        "desc": "Growing community of successful partners",
+        "label2": "Verified Results"
+      },
+      {
+        "stat": "$9.4M+",
+        "label": "In Recovered Revenue",
+        "desc": "Real results for real businesses",
+        "label2": "Active Businesses"
+      },
+      {
+        "stat": "100%",
+        "label": "Industry Coverage",
+        "desc": "Salons, spas, barbershops, gyms, clinics & agencies",
+        "label2": "Revenue Recovered"
+      }
+    ]
+  },
+  "pricingPlans": {
+    "heading1": "Pricing",
+    "heading2": "Plans",
+    "subheading": "Choose the perfect plan for your business.",
+    "toggleMonthly": "Pay monthly",
+    "toggleYearly": "Pay yearly",
+    "yearlyBadge": "70% Off",
+    "customPricingText": "Custom pricing",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": 0,
+        "priceUnit": "/month",
+        "description": "Start risk-free with basic churn risk tracking.",
+        "features": [
+          "Everything in Regular Plan, plus",
+          "You get notifications when action is needed",
+          "No access to customer details or campaign flows",
+          "Perfect to see your churn risk before upgrading"
+        ],
+        "buttonText": "Upgrade Starter",
+        "highlight": false
+      },
+      {
+        "name": "Growth",
+        "price": 500,
+        "priceUnit": "/month",
+        "description": "Everything you need to keep customers loyal and cash flowing while you sleep.",
+        "features": [
+          "Complete AI churn prediction & customer health scoring",
+          "Unlimited automated, personalized campaign flows",
+          "Real-time revenue recovery dashboard",
+          "Satisfaction alerts & smart referral tools",
+          "WhatsApp usage: $0.001/msg",
+          "Priority email & chat support"
+        ],
+        "buttonText": "Upgrade Growth",
+        "highlight": true,
+        "badge": "Popular"
+      },
+      {
+        "name": "Enterprise",
+        "price": null,
+        "priceUnit": "",
+        "description": "Tailored for multi-location businesses, franchises, or agencies.",
+        "features": [
+          "Everything in Regular Plan, plus",
+          "Manage multiple businesses under one account",
+          "Dedicated account manager & strategic consulting",
+          "Advanced analytics & API integrations"
+        ],
+        "buttonText": "Upgrade Enterprise",
+        "highlight": false,
+        "custom": true
+      }
+    ]
+  },
   "header": {
     "brandName": "PlusFive",
     "button": "Start Free Trial",
@@ -30,5 +193,122 @@
       "Success Stories",
       "FAQ"
     ]
+  },
+  "faq": {
+    "heading": "FAQ",
+    "subheading": "Sure! Here's a well-crafted FAQ entry starting with 'What is churn prediction?' and following with other key questions and concise answers relevant to Plusfive:",
+    "questions": [
+      {
+        "q": "What is churn prediction?",
+        "a": "Churn prediction uses AI to identify which customers are likely to stop using your service, so you can take action before they leave."
+      },
+      {
+        "q": "Can I recover customers who've already left?",
+        "a": "Yes! PlusFive helps you re-engage lost customers with personalized campaigns and offers."
+      },
+      {
+        "q": "How long until I see results?",
+        "a": "Most businesses see measurable improvements in retention and revenue within the first month."
+      },
+      {
+        "q": "Do I need to be technical?",
+        "a": "No technical skills needed! PlusFive is designed for business owners and teams of all backgrounds."
+      },
+      {
+        "q": "Can I track revenue saved?",
+        "a": "Absolutely. PlusFive provides clear dashboards showing revenue recovered and customer loyalty growth."
+      }
+    ],
+    "ctaHeading": "Don't Let Another Customer Slip Away",
+    "ctaText": "Plug Plusfive into your business today and watch revenue come back without spending a cent on ads.",
+    "ctaButtonText": "Get Started"
+  },
+  "realResults": {
+    "heading": "Real Results. Real Businesses.",
+    "heading2": "Real Revenue Saved",
+    "subheading": "We have 1k+ positive reviews from our customers who are loving using PlusFive.",
+    "buttonText": "Read full",
+    "testimonials": [
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "Plusfive showed us exactly who was about to leave—and saved over $3,000 in repeat sales in the first month alone.",
+        "author": "William Kerry",
+        "authorTitle": "Cofounder, GlowUp Studio"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "We increased our customer retention by 25% in just two months using PlusFive.",
+        "author": "Sarah Lee",
+        "authorTitle": "Owner, BeautyBar"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "The insights and automation are a game changer for our business.",
+        "author": "Mike Johnson",
+        "authorTitle": "Manager, FitClub"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "With PlusFive, our team can focus on growth instead of chasing churned customers.",
+        "author": "Emily Carter",
+        "authorTitle": "Head of Marketing, FreshMart"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "The dashboard is so intuitive and the results speak for themselves.",
+        "author": "David Kim",
+        "authorTitle": "CEO, TechNest"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "We saw a 40% increase in repeat purchases after using PlusFive’s recommendations.",
+        "author": "Priya Singh",
+        "authorTitle": "Founder, StyleHub"
+      },
+      {
+        "image": "../../assets/test.svg",
+        "storyType": "User Story",
+        "storyTypeColor": "text-pink-500",
+        "text": "PlusFive’s analytics helped us identify our most loyal customers and reward them.",
+        "author": "Carlos Rivera",
+        "authorTitle": "COO, Foodies"
+      }
+    ]
+  },
+  "footer": {
+    "brandName": "PlusFive",
+    "description": "PlusFive customer retention platform that helps businesses recover lost revenue and keep customers longer.",
+    "product": "Product",
+    "productLinks": [
+      "Features",
+      "Pricing",
+      "How It Works",
+      "Success Stories"
+    ],
+    "support": "Support",
+    "supportLinks": [
+      { "label": "FAQ", "href": "#" },
+      { "label": "support@plusfive.com", "href": "mailto:support@plusfive.com" },
+      { "label": "WhatsApp +1-555-123-4567", "href": "#" }
+    ],
+    "copyright": "© 2025 PlusFive. All rights reserved.",
+    "policies": [
+      { "label": "Terms of Service", "href": "#" },
+      { "label": "Privacy Policy", "href": "#" },
+      { "label": "Cookies Policy", "href": "#" }
+    ]
   }
 }
+
