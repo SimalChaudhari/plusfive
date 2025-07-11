@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
       return savedTheme === 'dark';
     }
     // Check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return window.matchMedia('(prefers-color-scheme: light)').matches;
   });
 
   const toggleTheme = () => {
@@ -27,7 +27,7 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     // Save theme preference to localStorage
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    localStorage.setItem('theme', isDarkMode ? 'light' : 'light');
     
     // Apply theme to document
     if (isDarkMode) {
