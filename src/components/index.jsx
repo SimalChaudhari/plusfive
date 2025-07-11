@@ -39,7 +39,7 @@ export { default as AdminQRCodePage } from "./admin/qrManagement/AdminQRCodePage
 export { default as AdminReportsandAnalyticsTitle } from "./admin/qrManagement/AdminReportsandAnalyticsTitle";
 
 // Referral Components
-export { default as ReferralCode } from "./referral/referralCode";
+export { default as ReferralCode } from "./referral/ReferralCode";
 export { default as ReferralReport } from "./referral/ReferralReport";
 export { default as ReferralsTable } from "./referral/ReferralsTable";
 export { default as AdminReferralCode } from "./admin/referral/AdminReferralCode";
