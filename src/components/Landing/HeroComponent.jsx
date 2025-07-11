@@ -65,29 +65,29 @@ function HeroComponent({ language }) {
       {/* Hero content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
-        <h1 className="text-4xl md:text-[48px] font-extrabold text-center text-gray-900 dark:text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-48 font-extrabold text-center text-gray-900 dark:text-white mb-6 leading-tight">
           {heading1} 
-          <CommonGradientText className="text-4xl md:text-[48px] font-bold leading-tight">
+          <CommonGradientText className="text-4xl md:text-48 font-bold leading-tight">
           &nbsp;{heading2}&nbsp;
           </CommonGradientText> 
           {heading3}<br className="hidden md:block" /> {heading4}
         </h1>
         {/* Subheading */}
-        <p className="text-lg md:text-[16px] text-center text-black dark:text-white max-w-2xl mb-8">
+        <p className="text-lg md:text-16 text-center text-black dark:text-white max-w-2xl mb-8">
           {subheading}
         </p>
         {/* Get Started button */}
         <div className="mb-2">
           <CommonButton
             text={buttonText}
-            className=" !text-white rounded-lg px-4 py-2 font-bold text-[16px]"
+            className=" !text-white rounded-lg px-4 py-2 font-bold text-16"
             icon={<GoArrowRight />}
             iconPosition="right"
           />
         </div>
         {/* Trial info */}
         <div className="mb-12">
-          <span className="text-gray-500 dark:text-gray-400 text-[14px]">{trialInfo}</span>
+          <span className="text-gray-500 dark:text-gray-400 text-14">{trialInfo}</span>
         </div>
         {/* Trusted logos row */}
         <div className="w-full max-w-5xl flex flex-wrap items-center justify-center gap-x-10 gap-y-6 opacity-90">

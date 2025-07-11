@@ -29,12 +29,12 @@ function AdminQRManagement() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
           {/* QR Generator Section */}
           <div className='md:p-8 p-0 dark:text-white text-black dark:bg-customBrown bg-customBody rounded-2xl md:border dark:border-gray-800 border-gray-200'>
-            <h2 className="text-[22px] font-medium mb-8">
+            <h2 className="text-22 font-medium mb-8">
               QR Generator
             </h2>
             <div className="space-y-6">
               <div>
-                <label className="block text-[15px] mb-3">
+                <label className="block text-15 mb-3">
                   Message for Customer
                 </label>
                 <input
@@ -43,12 +43,12 @@ function AdminQRManagement() {
                   value={formData.customerMessage}
                   onChange={handleChange}
                   placeholder="The message your customer shares with friends..."
-                  className="w-full dark:bg-customBrown bg-white border dark:border-gray-800 border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-500 text-[15px]"
+                  className="w-full dark:bg-customBrown bg-white border dark:border-gray-800 border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-500 text-15"
                 />
               </div>
 
               <div >
-                <label className="block text-[15px] mb-3">
+                <label className="block text-15 mb-3">
                   Direct Message
                 </label>
                 <input
@@ -57,7 +57,7 @@ function AdminQRManagement() {
                   value={formData.directMessage}
                   onChange={handleChange}
                   placeholder="The message your customer's friends will send you..."
-                  className="w-full dark:bg-customBrown bg-white border dark:border-gray-800 border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-500 text-[15px]"
+                  className="w-full dark:bg-customBrown bg-white border dark:border-gray-800 border-gray-200 rounded-lg px-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-pink-500 placeholder-gray-500 text-15"
                 />
               </div>
 
@@ -71,12 +71,12 @@ function AdminQRManagement() {
 
           {/* QR Code Display Section */}
           <div className='md:p-8 p-0 dark:text-white text-black dark:bg-customBrown bg-white rounded-2xl md:border dark:border-gray-800 border-gray-200'>
-            <h2 className="text-[22px] font-medium mb-8">
+            <h2 className="text-22 font-medium mb-8">
               My QR Codes
             </h2>
             <div className="md:p-0 p-10 flex flex-col items-center justify-center h-[320px] rounded-lg dark:bg-customBrown bg-customBody border dark:border-gray-800 border-gray-200 border-dashed">
               <MdQrCode2 className="text-6xl dark:text-white text-black mb-4" />
-              <p className="dark:text-white text-black text-[18px]">
+              <p className="dark:text-white text-black text-18">
                 Generated QR codes will appear here
               </p>
             </div>
@@ -88,12 +88,12 @@ function AdminQRManagement() {
           <div className="flex gap-3 md:flex-row flex-col">
             <CommonButton
               text="Download QR Code"
-              className="!py-2.5 !text-[15px] w-auto rounded-xl px-4 py-2"
+              className="!py-2.5 !text-15 w-auto rounded-xl px-4 py-2"
               icon={<LuDownload className="text-lg font-bold" />}
             />
             <CommonOutlineButton
               text="Share WhatsApp"
-              className="!py-2.5 !text-[15px] w-auto rounded-xl"
+              className="!py-2.5 !text-15 w-auto rounded-xl"
               icon={<PiShareFatBold className="text-lg" />}
             />
           </div>

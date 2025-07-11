@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsFillExclamationCircleFill } from 'react-icons/bs'
+import PropTypes from 'prop-types';
 
 function CommonInput({
   label,
@@ -12,16 +13,32 @@ function CommonInput({
   placeholder,
   as = 'input',
   rows,
+  textColor,
+  labelColor,
+  inputBg,
+  labelFontSize = 'text-xl', // NEW PROP with default
 }) {
-  const commonClasses = `w-full text-xl border rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-pink-500 ${
+  const colorClass = textColor ? textColor : 'text-gray-900 dark:text-white';
+  const labelClass = labelColor ? labelColor : 'dark:text-white text-black';
+
+  // 👇 labelFontSize yahan use karein
+  const labelClasses = `block ${labelFontSize} font-medium mb-2 ${labelClass}`;
+
+  const bgClass = inputBg
+    ? inputBg
+    : error
+      ? 'bg-red-100 dark:bg-customRed/10'
+      : 'bg-customBody dark:bg-customBrown';
+
+  const commonClasses = `w-full border rounded-lg px-4 py-3 ${colorClass} ${bgClass} focus:outline-none focus:ring-2 focus:ring-pink-500 ${
     error
-      ? 'border-customRed pr-10 bg-red-100 dark:bg-customRed/10'
-      : 'bg-customBody dark:bg-customBrown border-gray-200 dark:border-customBorderColor'
+      ? 'border-customRed pr-10'
+      : 'border-gray-200 dark:border-customBorderColor'
   }`;
 
   return (
     <div>
-      <label htmlFor={id} className="block text-xl font-medium mb-2 dark:text-white text-black">
+      <label htmlFor={id} className={labelClasses}>
         {label}
       </label>
       <div className="relative">
@@ -62,5 +79,22 @@ function CommonInput({
     </div>
   )
 }
+
+CommonInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  placeholder: PropTypes.string,
+  as: PropTypes.oneOf(['input', 'textarea']),
+  rows: PropTypes.number,
+  textColor: PropTypes.string,
+  labelColor: PropTypes.string,
+  inputBg: PropTypes.string,
+  labelFontSize: PropTypes.string, // NEW
+};
 
 export default CommonInput

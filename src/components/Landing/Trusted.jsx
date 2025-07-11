@@ -21,8 +21,8 @@ function Trusted({ language }) {
   return (
     <section className="w-full bg-transparent py-16 md:py-24 flex flex-col items-center justify-center px-8">
       {/* Heading */}
-      <h2 className="text-4xl md:text-[48px] font-extrabold text-gray-900 dark:text-white text-center mb-4 tracking-tight">{t.heading}</h2>
-      <p className="text-lg md:text-[16px] text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
+      <h2 className="text-4xl md:text-48 font-extrabold text-gray-900 dark:text-white text-center mb-4 tracking-tight">{t.heading}</h2>
+      <p className="text-lg md:text-16 text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
         {t.subheading}
       </p>
       {/* Stat Cards */}
@@ -35,9 +35,9 @@ function Trusted({ language }) {
             <div className="mb-6 flex items-center justify-center w-14 h-14 rounded-xl bg-pink-50 dark:bg-neutral-700">
               {statIcons[idx]}
             </div>
-            <div className="text-3xl md:text-[48px] font-extrabold text-gray-900 dark:text-white mb-2">{item.stat}</div>
-            <div className="text-[20px] text-gray-800 dark:text-gray-200 mb-1 text-center">{item.label}</div>
-            <div className="text-[14px] text-gray-500 dark:text-gray-200 mb-1 text-center">{item.desc}</div>
+            <div className="text-3xl md:text-48 font-extrabold text-gray-900 dark:text-white mb-2">{item.stat}</div>
+            <div className="text-20 text-gray-800 dark:text-gray-200 mb-1 text-center">{item.label}</div>
+            <div className="text-14 text-gray-500 dark:text-gray-200 mb-1 text-center">{item.desc}</div>
             {/* Optional: description can be added in i18n if needed */}
           </div>
         ))}
@@ -46,7 +46,7 @@ function Trusted({ language }) {
       <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200 mt-2">
         {t.stats.map((item, idx) => (
           <React.Fragment key={item.label}>
-            <span className="flex items-center text-[18px]">{bottomIcons[idx]}{item.label2}</span>
+            <span className="flex items-center text-18">{bottomIcons[idx]}{item.label2}</span>
             {idx < t.stats.length - 1 && (
               <span className="mx-2 text-gray-300 dark:text-gray-600 text-2xl select-none">&bull;</span>
             )}

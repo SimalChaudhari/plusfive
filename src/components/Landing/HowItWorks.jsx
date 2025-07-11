@@ -9,8 +9,8 @@ function HowItWorks({ language }) {
     <section className="w-full min-h-[70vh] flex flex-col items-center justify-center bg-transparent px-8 py-12 md:py-24">
       {/* Heading */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center mb-12">
-        <h2 className="text-4xl md:text-[48px] font-extrabold text-gray-900 dark:text-white text-center mb-2 tracking-tight">{t.heading}</h2>
-        <p className="text-lg md:text-[16px] text-gray-500 dark:text-gray-300 text-center font-medium mb-2">{t.subheading}</p>
+        <h2 className="text-4xl md:text-48 font-extrabold text-gray-900 dark:text-white text-center mb-2 tracking-tight">{t.heading}</h2>
+        <p className="text-lg md:text-16 text-gray-500 dark:text-gray-300 text-center font-medium mb-2">{t.subheading}</p>
       </div>
       {/* Content Row */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
@@ -24,10 +24,10 @@ function HowItWorks({ language }) {
                 {/* Numbered circle */}
                 <div className={`flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center font-bold text-xl border-4 shadow-sm pt-[0.4rem] ${idx === 0 ? 'bg-gradient-to-br from-pink-500 to-pink-400 text-white border-pink-200' : 'bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-neutral-700'}`}>{idx + 1}</div>
                 <div>
-                  <div className="font-bold text-gray-900 dark:text-white text-lg md:text-[20px] mb-1 leading-snug">
+                  <div className="font-bold text-gray-900 dark:text-white text-lg md:text-20 mb-1 leading-snug">
                     {step.title}
                   </div>
-                  <div className="text-gray-500 dark:text-gray-300 text-base md:text-[16px] leading-snug">
+                  <div className="text-gray-500 dark:text-gray-300 text-base md:text-16 leading-snug">
                     {step.desc}
                   </div>
                 </div>
@@ -35,7 +35,7 @@ function HowItWorks({ language }) {
             ))}
           </ol>
           {/* Pink text at the end */}
-          <div className="mt-10 text-pink-500 font-extrabold text-base md:text-[18px]">{t.tagline}</div>
+          <div className="mt-10 text-pink-500 font-extrabold text-base md:text-18">{t.tagline}</div>
         </div>
         {/* Right: Chart Card */}
         <div className="flex-1 flex justify-center items-center w-full">

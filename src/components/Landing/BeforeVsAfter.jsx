@@ -25,8 +25,8 @@ function BeforeVsAfter({ language }) {
         }}
       >
         {/* Heading */}
-        <h2 className="text-3xl md:text-[48px] font-extrabold text-center text-white mb-4 mt-6">{t.heading}</h2>
-        <p className="text-center text-gray-300 max-w-lg mb-10 mx-auto text-[16px]">
+        <h2 className="text-3xl md:text-48 font-extrabold text-center text-white mb-4 mt-6">{t.heading}</h2>
+        <p className="text-center text-gray-300 max-w-lg mb-10 mx-auto text-16">
           {t.subheading}
         </p>
         {/* Comparison Cards */}
@@ -37,12 +37,12 @@ function BeforeVsAfter({ language }) {
               <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-red-100">
                 <IoClose className="text-red-500 text-xl" />
               </span>
-              <span className="font-bold text-[24px] text-white">{t.beforeTitle}</span>
+              <span className="font-bold text-24 text-white">{t.beforeTitle}</span>
             </div>
-            <div className="text-red-400 font-semibold my-4 text-[18px]">{t.beforeTagline}</div>
+            <div className="text-red-400 font-semibold my-4 text-18">{t.beforeTagline}</div>
             <ul className="space-y-3">
               {t.beforeList.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-white/90 text-[18px]"><FaTimes className="text-red-400" /> {item}</li>
+                <li key={idx} className="flex items-center gap-2 text-white/90 text-18"><FaTimes className="text-red-400" /> {item}</li>
               ))}
             </ul>
           </div>
@@ -68,12 +68,12 @@ function BeforeVsAfter({ language }) {
               <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-green-100">
                 <FiCheck className="text-green-500 text-lg" />
               </span>
-              <span className="font-bold text-[24px] text-white">{t.afterTitle}</span>
+              <span className="font-bold text-24 text-white">{t.afterTitle}</span>
             </div>
-            <div className="text-green-400 font-semibold my-4 text-[18px]">{t.afterTagline}</div>
+            <div className="text-green-400 font-semibold my-4 text-18">{t.afterTagline}</div>
             <ul className="space-y-3 ">
               {t.afterList.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-white/90 text-[18px]"><FiCheck className="text-green-400" /> {item}</li>
+                <li key={idx} className="flex items-center gap-2 text-white/90 text-18"><FiCheck className="text-green-400" /> {item}</li>
               ))}
             </ul>
           </div>
@@ -81,7 +81,7 @@ function BeforeVsAfter({ language }) {
         {/* Button */}
         <CommonButton
           text={t.button}
-          className="!text-white rounded-lg px-8 py-3 font-bold text-[24px] mx-auto mt-2"
+          className="!text-white rounded-lg px-8 py-3 font-bold text-24 mx-auto mt-2"
           icon={<GoArrowRight />}
           iconPosition="right"
         />

@@ -25,7 +25,7 @@ const SidebarNavItem = ({ to, icon: Icon, label, isCollapsed, specialPaths = [] 
     };
 
     const getIconClasses = () => {
-        return `text-[22px] lg:text-[20px] ${!isCollapsed && 'mr-3'} ${isActive() ? 'text-gray-900 dark:text-white' : ''}`;
+        return `text-22 lg:text-20 ${!isCollapsed && 'mr-3'} ${isActive() ? 'text-gray-900 dark:text-white' : ''}`;
     }
 
     return (

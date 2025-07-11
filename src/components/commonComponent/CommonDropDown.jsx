@@ -8,7 +8,8 @@ function CommonDropDown({
   value, 
   onChange, 
   placeholder = "Select option",
-  className = ""
+  className = "",
+  fontSize = "text-16"
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const { isDarkMode } = useTheme(); // ✅ dark mode from context
@@ -23,11 +24,12 @@ function CommonDropDown({
           w-auto px-3 py-1 whitespace-nowrap
           flex items-center justify-between
           rounded-full
-        dark:text-white text-black md:text-xl font-ttcommons font-medium
+          dark:text-white text-black md:text-xl font-ttcommons font-medium
           transition-all duration-300
           bg-[#121212]
           border-2 border-transparent
           hover:shadow-lg
+          ${fontSize}
           ${className}
         `}
         style={{
@@ -40,7 +42,7 @@ function CommonDropDown({
           backgroundClip: 'padding-box, border-box',
         }}
       >
-        <span>{selectedOption?.label || placeholder}</span>
+        <span className={fontSize}>{selectedOption?.label || placeholder}</span>
         <IoChevronDownOutline 
           className={`
             ml-2 md:text-2xl transition-transform duration-300
@@ -70,11 +72,12 @@ function CommonDropDown({
               className={`
                 w-full px-4 py-3 whitespace-nowrap
                 flex items-center
-                text-left text-lg
+                text-left font-ttcommons
                 transition-colors duration-200
                 dark:text-white text-black
                 dark:hover:bg-gray-800 hover:bg-gray-100
                 dark:bg-customBrown bg-white
+                ${fontSize}
                 ${value === option.value ? 'text-pink-500' : 'dark:text-white'}
               `}
             >
@@ -97,7 +100,8 @@ CommonDropDown.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  fontSize: PropTypes.string
 }
 
 export default CommonDropDown

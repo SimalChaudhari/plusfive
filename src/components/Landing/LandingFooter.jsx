@@ -17,11 +17,11 @@ const LandingFooter = ({ language }) => {
                         <span className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold icon-button relative group">
                             <MdOutlineAdd className="text-white text-xl md:text-2xl" />
                         </span>
-                        <span className={`text-lg md:text-[24px] font-semibold text-white transition-opacity duration-300`}>
+                        <span className={`text-lg md:text-24 font-semibold text-white transition-opacity duration-300`}>
                             {t.brandName}
                         </span>
                     </div>
-                    <p className="text-gray-500 text-[16px] mb-4">
+                    <p className="text-gray-500 text-16 mb-4">
                         {t.description}
                     </p>
                     <div className="flex gap-4 mt-2">
@@ -35,7 +35,7 @@ const LandingFooter = ({ language }) => {
                 {/* Center: Product Links */}
                 <div className="flex-1 min-w-[180px]">
                     <h4 className="font-semibold mb-3 text-[18px">{t.product}</h4>
-                    <ul className="space-y-2 text-gray-500 text-[16px]">
+                    <ul className="space-y-2 text-gray-500 text-16">
                         {t.productLinks.map((item, idx) => (
                             <li key={idx}><a href="#">{item}</a></li>
                         ))}
@@ -45,7 +45,7 @@ const LandingFooter = ({ language }) => {
                 {/* Right: Support Links */}
                 <div className="flex-1 min-w-[200px]">
                     <h4 className="font-semibold mb-3 text-[18px">{t.support}</h4>
-                    <ul className="space-y-2 text-gray-500 text-[16px]">
+                    <ul className="space-y-2 text-gray-500 text-16">
                         {t.supportLinks.map((item, idx) => (
                             <li key={idx}><a href={item.href}>{item.label}</a></li>
                         ))}
@@ -57,11 +57,11 @@ const LandingFooter = ({ language }) => {
             <div className="border-t border-gray-800 my-6"></div>
 
             {/* Bottom: Copyright & Policies */}
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[16px] text-gray-500 gap-2">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-16 text-gray-500 gap-2">
                 <div>{t.copyright}</div>
                 <div className="flex gap-4">
                     {t.policies.map((item, idx) => (
-                        <a key={idx} href={item.href} className="text-[14px] text-gray-500">{item.label}</a>
+                        <a key={idx} href={item.href} className="text-14 text-gray-500">{item.label}</a>
                     ))}
                 </div>
             </div>

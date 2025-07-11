@@ -39,11 +39,11 @@ const RealResults = ({ language }) => {
 
   return (
     <div className="container mx-auto py-16 flex flex-col items-center justify-center px-8">
-      <h2 className="text-3xl md:text-[48px] font-extrabold text-gray-900 dark:text-white text-center mb-3 tracking-tight">
+      <h2 className="text-3xl md:text-48 font-extrabold text-gray-900 dark:text-white text-center mb-3 tracking-tight">
         {heading}<br />
         {heading2}
       </h2>
-      <p className="text-[16px] md:text-xl text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
+      <p className="text-16 md:text-xl text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
         {subheading}
       </p>
       <div className="w-full">
@@ -66,20 +66,20 @@ const RealResults = ({ language }) => {
                   </div>
                   {/* Right: Content */}
                   <div className="flex flex-col justify-center flex-1 md:pl-8">
-                    <p className={`${t.storyTypeColor} font-semibold mb-2 text-[20px]`}>{t.storyType}</p>
+                    <p className={`${t.storyTypeColor} font-semibold mb-2 text-20`}>{t.storyType}</p>
                     <p className="text-[30px] text-gray-900 dark:text-white mb-6 max-w-2xl md:max-w-3xl text-left">
                       {t.text}
                     </p>
                     <div className="flex md:flex-row flex-col sm:items-center sm:justify-between bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 sm:rounded-full rounded-lg px-6 py-4 shadow-sm w-full">
                       <div className="mr-6">
-                        <p className="font-bold text-gray-800 dark:text-white mb-0 text-[18px]">{t.author}</p>
-                        <p className="text-[16px] text-gray-500 dark:text-gray-300">{t.authorTitle}</p>
+                        <p className="font-bold text-gray-800 dark:text-white mb-0 text-18">{t.author}</p>
+                        <p className="text-16 text-gray-500 dark:text-gray-300">{t.authorTitle}</p>
                       </div>
                       <CommonButton
                         text={buttonText}
                         icon={<FaArrowRight />}
                         iconPosition="right"
-                        className="ml-2 px-6 py-3 text-[16px] font-bold rounded-full"
+                        className="ml-2 px-6 py-3 text-16 font-bold rounded-full"
                       />
                     </div>
                   </div>

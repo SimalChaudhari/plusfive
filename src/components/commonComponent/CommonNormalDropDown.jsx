@@ -8,12 +8,21 @@ function CommonNormalDropDown({
   value,
   onChange,
   className = "",
-  placeholder = "Select option"
+  placeholder = "Select option",
+  bgColor = "bg-gray-100 dark:bg-customBlack",
+  textColor = "text-gray-700 dark:text-white",
+  fontSize = "text-base",
+  showIcon = true,
+  borderRadius = "rounded-xl",
+  width = "min-w-[110px] w-max",
+  inputWidth = "min-w-[90px]", // DEFAULT: minimum width for button
+  inputBorderRadius = "rounded-full", // DEFAULT: rounded full for button
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const selectedOption = options.find(opt => opt.value === value);
   const dropdownRef = useRef(null);
-
+  console.log("borderRadius", borderRadius);
+  
   // Close dropdown on outside click
   useEffect(() => {
     function handleClickOutside(event) {
@@ -37,24 +46,35 @@ function CommonNormalDropDown({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`
-          flex items-center px-4 py-2 rounded-full border-2
-          bg-gray-100 dark:bg-customBlack
-          text-gray-700 dark:text-white
+          flex items-center px-4 py-2 border-2
+          ${bgColor}
+          ${textColor}
           border-gray-200 dark:border-customBorderColor
           transition-colors duration-200
           shadow-sm
-          min-w-[90px]
           font-ttcommons font-medium
+          ${fontSize}
+          ${inputWidth}
+          ${inputBorderRadius}
         `}
         style={{ minWidth: 90 }}
       >
-        <FiGlobe className="text-lg mr-2" />
-        <span className="mx-1 text-base font-medium mt-1">{selectedOption?.code?.toUpperCase() || selectedOption?.label || placeholder}</span>
-        <IoChevronDownOutline className={`ml-2 text-base transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        {showIcon && <FiGlobe className="text-lg mr-2" />}
+        <span className={`mx-1 font-medium mt-1 ${fontSize}`}>
+          {selectedOption?.code?.toUpperCase() || selectedOption?.label || placeholder}
+        </span>
+        <IoChevronDownOutline className={`ml-2 ${fontSize} transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       {isOpen && (
         <div
-          className="absolute left-1/2 -translate-x-1/2 mt-12 min-w-[110px] w-max bg-white dark:bg-customBlack border border-gray-200 dark:border-customBorderColor rounded-xl shadow-xl z-50 py-2"
+          className={`
+            absolute left-0 mt-2
+            ${width}
+            bg-white dark:bg-customBlack
+            border border-gray-200 dark:border-customBorderColor
+            shadow-xl z-50 py-2
+            ${borderRadius}
+          `}
         >
           {options.map(option => (
             <button
@@ -67,7 +87,7 @@ function CommonNormalDropDown({
                 w-full text-left px-4 py-2
                 hover:bg-gray-100 dark:hover:bg-[#2C2C2C]
                 transition-colors duration-200
-                text-base
+                ${fontSize}
                 ${value === option.value ? 'text-pink-500 font-bold' : 'text-black dark:text-white'}
               `}
             >
@@ -92,6 +112,12 @@ CommonNormalDropDown.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
   placeholder: PropTypes.string,
+  bgColor: PropTypes.string,
+  textColor: PropTypes.string,
+  fontSize: PropTypes.string,
+  showIcon: PropTypes.bool,
+  borderRadius: PropTypes.string,
+  width: PropTypes.string,
 };
 
 export default CommonNormalDropDown;

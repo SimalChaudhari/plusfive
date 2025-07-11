@@ -16,7 +16,7 @@ const UpgradeCard = ({ onClose }) => {
           onClick={onClose}
           aria-label="Close upgrade card"
         >
-          <MdClose className="text-[20px]" />
+          <MdClose className="text-20" />
         </button>
       </div>
       <div className="mb-2">

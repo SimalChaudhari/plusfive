@@ -34,14 +34,14 @@ function PricingPlans({ language }) {
       {/* <div className="absolute inset-0 pointer-events-none z-0" style={{background: 'radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, rgba(24,24,40,0.9) 100%)'}} /> */}
       {/* Heading */}
       <div className="relative z-10 flex flex-col items-center mb-12">
-        <h2 className="text-4xl md:text-[48px] text-center mb-3 tracking-tight">
+        <h2 className="text-4xl md:text-48 text-center mb-3 tracking-tight">
           <span className="font-bold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-orange-400 bg-clip-text text-transparent">{heading1}</span>
           <span className="font-bold text-white ">&nbsp;{heading2}</span>
         </h2>
-        <p className="text-lg md:text-[16px] text-gray-300 text-center font-medium mb-6 max-w-2xl">{subheading}</p>
+        <p className="text-lg md:text-16 text-gray-300 text-center font-medium mb-6 max-w-2xl">{subheading}</p>
         {/* Toggle */}
         <div className="flex items-center gap-4 mb-2">
-          <span className={`text-[16px] font-medium ${!yearly ? 'text-white' : 'text-gray-400'}`}>{toggleMonthly}</span>
+          <span className={`text-16 font-medium ${!yearly ? 'text-white' : 'text-gray-400'}`}>{toggleMonthly}</span>
           <button
             className={`w-12 h-7 rounded-full flex items-center px-1 transition-colors duration-300 ${yearly ? 'bg-pink-500' : 'bg-gray-600'}`}
             onClick={() => setYearly(y => !y)}
@@ -76,7 +76,7 @@ function PricingPlans({ language }) {
             {/* Title & Desc */}
             <div>
               <h3 className="text-2xl md:text-[30px] font-bold text-white mb-2">{plan.name}</h3>
-              <p className="text-gray-300 mb-6 text-base md:text-[16px] font-medium">{plan.description}</p>
+              <p className="text-gray-300 mb-6 text-base md:text-16 font-medium">{plan.description}</p>
               {/* Price */}
               <div className="mb-8">
                 {plan.custom ? (
@@ -90,7 +90,7 @@ function PricingPlans({ language }) {
               <ul className="mb-8 flex flex-col gap-3">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-base md:text-lg text-gray-200">
-                    <FaCheckCircle className="text-blue-400 mt-1 flex-shrink-0 text-[16px]" />
+                    <FaCheckCircle className="text-blue-400 mt-1 flex-shrink-0 text-16" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -101,12 +101,12 @@ function PricingPlans({ language }) {
               {plan.highlight ? (
                 <CommonButton
                   text={plan.buttonText}
-                  className="w-full py-3 text-[16px] font-bold rounded-xl"
+                  className="w-full py-3 text-16 font-bold rounded-xl"
                 />
               ) : (
                 <CommonCustomOutlineButton
                   text={plan.buttonText}
-                  className="w-full py-3 text-[16px] font-bold rounded-xl bg-transparent border-pink-400 hover:border-pink-500"
+                  className="w-full py-3 text-16 font-bold rounded-xl bg-transparent border-pink-400 hover:border-pink-500"
                   borderColor="border-pink-400"
                   textColor="text-white"
                 />
