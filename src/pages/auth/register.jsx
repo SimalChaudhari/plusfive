@@ -5,7 +5,7 @@ import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import LoginBG from '../../assets/LoginBG.png';
 import FB from '../../assets/fb.svg';
-import Google from '../../assets/Google.svg';
+import Google from '../../assets/google.svg';
 
 const businessTypes = [
   { value: '', label: 'Select business type' },

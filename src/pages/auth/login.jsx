@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import LoginBG from '../../assets/LoginBG.png';
 import FB from '../../assets/fb.svg';
-import Google from '../../assets/Google.svg';
+import Google from '../../assets/google.svg';
 
 // 2 static users
 const users = [
