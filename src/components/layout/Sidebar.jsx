@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import userNavLinks from './UserNavLinks';
 import adminNavLinks from './AdminNavLinks';
 import { useState } from 'react';
+import CommonConfirmModel from '../commonComponent/CommonConfirmModel';
 
 const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const toggleDesktopSidebar = () => {
@@ -23,10 +24,15 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
   const navigate = useNavigate();
   const userRole = useSelector(state => state.auth?.user?.role);
   const [showUpgradeCard, setShowUpgradeCard] = useState(true);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate('/login', { replace: true });
+  };
+
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
   };
 
   const effectiveCollapsed = isMobile ? false : isCollapsed;
@@ -65,7 +71,7 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
               </span>
             )}
           </span>
-          <span className={`ml-2 text-xl font-semibold text-gray-900 dark:text-white transition-opacity duration-300 ${effectiveCollapsed ? 'hidden' : 'inline'}`}>
+          <span className={`ml-2 text-20 font-semibold text-gray-900 dark:text-white transition-opacity duration-300 ${effectiveCollapsed ? 'hidden' : 'inline'}`}>
             PlusFive
           </span>
 
@@ -101,9 +107,9 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
 
         {/* Logout */}
         <div className="relative m-3">
-          <button onClick={handleLogout} className="w-full">
+          <button onClick={handleLogoutClick} className="w-full">
             <SidebarNavItem
-              onClick={handleLogout}
+              onClick={handleLogoutClick}
               icon={MdLogout}
               label="Logout"
               isCollapsed={effectiveCollapsed}
@@ -111,6 +117,13 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
           </button>
         </div>
       </aside>
+      <CommonConfirmModel
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+        title="Confirm Logout"
+        message="Are you sure you want to log out?"
+      />
     </>
   );
 };

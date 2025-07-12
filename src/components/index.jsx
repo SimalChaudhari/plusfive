@@ -103,3 +103,4 @@ export { default as StatPieChart } from "./commonComponent/StatPieChart";
 export { default as CommonDateRange } from "./commonComponent/CommonDateRange";
 export { default as SquaresAnim } from "./commonComponent/SquaresAnim";
 export { default as CommonGradientText } from "./commonComponent/CommonGradientText";
+export { default as CommonConfirmModel } from "./commonComponent/CommonConfirmModel";
