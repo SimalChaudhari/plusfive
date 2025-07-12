@@ -17,6 +17,7 @@ import userNavLinks, { specialPageTitles as userSpecialTitles } from './UserNavL
 import adminNavLinks, { specialPageTitles as adminSpecialTitles } from './AdminNavLinks';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../../redux/actions/authActions';
+import CommonConfirmModel from '../commonComponent/CommonConfirmModel';
 
 const Header = ({ onMobileMenuToggle }) => {
   const [userName] = useState('Noor');
@@ -24,6 +25,7 @@ const Header = ({ onMobileMenuToggle }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const profileMenuRef = useRef(null);
   const notificationRef = useRef();
   const [visibleCount, setVisibleCount] = useState(4);
@@ -308,13 +310,20 @@ const Header = ({ onMobileMenuToggle }) => {
           <hr className="border-gray-200 dark:border-customBorderColor my-0" />
           <button
             className="flex items-center gap-3 px-6 py-3 w-full hover:bg-red-50 dark:hover:bg-[#3a2323] transition-colors text-red-600 dark:text-red-400 font-semibold text-base"
-            onClick={handleLogout}
+            onClick={() => setShowLogoutModal(true)}
           >
             <FiLogOut className="text-lg" />
             Log out
           </button>
         </div>
       )}
+      <CommonConfirmModel
+        isOpen={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={handleLogout}
+        title="Confirm Logout"
+        message="Are you sure you want to log out?"
+      />
     </header>
   );
 };
