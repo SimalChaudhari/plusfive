@@ -45,7 +45,7 @@ function CommonDropDown({
         <span className={fontSize}>{selectedOption?.label || placeholder}</span>
         <IoChevronDownOutline 
           className={`
-            ml-2 md:text-2xl transition-transform duration-300
+            ml-2 md:text-sm transition-transform duration-300
             ${isOpen ? 'rotate-180' : ''}
           `}
         />

@@ -102,7 +102,7 @@ function LandingHeader() {
                     value={language}
                     onChange={changeLanguage}
                     placeholder="Language"
-                    className="min-w-[120px]"
+                    className=""
                     fontSize="text-16"
                 />
                 <CommonButton
