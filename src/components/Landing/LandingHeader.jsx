@@ -40,7 +40,7 @@ function LandingHeader() {
                         className={
                             className +
                             (isActive
-                                ? ' border border-gray-400 bg-gray-200 dark:bg-customIconBgColor'
+                                ? ' border border-gray-400 bg-gray-200 dark:bg-customIconBgColor py-2 px-4'
                                 : ' bg-transparent')
                         }
                     >
@@ -90,7 +90,7 @@ function LandingHeader() {
 
             {/* Desktop Nav */}
             <nav className="flex-1 justify-center hidden lg:flex">
-                <ul className="flex xl:gap-7 lg:gap-3 md:gap-3 gap-2 bg-white dark:bg-customGray rounded-full xl:px-7 xl:py-5 px-4 py-3 shadow-sm border border-gray-200 dark:border-customBorderColor text-xl">
+                <ul className="flex xl:gap-7 lg:gap-3 md:gap-3 gap-2 bg-white dark:bg-customGray rounded-full xl:px-7 xl:py-4 px-4 py-3 shadow-sm border border-gray-200 dark:border-customBorderColor text-xl">
                     {renderMenu('px-1 py-1 rounded-full text-gray-900 dark:text-white font-medium text-16')}
                 </ul>
             </nav>
@@ -109,6 +109,7 @@ function LandingHeader() {
                     text={t.button || 'Start Free Trial'}
                     className="!text-white rounded-lg px-4 py-2 font-bold text-16"
                     type="submit"
+                    onClick={() => window.location.href = '/login'}
                 />
             </div>
 
@@ -142,6 +143,7 @@ function LandingHeader() {
                             text={t.button || 'Start Free Trial'}
                             className=" !text-white rounded-lg px-4 py-2 font-bold text-xl"
                             type="submit"
+                            onClick={() => window.location.href = '/login'}
                         />
                     </div>
                 </div>
