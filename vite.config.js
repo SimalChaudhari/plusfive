@@ -16,9 +16,6 @@ export default defineConfig({
   build: {
     outDir: "dist", // Default output directory for Vite, ensure this matches your deployment setup
   },
-  server: {
-    port: 3000, // Optional: Customize your dev server port
-  },
   // Add base configuration for Vercel routing
   base: "/",
 });
