@@ -9,10 +9,12 @@ function CommonDropDown({
   onChange, 
   placeholder = "Select option",
   className = "",
-  fontSize = "text-16"
+  fontSize = "text-16",
+  isDarkMode: propIsDarkMode
 }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const { isDarkMode } = useTheme(); // ✅ dark mode from context
+  const [isOpen, setIsOpen] = useState(false);
+  const { isDarkMode: contextIsDarkMode } = useTheme();
+  const isDarkMode = propIsDarkMode !== undefined ? propIsDarkMode : contextIsDarkMode;
 
   const selectedOption = options.find(opt => opt.value === value)
 
@@ -24,7 +26,8 @@ function CommonDropDown({
           w-auto px-3 py-1 whitespace-nowrap
           flex items-center justify-between
           rounded-full
-          dark:text-white text-black md:text-xl font-ttcommons font-medium
+          ${isDarkMode ? 'text-white' : 'text-black'}
+          md:text-xl font-ttcommons font-medium
           transition-all duration-300
           bg-[#121212]
           border-2 border-transparent
@@ -74,11 +77,11 @@ function CommonDropDown({
                 flex items-center
                 text-left font-ttcommons
                 transition-colors duration-200
-                dark:text-white text-black
-                dark:hover:bg-gray-800 hover:bg-gray-100
-                dark:bg-customBrown bg-white
+                ${isDarkMode ? 'text-white' : 'text-black'}
+                ${isDarkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'}
+                ${isDarkMode ? 'bg-customBrown' : 'bg-white'}
                 ${fontSize}
-                ${value === option.value ? 'text-pink-500' : 'dark:text-white'}
+                ${value === option.value ? 'text-pink-500' : (isDarkMode ? 'text-white' : 'text-black')}
               `}
             >
               {option.label}
@@ -101,7 +104,8 @@ CommonDropDown.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   className: PropTypes.string,
-  fontSize: PropTypes.string
+  fontSize: PropTypes.string,
+  isDarkMode: PropTypes.bool
 }
 
 export default CommonDropDown
