@@ -35,9 +35,9 @@ function HeroComponent({ language }) {
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
         
-          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 lg:text-72 font-extrabold text-center text-white mb-6 leading-tight">
+          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 lg:text-72 text-center text-white mb-6 leading-tight font-testtiemposfine">
             {heading1} 
-            <span className="text-4xl md:text-48 lg:text-72 font-bold leading-tight">
+            <span className="text-4xl md:text-48 lg:text-72 leading-tight font-testtiemposfine">
             &nbsp;{heading2}&nbsp;
             </span> 
             {heading3}<br className="hidden md:block" /> {heading4}

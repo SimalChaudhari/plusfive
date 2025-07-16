@@ -86,14 +86,14 @@ function LandingHeader() {
                 </span>
                 <span className={`text-lg md:text-24 font-semibold text-gray-900 dark:text-white transition-opacity duration-300`}>
             */}
-                <span className={`text-lg md:text-32 font-semibold text-white transition-opacity duration-300`}>
+                <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300`}>
                     {t.brandName || 'PlusFive'}
                 </span>
             </div>
 
             {/* Desktop Nav */}
             <nav className="flex-1 justify-center hidden lg:flex">
-                <ul className="flex xl:gap-7 lg:gap-3 md:gap-3 gap-2 bg-customGray rounded-full xl:p-[12px] shadow-sm border border-customBorderColor text-xl">
+                <ul className="flex xl:gap-7 lg:gap-3 md:gap-3 gap-2 bg-customGray rounded-full p-[12px] shadow-sm text-xl">
                     {renderMenu('xl:p-[8px] rounded-full text-white font-medium text-16')}
                 </ul>
             </nav>
