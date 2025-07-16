@@ -80,10 +80,13 @@ function LandingHeader() {
         <header className="lg:w-[100%] w-[95%] flex items-center justify-between py-3 px-6 mx-2 lg:py-2 lg:px-10 lg:mx-0 fixed top-0 left-0 z-50 bg-white dark:bg-customGray lg:bg-transparent dark:lg:bg-transparent rounded-full shadow-md border border-gray-200 dark:border-customBorderColor lg:rounded-none lg:shadow-none lg:border-none" style={{ marginTop: '18px' }}>
             {/* Left: Logo and Brand Name */}
             <div className="flex items-center gap-2 md:gap-4">
+            {/*
                 <span className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold icon-button relative group">
                     <MdOutlineAdd className="text-white text-xl md:text-2xl" />
                 </span>
                 <span className={`text-lg md:text-24 font-semibold text-gray-900 dark:text-white transition-opacity duration-300`}>
+            */}
+                <span className={`text-lg md:text-32 font-semibold text-gray-900 dark:text-white transition-opacity duration-300`}>
                     {t.brandName || 'PlusFive'}
                 </span>
             </div>

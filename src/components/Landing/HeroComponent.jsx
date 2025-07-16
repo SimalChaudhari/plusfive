@@ -65,13 +65,23 @@ function HeroComponent({ language }) {
       {/* Hero content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
-        <h1 className="text-4xl md:text-48 font-extrabold text-center text-gray-900 dark:text-white mb-6 leading-tight">
-          {heading1} 
-          <CommonGradientText className="text-4xl md:text-48 font-bold leading-tight">
-          &nbsp;{heading2}&nbsp;
-          </CommonGradientText> 
-          {heading3}<br className="hidden md:block" /> {heading4}
-        </h1>
+        {/*
+          <h1 className="text-4xl md:text-48 font-extrabold text-center text-gray-900 dark:text-white mb-6 leading-tight">
+            {heading1} 
+            <CommonGradientText className="text-4xl md:text-48 font-bold leading-tight">
+            &nbsp;{heading2}&nbsp;
+            </CommonGradientText> 
+            {heading3}<br className="hidden md:block" /> {heading4}
+          </h1>
+          */}
+        
+          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 lg:text-72 font-extrabold text-center text-gray-900 dark:text-white mb-6 leading-tight">
+            {heading1} 
+            <span className="text-4xl md:text-48 lg:text-72 font-bold leading-tight">
+            &nbsp;{heading2}&nbsp;
+            </span> 
+            {heading3}<br className="hidden md:block" /> {heading4}
+          </h1>
         {/* Subheading */}
         <p className="text-lg md:text-16 text-center text-black dark:text-white max-w-2xl mb-8">
           {subheading}
