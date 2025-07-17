@@ -53,11 +53,11 @@ function Trusted({ language }) {
                   </div>
 
                   <div className='flex flex-col items-center justify-center gap-[16px]'>
-                    <div className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white">{item.stat}</div>
+                    <div className="text-3xl md:text-48 font-extrabold text-customLightTextColor">{item.stat}</div>
                     
                     <div className='flex flex-col items-center justify-center gap-[16px]'>
-                    <div className="text-20 text-customLightTextColor dark:text-gray-200 text-center">{item.label}</div>
-                    <div className="text-14 text-customBoldTextColor dark:text-gray-200 text-center">{item.desc}</div>
+                    <div className="text-20 text-customLightTextColor text-center">{item.label}</div>
+                    <div className="text-14 text-customBoldTextColor text-center">{item.desc}</div>
                     </div>
                   </div>
 

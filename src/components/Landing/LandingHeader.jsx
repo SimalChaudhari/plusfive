@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { MdOutlineAdd } from 'react-icons/md'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { CommonBorderButton, CommonButton, CommonDropDown } from '../index';
@@ -22,6 +22,27 @@ function LandingHeader() {
 
     // Helper function/component
     const location = useLocation();
+
+    // State for scroll trigger
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Scroll event handler
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const scrollPercentage = (scrollTop / windowHeight) * 150;
+            
+            if (scrollPercentage >= 100) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const renderMenu = (className) => (
         menuItems.map((label, idx) => {
@@ -76,7 +97,9 @@ function LandingHeader() {
 
     return (
         // Header wrapper with transparent background, margin, and flex layout
-        <header className="lg:w-[100%] w-[95%] lg:min-w-[632px] flex items-center justify-between py-3 px-6 mx-2 lg:py-2 lg:px-10 lg:mx-0 fixed top-0 left-0 z-50 bg-customGray lg:bg-transparent dark:lg:bg-transparent rounded-full shadow-md border border-[#0000001A] lg:rounded-none lg:shadow-none lg:border-none" style={{ marginTop: '18px' }}>
+        <header className="lg:w-[100%] w-[95%] lg:min-w-[632px] flex items-center justify-between py-3 px-6 mx-2 lg:py-2 lg:px-10 lg:mx-0 fixed top-0 left-0 z-50 bg-customGray lg:bg-black rounded-full shadow-md border border-[#0000001A] lg:rounded-none lg:shadow-none lg:border-none transition-all duration-300 ease-in-out" 
+        style={{ marginTop: isScrolled ? '0px' : '18px' }}
+        >
             {/* Left: Logo and Brand Name */}
             <div className="flex items-center gap-2 md:gap-4">
             {/*
