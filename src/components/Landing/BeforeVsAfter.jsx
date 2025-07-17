@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaTimes, FaCheck } from 'react-icons/fa'
-import { CommonButton } from '../index'
+import { CommonBorderButton, CommonButton } from '../index'
 import en from '../../i18/en.json'
 import he from '../../i18/he.json'
 import bgvs from "../../assets/Bgvs.png"; // <-- Image import
@@ -12,10 +12,10 @@ import { GoArrowRight } from 'react-icons/go'
 function BeforeVsAfter({ language }) {
   const t = language === 'he' ? he.beforeVsAfter : en.beforeVsAfter;
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center py-16 px-0 md:px-0">
+    <section className="w-full min-h-screen md:flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8">
       {/* Background card */}
       <div
-        className="w-full max-w-6xl mx-auto rounded-3xl shadow-2xl p-8 flex flex-col items-center"
+        className="mx-auto rounded-[32px] shadow-2xl md:py-[80px] md:px-[206px] md:gap-[64px] gap-8 p-8 flex flex-col items-center "
         style={{
           backgroundImage: `url(${bgvs})`,
           backgroundSize: "cover",
@@ -24,64 +24,76 @@ function BeforeVsAfter({ language }) {
           backgroundColor: "#181926" // fallback color, optional
         }}
       >
-        {/* Heading */}
-        <h2 className="text-3xl md:text-48 font-extrabold text-center text-white mb-4 mt-6">{t.heading}</h2>
-        <p className="text-center text-gray-300 max-w-lg mb-10 mx-auto text-16">
-          {t.subheading}
-        </p>
+        <div className='flex flex-col md:w-[830px] gap-[16px]'>
+          {/* Heading */}
+          <h2 className="text-3xl md:text-48 font-extrabold text-center text-white ">{t.heading}</h2>
+          <p className="text-center text-gray-300 max-w-lg mx-auto text-16">
+            {t.subheading}
+          </p>
+        </div>
         {/* Comparison Cards */}
-        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-8 mb-10">
+        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-[24px]">
           {/* Before Card */}
-          <div className="flex-1 bg-white/10 border border-white/20 rounded-2xl shadow-lg p-6 md:p-8 backdrop-blur-md min-w-[260px] max-w-md">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-red-100">
-                <IoClose className="text-red-500 text-xl" />
-              </span>
-              <span className="font-bold text-24 text-white">{t.beforeTitle}</span>
+          <div
+            className="flex flex-col shadow-lg p-6 md:p-[32px] gap-[32px] md:min-w-[371px] max-w-md"
+            style={{
+              borderRadius: 'var(--radius-2xl, 16px)',
+              border: '1px solid rgba(255, 255, 255, 0.24)',
+              background: 'linear-gradient(90deg, rgba(219, 234, 254, 0.08) 0%, rgba(243, 232, 255, 0.08) 100%)',
+              backdropFilter: 'blur(5px)'
+            }}
+          >
+            <div className="flex items-center gap-[20px]">
+              <div className="w-[48px] h-[48px] rounded-[8px] flex items-center justify-center bg-[#FEE4E2]">
+                <IoClose className="text-customErrorRed text-[24px]" />
+              </div>
+              <div>
+                <span className="font-bold text-24 text-white">{t.beforeTitle}</span>
+                <div className="text-customErrorRed font-semibold text-18">{t.beforeTagline}</div>
+              </div>
             </div>
-            <div className="text-red-400 font-semibold my-4 text-18">{t.beforeTagline}</div>
-            <ul className="space-y-3">
-              {t.beforeList.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-white/90 text-18"><FaTimes className="text-red-400" /> {item}</li>
-              ))}
-            </ul>
+            <div>
+              <ul className="flex flex-col gap-[16px]">
+                {t.beforeList.map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-[8px] text-white/90 text-18"><FaTimes className="text-customErrorRed" /> {item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
           {/* Arrow */}
           <div className="hidden md:flex items-center justify-center">
-            {/*
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="arrowGradient" x1="0" y1="24" x2="48" y2="24" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#DF64CC" />
-                  <stop offset="1" stopColor="#FE5D39" />
-                </linearGradient>
-              </defs>
-              <circle cx="24" cy="24" r="24" fill="#23243a" />
-              <path d="M16 24H32M32 24L27 19M32 24L27 29" stroke="url(#arrowGradient)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          */}
             <img src={arrow} alt="arrow" className="w-10 h-10" />
           </div>
           {/* After Card */}
-          <div className="flex-1 bg-white/10 border border-white/20 rounded-2xl shadow-lg p-6 md:p-8 backdrop-blur-md min-w-[260px] max-w-md">
-            <div className="flex items-center gap-3 mb-2">
-              <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-green-100">
-                <FiCheck className="text-green-500 text-lg" />
+          <div
+            className="flex flex-col shadow-lg p-6 md:p-[32px] gap-[32px] md:min-w-[371px] max-w-md"
+            style={{
+              borderRadius: 'var(--radius-2xl, 16px)',
+              border: '1px solid rgba(255, 255, 255, 0.24)',
+              background: 'linear-gradient(90deg, rgba(219, 234, 254, 0.08) 0%, rgba(243, 232, 255, 0.08) 100%)',
+              backdropFilter: 'blur(5px)'
+            }}
+          >
+            <div className="flex items-center gap-[20px]">
+              <span className="w-[48px] h-[48px] rounded-[8px] flex items-center justify-center bg-[#D3F8DF]">
+                <FiCheck className="text-customSuccessGreen text-[24px]" />
               </span>
-              <span className="font-bold text-24 text-white">{t.afterTitle}</span>
+              <div>
+                <span className="font-bold text-24 text-white">{t.afterTitle}</span>
+                <p className="text-text-[24px] font-semibold text-[#099250] text-18">{t.afterTagline}</p>
+              </div>
             </div>
-            <div className="text-green-400 font-semibold my-4 text-18">{t.afterTagline}</div>
-            <ul className="space-y-3 ">
+            <ul className="flex flex-col gap-[16px]">
               {t.afterList.map((item, idx) => (
-                <li key={idx} className="flex items-center gap-2 text-white/90 text-18"><FiCheck className="text-green-400" /> {item}</li>
+                <li key={idx} className="flex items-center gap-[8px] text-white/90 text-18"><FiCheck className="text-[#099250]" /> {item}</li>
               ))}
             </ul>
           </div>
         </div>
         {/* Button */}
-        <CommonButton
+        <CommonBorderButton
           text={t.button}
-          className="!text-white rounded-lg px-8 py-3 font-bold text-24 mx-auto mt-2"
+          className="!text-white rounded-lg px-[18px] py-[12px] font-bold text-24 mx-auto mt-2"
           icon={<GoArrowRight />}
           iconPosition="right"
         />

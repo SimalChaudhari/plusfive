@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { MdOutlineAdd } from 'react-icons/md'
 import { HiMenu, HiX } from 'react-icons/hi'
-import { CommonButton } from '../index';
+import { CommonBorderButton, CommonButton, CommonDropDown } from '../index';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
 import { useLocation } from 'react-router-dom';
-import CommonDropDown from '../commonComponent/CommonDropDown';
 import { useLanguage } from '../../context/LanguageContext';
 
 function LandingHeader() {
@@ -109,9 +108,9 @@ function LandingHeader() {
                     fontSize="text-16"
                     isDarkMode={true}
                 />
-                <CommonButton
-                    text={t.button || 'Start Free Trial'}
-                    className="!text-white rounded-lg px-4 py-2 font-bold text-16"
+                <CommonBorderButton
+                    text={'Start Free Trial'}
+                    className="!text-white rounded-[8px] px-[16px] py-[10px] font-bold text-16"
                     type="submit"
                     onClick={() => window.location.href = '/login'}
                 />
@@ -144,7 +143,7 @@ function LandingHeader() {
                             fontSize="text-16"
                             isDarkMode={true}
                         />
-                        <CommonButton
+                        <CommonBorderButton
                             text={t.button || 'Start Free Trial'}
                             className=" !text-white rounded-lg px-4 py-2 font-bold text-xl"
                             type="submit"

@@ -104,3 +104,4 @@ export { default as CommonDateRange } from "./commonComponent/CommonDateRange";
 export { default as SquaresAnim } from "./commonComponent/SquaresAnim";
 export { default as CommonGradientText } from "./commonComponent/CommonGradientText";
 export { default as CommonConfirmModel } from "./commonComponent/CommonConfirmModel";
+export { default as CommonBorderButton } from "./commonComponent/CommonBorderButton";

@@ -1,5 +1,5 @@
 import React from 'react'
-import { LandingHeader, CommonButton } from '../index'
+import { LandingHeader, CommonButton, CommonBorderButton } from '../index'
 import { GoArrowRight } from 'react-icons/go';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
@@ -28,29 +28,31 @@ function HeroComponent({ language }) {
 
       {/* Header (z-10 for above bg) */}
       <div className="relative z-20 w-full">
+      {/*
         <LandingHeader language={language} />
+        */}
       </div>
 
       {/* Hero content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
         
-          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 lg:text-72 text-center text-white mb-6 leading-tight font-testtiemposfine">
+          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 text-center text-white mb-6 font-testtiemposfine">
             {heading1} 
-            <span className="text-4xl md:text-48 lg:text-72 leading-tight font-testtiemposfine">
+            <span className="text-4xl md:text-48 font-testtiemposfine">
             &nbsp;{heading2}&nbsp;
             </span> 
             {heading3}<br className="hidden md:block" /> {heading4}
           </h1>
         {/* Subheading */}
-        <p className="text-lg md:text-16 text-center text-white max-w-2xl mb-8">
+        <p className="text-16 text-center text-white max-w-2xl mb-8">
           {subheading}
         </p>
         {/* Get Started button */}
         <div className="mb-2">
-          <CommonButton
+          <CommonBorderButton
             text={buttonText}
-            className=" !text-white rounded-lg px-4 py-2 font-bold text-16"
+            className=" !text-white rounded-lg px-[18px] py-[12px] font-bold text-16"
             icon={<GoArrowRight />}
             iconPosition="right"
           />

@@ -11,7 +11,7 @@ import React from 'react';
 function CommonGradientText({
   children,
 //   gradient = 'linear-gradient(200deg, #DF64CC 24.76%, #FF2380 38.87%, #FE5D39 51.9%)',
-  gradient = 'linear-gradient(200deg, rgb(223, 100, 204) 24.76%, rgb(255, 35, 128) 40.87%, rgb(254, 93, 57) 70.9%)',
+  gradient = ' linear-gradient(259deg, #FE5D39 3.28%, #FF2380 49.86%, #DF64CC 100.32%)',
   style = {},
   className = '',
   ...rest
