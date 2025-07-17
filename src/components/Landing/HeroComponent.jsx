@@ -29,8 +29,8 @@ function HeroComponent({ language }) {
       {/* Header (z-10 for above bg) */}
       <div className="relative z-20 w-full">
       {/*
-        <LandingHeader language={language} />
         */}
+        <LandingHeader language={language} />
       </div>
 
       {/* Hero content */}

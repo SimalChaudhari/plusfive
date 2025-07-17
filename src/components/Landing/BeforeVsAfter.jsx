@@ -12,7 +12,10 @@ import { GoArrowRight } from 'react-icons/go'
 function BeforeVsAfter({ language }) {
   const t = language === 'he' ? he.beforeVsAfter : en.beforeVsAfter;
   return (
-    <section className="w-full min-h-screen md:flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8">
+    <section className="w-full min-h-screen md:flex flex-col items-center justify-center py-8 px-8">
+    {/*
+      <section className="w-full min-h-screen md:flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8">
+      */}
       {/* Background card */}
       <div
         className="mx-auto rounded-[32px] shadow-2xl md:py-[80px] md:px-[206px] md:gap-[64px] gap-8 p-8 flex flex-col items-center "

@@ -40,7 +40,7 @@ function Trusted({ language }) {
             {t.stats.map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800 rounded-[16px] p-8 md:p-10 min-h-[260px] transition-all dark:border-neutral-700 md:w-[410px] md:px-[43px] md:py-[43px] md:flex md:flex-col md:justify-center md:items-center md:gap-[10px] md:rounded-2xl md:bg-gradient-to-br md:from-[#FCFBF8] md:to-[#F3F4F6]"
+                className="flex flex-col items-center justify-center bg-gray-100 dark:bg-neutral-800 rounded-[16px] p-8 md:p-10 min-h-[260px] transition-all dark:border-neutral-700  md:px-[43px] md:py-[43px] md:flex md:flex-col md:justify-center md:items-center md:gap-[10px] md:rounded-2xl md:bg-gradient-to-br md:from-[#FCFBF8] md:to-[#F3F4F6]"
                 style={{
                   borderRadius: 'var(--radius-2xl, 16px)',
                   background: 'linear-gradient(135deg, #FCFBF8 0%, #F3F4F6 100%)'
