@@ -38,21 +38,23 @@ const RealResults = ({ language }) => {
   const sliderRef = React.useRef();
 
   return (
-    <div className="container mx-auto py-16 flex flex-col items-center justify-center px-8">
-      <h2 className="text-3xl md:text-48 font-extrabold text-gray-900 dark:text-white text-center mb-3 tracking-tight">
-        {heading}<br />
-        {heading2}
-      </h2>
-      <p className="text-16 md:text-xl text-gray-500 dark:text-gray-300 text-center font-medium mb-12 max-w-2xl">
-        {subheading}
-      </p>
+    <div className="flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8 md:gap-[64px] gap-[32px] ">
+      <div className="flex flex-col items-center justify-center gap-[16px]">
+        <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight max-w-[575px]">
+          {heading}<br />
+          {heading2}
+        </h2>
+        <p className="text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium max-w-[456px]">
+          {subheading}
+        </p>
+      </div>
       <div className="w-full">
         <Slider ref={sliderRef} {...settings}>
           {testimonials.map((t, i) => (
             <div key={i} className="flex justify-center items-center w-full md:px-4 py-5">
               <div className="w-full max-w-7xl mx-auto md:px-4">
                 <div
-                  className="w-full bg-gray-50 dark:bg-neutral-800 rounded-2xl shadow-lg flex flex-col md:flex-row items-stretch p-8 md:p-12 transition-all border border-gray-100 dark:border-neutral-700"
+                  className="w-full bg-gray-50 dark:bg-neutral-800 rounded-[32px] flex flex-col md:flex-row items-stretch transition-all border border-gray-100 dark:border-neutral-700"
                   style={{ minHeight: 340 }}
                 >
                   {/* Left: Image */}
@@ -60,25 +62,39 @@ const RealResults = ({ language }) => {
                     <img
                       src={resolveImage(t.image)}
                       alt={t.author}
-                      className="w-full object-cover"
-                      // style={{ minWidth: 180, minHeight: 240 }}
+                      className="w-full object-cover mt-[29px] ml-[26px]"
+                    // style={{ minWidth: 180, minHeight: 240 }}
                     />
                   </div>
                   {/* Right: Content */}
-                  <div className="flex flex-col justify-center flex-1 md:pl-8">
-                    <p className={`${t.storyTypeColor} font-semibold mb-2 text-20`}>{t.storyType}</p>
-                    <p className="text-[30px] text-gray-900 dark:text-white mb-6 max-w-2xl md:max-w-3xl text-left">
-                      {t.text}
-                    </p>
-                    <div className="flex md:flex-row flex-col sm:items-center sm:justify-between bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 sm:rounded-full rounded-lg px-6 py-4 shadow-sm w-full">
-                      <div className="mr-6">
-                        <p className="font-bold text-gray-800 dark:text-white mb-0 text-18">{t.author}</p>
-                        <p className="text-16 text-gray-500 dark:text-gray-300">{t.authorTitle}</p>
+                  <div className="flex flex-col justify-center flex-1 md:pt-[92px] md:pb-[73px] md:px-[32px]">
+                    <div className="flex flex-col gap-[16px]">
+                      <p
+                        className="font-semibold mb-2 text-20 w-fit"
+                        style={{
+                          background: 'linear-gradient(259deg, #FE5D39 3.28%, #FF2380 49.86%, #DF64CC 100.32%)',
+                          backgroundClip: 'text',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent'
+                        }}
+                      >
+                        {t.storyType}
+                      </p>
+                      <p className="text-30 text-customLightTextColor dark:text-white mb-6 max-w-2xl md:max-w-3xl text-left">
+                        {t.text}
+                      </p>
+                    </div>
+
+                    <div className="flex md:flex-row flex-col sm:items-center sm:justify-between bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 sm:rounded-full rounded-lg md:py-[20px] md:pl-[32px] md:pr-[24px] px-6 py-4 shadow-sm w-full">
+                      <div className="flex flex-col gap-[4px]">
+                        <p className="font-bold text-customLightTextColor dark:text-white text-18">{t.author}</p>
+                        <p className="text-16 text-customBoldTextColor dark:text-gray-300">{t.authorTitle}</p>
                       </div>
                       <CommonButton
                         text={buttonText}
                         icon={<FaArrowRight />}
                         iconPosition="right"
+                        gap="gap-[10px]"
                         className="ml-2 px-6 py-3 text-16 font-bold rounded-full"
                       />
                     </div>
@@ -89,22 +105,22 @@ const RealResults = ({ language }) => {
           ))}
         </Slider>
         {/* Custom Arrows below the card */}
-        <div className="flex justify-center items-center mt-6">
+        <div className="flex justify-center items-center mt-[20px] gap-[20.17px]">
           <button
-            className="mx-2 flex items-center justify-center bg-white dark:bg-neutral-800 shadow rounded-full p-2"
+            className="w-[40px] h-[40px] flex items-center justify-center bg-[#c2c2c2] dark:bg-neutral-800 hover:bg-black shadow rounded-full"
             onClick={() => sliderRef.current.slickPrev()}
             aria-label="Previous"
             type="button"
           >
-            <FaArrowLeft className="text-2xl text-gray-400 dark:text-white" />
+            <FaArrowLeft className="text-2xl text-white dark:text-white" />
           </button>
           <button
-            className="mx-2 flex items-center justify-center bg-white dark:bg-neutral-800 shadow rounded-full p-2"
+            className="w-[40px] h-[40px] flex items-center justify-center bg-[#c2c2c2] dark:bg-neutral-800 hover:bg-black shadow rounded-full"
             onClick={() => sliderRef.current.slickNext()}
             aria-label="Next"
             type="button"
           >
-            <FaArrowRight className="text-2xl text-gray-400 dark:text-white" />
+            <FaArrowRight className="text-2xl text-white dark:text-white" />
           </button>
         </div>
       </div>

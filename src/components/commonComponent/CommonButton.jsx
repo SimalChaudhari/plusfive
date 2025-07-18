@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function CommonButton({ text, onClick, className = '', type = 'button', icon, iconPosition = 'left' }) {
+function CommonButton({ text, onClick, className = '', type = 'button', icon, iconPosition = 'left', gap = 'gap-2' }) {
   return (
     <button
       type={type}
@@ -16,7 +16,7 @@ function CommonButton({ text, onClick, className = '', type = 'button', icon, ic
         ${className}
       `}
     >
-      <div className="flex items-center justify-center gap-2">
+      <div className={`flex items-center justify-center ${icon ? gap : 'gap-0'}`}>
         {iconPosition === 'left' && icon}
         {text}
         {iconPosition === 'right' && icon}
@@ -31,7 +31,8 @@ CommonButton.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   icon: PropTypes.node,
-  iconPosition: PropTypes.oneOf(['left', 'right'])
+  iconPosition: PropTypes.oneOf(['left', 'right']),
+  gap: PropTypes.string
 }
 
 export default CommonButton

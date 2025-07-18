@@ -46,7 +46,7 @@ export default {
         '24': ['24px', { lineHeight: '32px' }],
         '26': ['26px', { lineHeight: '36px' }],
         '28': ['28px', { lineHeight: '40px' }],
-        '30': ['30px', { lineHeight: '36px' }],
+        '30': ['30px', { lineHeight: '38px' }],
         '32': ['32px', { lineHeight: '44px' }],
         '36': ['36px', { lineHeight: '40px' }],
         '40': ['40px', { lineHeight: '52px' }],

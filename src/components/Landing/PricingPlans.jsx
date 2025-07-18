@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
-import { CommonButton, CommonCustomOutlineButton } from '../index';
+import { CommonButton, CommonOutlineGradintButton } from '../index';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
 import Bg from '../../assets/Bg.png';
+import CheckIcon from '../../assets/CheckIcon.svg';
+import { MdAutoAwesome } from 'react-icons/md';
 
 function PricingPlans({ language }) {
   const [yearly, setYearly] = useState(false);
@@ -77,52 +78,81 @@ function PricingPlans({ language }) {
             {plans.map((plan, idx) => (
               <div
                 key={plan.name}
-                className={`flex flex-col justify-between rounded-2xl shadow-xl p-7 md:p-[24px] min-h-[540px] transition-all
-              ${plan.highlight ? 'border-2' : 'border-2 border-white/10'}
-              relative
-            `}
+                className={`
+                    flex flex-col justify-between rounded-2xl shadow-xl p-7 md:p-[24px] min-h-[540px] transition-all
+                    ${idx === 1 ? 'border-2' : 'border-2 border-white/10'}
+                    relative
+                  `}
                 style={{
-                  boxShadow: plan.highlight ? '0 0 0 2px #DF64CC33, 0 8px 40px 0 #0004' : '0 8px 40px 0 #0002',
-                  borderImage: plan.highlight ? 'linear-gradient(259deg, #FE5D39 3.28%, #FF2380 49.86%, #DF64CC 100.32%) 1' : 'none',
-                  borderRadius: '20px'
+                  boxShadow: '0 8px 40px 0 #0002',
+                  borderRadius: '20px',
+                  ...(idx === 1 && {
+                    '--border-radius': '20px',
+                    '--border-width': '2px',
+                    appearance: 'none',
+                    position: 'relative',
+                    border: '0',
+                    zIndex: '2',
+                    boxSizing: 'border-box'
+                  })
                 }}
               >
-                {/* Badge */}
-                {plan.badge && (
-                  <span className="absolute top-6 right-6 bg-pink-600/10 text-pink-400 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                    <svg width="14" height="14" fill="currentColor" className="inline-block"><circle cx="7" cy="7" r="7" /></svg> {plan.badge}
-                  </span>
-                )}
+                {/* Badge 
+                  {plan.badge && (
+                    <div className="absolute top-4 right-6 bg-gray-100 dark:bg-customWhite backdrop-blur-sm text-sm font-semibold px-[13px] py-[10px] rounded-full flex items-center gap-[6px]">
+                      <MdAutoAwesome className="text-purple-500 dark:text-purple-400 text-[16px]" />
+                      <span className="font-bold bg-gradient-to-br from-[#FF2380] to-[#675DFF] text-transparent bg-clip-text">
+                        {plan.badge}
+                      </span>
+                    </div>
+                  )}
+                  */}
                 {/* Title & Desc */}
-                <div>
+                <div className=''>
                   <div className='flex flex-col items-start gap-[28px]'>
                     <div className='flex flex-col items-start gap-[12px]'>
-                      <h3 className="text-2xl md:text-[30px] font-bold text-white">{plan.name}</h3>
-                      <p className="text-gray-300  text-base md:text-16 font-medium">{plan.description}</p>
+                      <div className='flex items-center justify-between w-full'>
+                        <h3 className="text-2xl md:text-[30px] font-bold text-white">{plan.name}</h3>
+
+                        {plan.badge && (
+                          <div className=" bg-gray-100 dark:bg-customWhite backdrop-blur-sm text-sm font-semibold px-[13px] py-[10px] rounded-full flex items-center gap-[6px]">
+                            <MdAutoAwesome className="text-purple-500 dark:text-purple-400 text-[16px]" />
+                            <span className="font-bold bg-gradient-to-br from-[#FF2380] to-[#675DFF] text-transparent bg-clip-text">
+                              {plan.badge}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      <p className={`text-[#FFFFFFB8] text-base md:text-16 font-medium ${idx === 0 ? 'max-w-[232px]' : ''}`}>{plan.description}</p>
                     </div>
 
                     {/* Price */}
                     <div className="">
                       {plan.custom ? (
-                        <span className="text-2xl md:text-[36px] font-bold text-white">{customPricingText}</span>
+                        <span className="text-2xl md:text-36 font-bold text-white">{customPricingText}</span>
                       ) : (
-                        <span className="text-4xl md:text-5xl font-extrabold text-white">{yearly ? (plan.price === 0 ? '$0' : `$${Math.round(plan.price * 0.3)}`) : `$${plan.price}`}</span>
+                        <span className="text-4xl md:text-36 font-extrabold text-white">{yearly ? (plan.price === 0 ? '$0' : `$${Math.round(plan.price * 0.3)}`) : `$${plan.price}`}</span>
                       )}
-                      {!plan.custom && <span className="text-lg text-gray-400 font-medium ml-1">{plan.priceUnit}</span>}
+                      {!plan.custom && <span className="text-24 text-gray-400 font-medium ml-1">{plan.priceUnit}</span>}
                     </div>
-                    
+
                   </div>
 
-                  {/* Features */}
-                  <ul className=" flex flex-col gap-[16px]">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-base md:text-lg text-gray-200">
-                        <FaCheckCircle className="text-blue-400 mt-1 flex-shrink-0 text-16" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Features
+                    */}
                 </div>
+
+                {/* Divider */}
+                <div className="border-t border-[#FFFFFF1A] my-[24px]"></div>
+
+                <ul className=" flex flex-col gap-[16px]">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex justify-start gap-[12px] text-base md:text-16 text-white">
+                      <img src={CheckIcon} alt="Check" className="flex-shrink-0 w-[24px] h-[24px]" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
                 {/* Button */}
                 <div className="mt-auto pt-2">
                   {plan.highlight ? (
@@ -131,14 +161,44 @@ function PricingPlans({ language }) {
                       className="w-full py-3 text-16 font-bold rounded-xl"
                     />
                   ) : (
-                    <CommonCustomOutlineButton
+                    <CommonOutlineGradintButton
                       text={plan.buttonText}
-                      className="w-full py-3 text-16 font-bold rounded-xl bg-transparent border-pink-400 hover:border-pink-500"
-                      borderColor="border-pink-400"
-                      textColor="text-white"
+                      className="w-full py-3 text-16 font-bold rounded-xl "
+                    // textColor="text-white"
                     />
                   )}
                 </div>
+                {idx === 1 && (
+                  <style jsx>{`
+                    div::after {
+                      --m-i: linear-gradient(#000, #000);
+                      --m-o: content-box, padding-box;
+                      content: "";
+                      position: absolute;
+                      left: 0;
+                      top: 0;
+                      width: 100%;
+                      height: 100%;
+                      padding: var(--border-width);
+                      border-radius: var(--border-radius);
+                      background-image: linear-gradient(259deg, #FE5D39 3.28%, #FF2380 49.86%, #DF64CC 100.32%);
+                      -webkit-mask-image: var(--m-i), var(--m-i);
+                      mask-image: var(--m-i), var(--m-i);
+                      -webkit-mask-origin: var(--m-o);
+                      mask-origin: var(--m-o);
+                      -webkit-mask-clip: var(--m-o);
+                      mask-composite: exclude;
+                      -webkit-mask-composite: destination-out;
+                      filter: hue-rotate(0);
+                      z-index: -1;
+                    }
+                    
+                    div,
+                    div::after {
+                      box-sizing: border-box;
+                    }
+                  `}</style>
+                )}
               </div>
             ))}
           </div>

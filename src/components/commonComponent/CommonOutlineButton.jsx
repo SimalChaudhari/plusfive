@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '../../context/ThemeContext';
 
-function CommonOutlineButton({ text, onClick, className = '', type = 'button', icon, lightBgColor = '#ffffff', darkBgColor = '#121212' }) {
+function CommonOutlineButton({ text, onClick, className = '', type = 'button', icon, lightBgColor = '#ffffff', darkBgColor = '#121212', bgColor }) {
   const { isDarkMode } = useTheme(); // ✅ dark mode from context
 
   return (
@@ -20,13 +20,13 @@ function CommonOutlineButton({ text, onClick, className = '', type = 'button', i
         ${className}
       `}
       style={{
-        '--bg-color': isDarkMode ? darkBgColor : lightBgColor,
-        backgroundImage: `
-          linear-gradient(var(--bg-color), var(--bg-color)),
-          linear-gradient(to right, #DF64CC, #FF2380, #FE5D39)
-        `,
+        '--bg-color': bgColor || (isDarkMode ? darkBgColor : lightBgColor),
+        backgroundImage: bgColor === 'transparent' ? 
+          'linear-gradient(to right, #DF64CC, #FF2380, #FE5D39)' :
+          `linear-gradient(var(--bg-color), var(--bg-color)),
+          linear-gradient(to right, #DF64CC, #FF2380, #FE5D39)`,
         backgroundOrigin: 'border-box',
-        backgroundClip: 'padding-box, border-box',
+        backgroundClip: bgColor === 'transparent' ? 'border-box' : 'padding-box, border-box',
       }}
     >
       <div className="flex items-center justify-center gap-2">
@@ -45,6 +45,7 @@ CommonOutlineButton.propTypes = {
   icon: PropTypes.node,
   lightBgColor: PropTypes.string,
   darkBgColor: PropTypes.string,
+  bgColor: PropTypes.string,
 }
 
 export default CommonOutlineButton

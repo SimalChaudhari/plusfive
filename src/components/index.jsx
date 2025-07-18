@@ -11,6 +11,7 @@ export { default as Trusted } from "./Landing/Trusted";
 export { default as PricingPlans } from "./Landing/PricingPlans";
 export { default as RealResults } from "./Landing/RealResults";
 export { default as FAQ } from "./Landing/FAQ";
+export { default as Banner } from "./Landing/Banner";
 
 // Admin Components
 export { default as AdminLayout } from "./admin/layout/AdminLayout";
@@ -105,3 +106,4 @@ export { default as SquaresAnim } from "./commonComponent/SquaresAnim";
 export { default as CommonGradientText } from "./commonComponent/CommonGradientText";
 export { default as CommonConfirmModel } from "./commonComponent/CommonConfirmModel";
 export { default as CommonBorderButton } from "./commonComponent/CommonBorderButton";
+export { default as CommonOutlineGradintButton } from "./commonComponent/CommonOutlineGradintButton";
