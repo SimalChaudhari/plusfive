@@ -29,7 +29,7 @@ function Banner({ language }) {
         >
           <div className="flex-1 flex flex-col gap-[32px]">
             <div className="flex flex-col gap-[16px]">
-              <h3 className="text-2xl md:text-48 font-extrabold text-white">{ctaHeading}</h3>
+              <h3 className="text-2xl md:text-48 font-extrabold text-white font-testtiemposfine">{ctaHeading}</h3>
               <p className="text-white/70 text-base md:text-16">{ctaText}</p>
             </div>
 
@@ -39,7 +39,7 @@ function Banner({ language }) {
                 icon={<FaArrowRight />}
                 iconPosition="right"
                 gap="gap-[6px]"
-                className="px-[18px] py-[12px] text-16 font-bold rounded-[8px]"
+                className="px-[18px] pt-[12px] pb-[9px] text-16 font-bold rounded-[8px]"
               />
             </div>
           </div>

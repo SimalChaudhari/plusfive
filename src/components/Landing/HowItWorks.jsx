@@ -12,7 +12,7 @@ function HowItWorks({ language }) {
     <section className="w-full flex flex-col items-center justify-center bg-transparent md:py-[64px] py-8 md:px-[80px] px-8">
       {/* Heading */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-[16px]">
-        <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight">{t.heading}</h2>
+        <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight font-testtiemposfine">{t.heading}</h2>
         <p className="text-lg md:text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium">{t.subheading}</p>
       </div>
       {/* Content Row */}

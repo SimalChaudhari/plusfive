@@ -28,7 +28,7 @@ function Trusted({ language }) {
 
         <div className='flex flex-col items-center justify-center gap-[16px]'>
           {/* Heading */}
-          <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight">{t.heading}</h2>
+          <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight font-testtiemposfine">{t.heading}</h2>
           <p className="text-lg md:text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium  max-w-[556px]">
             {t.subheading}
           </p>

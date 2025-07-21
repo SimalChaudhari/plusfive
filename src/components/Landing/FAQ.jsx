@@ -18,14 +18,14 @@ function FAQ({ language }) {
 
         {/* FAQ Heading */}
         <div className="flex flex-col items-center justify-center gap-[16px]">
-          <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center">{heading}</h2>
+          <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center font-testtiemposfine">{heading}</h2>
           <p className="text-customBoldTextColor dark:text-gray-300 text-center max-w-xl text-16">
             {subheading}
           </p>
         </div>
 
         {/* FAQ Accordions */}
-        <div className="w-full max-w-2xl flex flex-col gap-[16px]">
+        <div className="lg:w-[56rem] w-full flex flex-col gap-[16px]">
           {faqs.map((item, idx) => (
             <div 
               key={idx} 

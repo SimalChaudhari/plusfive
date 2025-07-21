@@ -41,7 +41,7 @@ function PricingPlans({ language }) {
           <div className='flex flex-col items-center justify-center gap-[16px]'>
             <h2 className="text-4xl md:text-48 text-center">
               <span
-                className="font-bold"
+                className="font-bold font-testtiemposfine"
                 style={{
                   background: 'linear-gradient(265deg, #DF64CC 50.66%, #FF2380 54.97%, #FE5D39 58.94%)',
                   backgroundClip: 'text',
@@ -51,7 +51,7 @@ function PricingPlans({ language }) {
               >
                 {heading1}
               </span>
-              <span className="font-bold text-white ">&nbsp;{heading2}</span>
+              <span className="font-bold text-white font-testtiemposfine">&nbsp;{heading2}</span>
             </h2>
             <p className="text-lg md:text-16 text-gray-300 text-center font-medium max-w-2xl">{subheading}</p>
           </div>

@@ -97,8 +97,8 @@ function LandingHeader() {
 
     return (
         // Header wrapper with transparent background, margin, and flex layout
-        <header className="lg:w-[100%] w-[95%] lg:min-w-[632px] flex items-center justify-between py-3 px-6 mx-2 lg:py-2 lg:px-10 lg:mx-0 fixed top-0 left-0 z-50 bg-customGray lg:bg-black rounded-full shadow-md border border-[#0000001A] lg:rounded-none lg:shadow-none lg:border-none transition-all duration-300 ease-in-out" 
-        style={{ marginTop: isScrolled ? '0px' : '18px' }}
+        <header className="lg:w-[100%] w-[95%] lg:min-w-[632px] flex items-center justify-between py-3 px-6 mx-2 lg:py-[18px] lg:px-[80px] lg:mx-0 fixed top-0 left-0 z-50 bg-customGray lg:bg-black rounded-full shadow-md border border-[#0000001A] lg:rounded-none lg:shadow-none lg:border-none transition-all duration-300 ease-in-out" 
+        style={{ marginTop: isScrolled ? '0px' : '0px' }}
         >
             {/* Left: Logo and Brand Name */}
             <div className="flex items-center gap-2 md:gap-4">
@@ -108,13 +108,13 @@ function LandingHeader() {
                 </span>
                 <span className={`text-lg md:text-24 font-semibold text-gray-900 dark:text-white transition-opacity duration-300`}>
             */}
-                <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300`}>
+                <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300 cursor-pointer`} onClick={() => window.location.href = '/login'}>
                     {t.brandName || 'PlusFive'}
                 </span>
             </div>
 
             {/* Desktop Nav */}
-            <nav className="flex-1 justify-center hidden lg:flex">
+            <nav className="flex-1 justify-center hidden lg:flex" style={{ margin: '0px -20px 0 0' }}>
                 <ul className="flex xl:gap-7 lg:gap-3 md:gap-3 gap-2 bg-customGray rounded-full p-[12px] shadow-sm text-xl">
                     {renderMenu('xl:p-[8px] rounded-full text-white font-medium text-16')}
                 </ul>
@@ -122,6 +122,7 @@ function LandingHeader() {
 
             {/* Desktop Button */}
             <div className="hidden lg:flex items-center gap-4">
+            {/*
                 <CommonDropDown
                     options={languageOptions}
                     value={language}
@@ -131,9 +132,10 @@ function LandingHeader() {
                     fontSize="text-16"
                     isDarkMode={true}
                 />
+                */}
                 <CommonBorderButton
                     text={'Start Free Trial'}
-                    className="!text-white rounded-[8px] px-[16px] py-[10px] font-bold text-16"
+                    className="!text-white rounded-[8px] px-[16px] pt-[10px] pb-[8px] font-bold text-16"
                     type="submit"
                     onClick={() => window.location.href = '/login'}
                 />

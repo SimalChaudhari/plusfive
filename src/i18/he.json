@@ -300,8 +300,7 @@
     "support": "תמיכה",
     "supportLinks": [
       { "label": "שאלות נפוצות", "href": "#" },
-      { "label": "support@plusfive.com", "href": "mailto:support@plusfive.com" },
-      { "label": "וואטסאפ +1-555-123-4567", "href": "#" }
+      { "label": "support@plusfive.com", "href": "mailto:support@plusfive.com" }
     ],
     "copyright": "© 2025 פלוספייב. כל הזכויות שמורות.",
     "policies": [

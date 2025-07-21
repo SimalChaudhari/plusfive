@@ -20,16 +20,16 @@ function BeforeVsAfter({ language }) {
       <div
         className="mx-auto rounded-[32px] shadow-2xl md:py-[80px] md:px-[206px] md:gap-[64px] gap-8 p-8 flex flex-col items-center "
         style={{
-          backgroundImage: `url(${bgvs})`,
+          // backgroundImage: `url(${bgvs})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundColor: "#181926" // fallback color, optional
+          backgroundColor: "#000" // fallback color, optional
         }}
       >
         <div className='flex flex-col md:w-[830px] gap-[16px]'>
           {/* Heading */}
-          <h2 className="text-3xl md:text-48 font-extrabold text-center text-white ">{t.heading}</h2>
+          <h2 className="text-3xl md:text-48 font-extrabold text-center text-white font-testtiemposfine">{t.heading}</h2>
           <p className="text-center text-gray-300 max-w-lg mx-auto text-16">
             {t.subheading}
           </p>
@@ -96,7 +96,7 @@ function BeforeVsAfter({ language }) {
         {/* Button */}
         <CommonBorderButton
           text={t.button}
-          className="!text-white rounded-lg px-[18px] py-[12px] font-bold text-24 mx-auto mt-2"
+          className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-24 mx-auto mt-2"
           icon={<GoArrowRight />}
           iconPosition="right"
         />

@@ -5,6 +5,7 @@ import IGIcon from "../../assets/IGIcon.svg";
 import XIcon from "../../assets/XIcon.svg";
 import en from "../../i18/en.json";
 import he from "../../i18/he.json";
+import { TbMessageCircleFilled } from "react-icons/tb";
 
 const LandingFooter = ({ language }) => {
     const t = language === "he" ? he.footer : en.footer;
@@ -16,11 +17,8 @@ const LandingFooter = ({ language }) => {
                     {/* Left: Logo & Description */}
                     <div className="flex-1 flex flex-col gap-[24px]">
                         <div className="flex items-center gap-[8px]">
-                            <span className="text-gray-900 dark:text-white text-xl md:text-2xl font-bold icon-button relative group">
-                                <MdOutlineAdd className="text-white text-xl md:text-2xl" />
-                            </span>
-                            <span className={`text-lg md:text-24 font-semibold text-white transition-opacity duration-300`}>
-                                {t.brandName}
+                            <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300`}>
+                                {t.brandName || 'PlusFive'}
                             </span>
                         </div>
                         <div>
@@ -35,7 +33,7 @@ const LandingFooter = ({ language }) => {
                             <a href="#" aria-label="LinkedIn">
                                 <img src={LinkDinIcon} alt="LinkedIn" className="hover:opacity-80 transition md:w-[24px] w-[24px] md:h-[24px] h-[24px]" />
                             </a>
-                            <a href="#" aria-label="Instagram">
+                            <a href="https://www.instagram.com/plusfive.io/" aria-label="Instagram">
                                 <img src={IGIcon} alt="Instagram" className="hover:opacity-80 transition md:w-[24px] w-[24px] md:h-[24px] h-[24px]" />
                             </a>
                             <a href="#" aria-label="X">
@@ -62,6 +60,13 @@ const LandingFooter = ({ language }) => {
                                 <li key={idx}><a href={item.href}>{item.label}</a></li>
                             ))}
                         </ul>
+                        {/* Get Support Button */}
+                        <button className="bg-white text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-100 transition-colors w-fit">
+                            <TbMessageCircleFilled className="w-7 h-7" />
+                            <p className="pt-1">
+                            Get Support
+                            </p>
+                        </button>
                     </div>
                 </div>
 

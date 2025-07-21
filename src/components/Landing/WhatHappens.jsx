@@ -28,12 +28,12 @@ function WhatHappens({ language }) {
       <div className="container md:p-[64px] md:gap-[64px] inline-flex flex-col ">
         <div>
           {/* Heading */}
-          <h2 className="text-3xl md:text-48 font-extrabold text-center text-customLightTextColor dark:text-white mb-4">
+          <h2 className="text-3xl md:text-48 font-extrabold text-center text-customLightTextColor dark:text-white mb-4 font-testtiemposfine">
             {t.heading1}
             {/*
               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#DF64CC] via-[#FF2380] to-[#FE5D39]">{t.heading2}</span>
               */}
-            <CommonGradientText className="text-3xl md:text-48 font-extrabold">
+            <CommonGradientText className="text-3xl md:text-48 font-extrabold font-testtiemposfine">
               &nbsp;{t.heading2}&nbsp;
             </CommonGradientText>
             {t.heading3}
@@ -49,10 +49,10 @@ function WhatHappens({ language }) {
           <div className="min-w-[700px] max-w-5xl bg-white dark:bg-customBlack rounded-2xl border border-gray-200 dark:border-customBorderColor mx-auto p-6 md:p-[24px]">
             {/* Header Row */}
             <div className="grid grid-cols-2 gap-0 relative bg-transparent">
-              <div className="font-bold text-20 dark:bg-customGray bg-[#1F252F] text-white pl-[16px] pr-[84px] py-[12px] w-full block rounded-l-2xl ">{language === 'he' ? 'מה תקבל' : 'What You Get'}</div>
+              <div className="font-bold text-20 dark:bg-customGray bg-black text-white pl-[16px] pr-[84px] py-[12px] w-full block rounded-l-2xl font-testtiemposfine">{language === 'he' ? 'מה תקבל' : 'What You Get'}</div>
               {/* Divider सिर्फ md+ पर ही render हो */}
               <div className="block absolute top-0 bottom-0 left-1/2 w-[0.01rem] bg-[#606060] rounded"></div>
-              <div className="font-bold text-20 dark:bg-customGray bg-[#1F252F] text-white pl-[16px] pr-[84px] py-[12px] w-full block rounded-r-2xl ">{language === 'he' ? 'איך זה עובד' : 'How It Works'}</div>
+              <div className="font-bold text-20 dark:bg-customGray bg-black text-white pl-[16px] pr-[84px] py-[12px] w-full block rounded-r-2xl font-testtiemposfine">{language === 'he' ? 'איך זה עובד' : 'How It Works'}</div>
             </div>
             {/* Divider below header */}
             {/* <div className="w-full border-b-2 border-gray-200"></div> */}

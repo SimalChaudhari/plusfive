@@ -40,7 +40,7 @@ const RealResults = ({ language }) => {
   return (
     <div className="flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8 md:gap-[64px] gap-[32px] ">
       <div className="flex flex-col items-center justify-center gap-[16px]">
-        <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight max-w-[575px]">
+        <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight max-w-[575px] font-testtiemposfine">
           {heading}<br />
           {heading2}
         </h2>
@@ -95,7 +95,7 @@ const RealResults = ({ language }) => {
                         icon={<FaArrowRight />}
                         iconPosition="right"
                         gap="gap-[10px]"
-                        className="ml-2 px-6 py-3 text-16 font-bold rounded-full"
+                        className="ml-2 px-6 pt-3 pb-2 text-16 font-bold rounded-full"
                       />
                     </div>
                   </div>

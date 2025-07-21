@@ -19,12 +19,12 @@ function AiAgent({ language }) {
 
           <div className='flex flex-col gap-[16px]'>
             <div>
-              <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white leading-tight">
+              <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white leading-tight font-testtiemposfine">
                 {t.heading1}
                 {/*
           <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#DF64CC] via-[#FF2380] to-[#FE5D39]"> {t.heading2} </span> 
         */}
-                <CommonGradientText className="text-3xl md:text-48 font-extrabold">
+                <CommonGradientText className="text-3xl md:text-48 font-extrabold font-testtiemposfine">
                   &nbsp;{t.heading2}&nbsp;
                 </CommonGradientText>
                 {t.heading3}
@@ -43,7 +43,7 @@ function AiAgent({ language }) {
               text={t.button}
               icon={<GoArrowRight />}
               iconPosition="right"
-              className="!text-white rounded-lg px-[18px] py-[12px] font-bold text-16"
+              className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-16"
             />
           </div>
         </div>

@@ -27,6 +27,7 @@ export default {
       fontFamily: {
         ttcommons: ['"TT Commons"', 'sans-serif'],
         testtiemposfine: ['"TestTiemposFineLight"', 'sans-serif'],
+        aktivgrotesk: ['"AktivGrotesk_Trial_SBd"', 'sans-serif'],
       },
       fontSize: {
         // Custom font sizes only
@@ -54,6 +55,7 @@ export default {
         '56': ['56px', { lineHeight: '68px' }],
         '64': ['64px', { lineHeight: '76px' }],
         '72': ['72px', { lineHeight: '1.4' }],
+        '78': ['78px', { lineHeight: '1.4' }],
         '96': ['96px', { lineHeight: '1' }],
         '128': ['128px', { lineHeight: '1' }],
       }

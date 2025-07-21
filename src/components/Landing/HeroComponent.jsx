@@ -37,22 +37,21 @@ function HeroComponent({ language }) {
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
         
-          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-48 text-center text-white mb-6 font-testtiemposfine">
-            {heading1} 
-            <span className="text-4xl md:text-48 font-testtiemposfine">
-            &nbsp;{heading2}&nbsp;
-            </span> 
-            {heading3}<br className="hidden md:block" /> {heading4}
+          <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-78 text-center text-white mb-6 font-testtiemposfine lg:max-w-[70%]">
+            {heading1} &nbsp;
+            {heading2} &nbsp;
+            {heading3} &nbsp;
+            {heading4}
           </h1>
         {/* Subheading */}
-        <p className="text-16 text-center text-white max-w-2xl mb-8">
+        <p className="text-20 text-center text-white max-w-3xl mb-8">
           {subheading}
         </p>
         {/* Get Started button */}
         <div className="mb-2">
           <CommonBorderButton
             text={buttonText}
-            className=" !text-white rounded-lg px-[18px] py-[12px] font-bold text-16"
+            className=" !text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-16"
             icon={<GoArrowRight />}
             iconPosition="right"
           />
