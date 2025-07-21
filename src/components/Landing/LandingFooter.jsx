@@ -5,7 +5,6 @@ import IGIcon from "../../assets/IGIcon.svg";
 import XIcon from "../../assets/XIcon.svg";
 import en from "../../i18/en.json";
 import he from "../../i18/he.json";
-import { TbMessageCircleFilled } from "react-icons/tb";
 
 const LandingFooter = ({ language }) => {
     const t = language === "he" ? he.footer : en.footer;
@@ -60,13 +59,6 @@ const LandingFooter = ({ language }) => {
                                 <li key={idx}><a href={item.href}>{item.label}</a></li>
                             ))}
                         </ul>
-                        {/* Get Support Button */}
-                        <button className="bg-white text-black font-semibold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-100 transition-colors w-fit">
-                            <TbMessageCircleFilled className="w-7 h-7" />
-                            <p className="pt-1">
-                            Get Support
-                            </p>
-                        </button>
                     </div>
                 </div>
 
