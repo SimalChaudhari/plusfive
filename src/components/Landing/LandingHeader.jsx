@@ -108,7 +108,7 @@ function LandingHeader() {
                 </span>
                 <span className={`text-lg md:text-24 font-semibold text-gray-900 dark:text-white transition-opacity duration-300`}>
             */}
-                <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300 cursor-pointer`} onClick={() => window.location.href = '/login'}>
+                <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300 cursor-pointer`} onClick={() => window.location.href = '/'}>
                     {t.brandName || 'PlusFive'}
                 </span>
             </div>

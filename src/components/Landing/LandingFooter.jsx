@@ -16,8 +16,8 @@ const LandingFooter = ({ language }) => {
                 <div className=" mx-auto flex flex-col md:flex-row justify-evenly gap-[32px]">
                     {/* Left: Logo & Description */}
                     <div className="flex-1 flex flex-col gap-[24px]">
-                        <div className="flex items-center gap-[8px]">
-                            <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300`}>
+                        <div className="flex items-center gap-[8px] cursor-pointer">
+                            <span className={`text-lg md:text-32 font-testtiemposfine text-white transition-opacity duration-300 cursor-pointer`} onClick={() => window.location.href = '/'}>
                                 {t.brandName || 'PlusFive'}
                             </span>
                         </div>
