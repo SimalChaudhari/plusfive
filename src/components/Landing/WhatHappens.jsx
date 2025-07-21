@@ -40,7 +40,7 @@ function WhatHappens({ language }) {
             <br className="hidden md:block" /> {t.heading4}
           </h2>
           {/* Subheading */}
-          <p className="text-center text-gray-500 dark:text-gray-300 max-w-2xl mx-auto text-20">
+          <p className="text-center text-customBoldTextColor dark:text-gray-300 max-w-2xl mx-auto text-20">
             {t.subheading}
           </p>
         </div>

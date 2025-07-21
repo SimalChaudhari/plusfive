@@ -23,11 +23,11 @@ function HowItWorks({ language }) {
           <div className="flex flex-col items-center gap-[8px] justify-center mt-1">
             <div>
               {/* StartLine */}
-              <img src={StartLine} alt="Start Line" className="w-2 h-8" />
+              <img src={StartLine} alt="Start Line" className="w-2 h-10" />
             </div>
 
             {/* Numbered Circles with LineLong between them */}
-            <div className="flex flex-col items-center gap-[8px]">
+            <div className="flex flex-col items-center gap-[10px]">
               {t.steps.map((step, idx) => (
                 <div key={idx} className="flex flex-col items-center gap-[8px]">
                   {/* Numbered Circle */}
@@ -45,23 +45,23 @@ function HowItWorks({ language }) {
 
             <div>
               {/* LastLine */}
-              <img src={LastLine} alt="Last Line" className="w-2 h-8" />
+              <img src={LastLine} alt="Last Line" className="w-2 h-10" />
             </div>
           </div>
 
           <div className='flex flex-col gap-[20px]'>
-            <ol className=" flex flex-col gap-10 md:gap-[32px] pt-[90px]">
+            <ol className=" flex flex-col gap-10 md:gap-[30px] pt-[60px]">
               {t.steps.map((step, idx) => (
                 <li key={idx} className="flex items-start gap-5 relative">
                   {/* Numbered circle */}
                   {/*
                   <div className={`flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center font-bold text-xl border-4 shadow-sm pt-[0.4rem] ${idx === 0 ? 'bg-gradient-to-br from-pink-500 to-pink-400 text-white border-pink-200' : 'bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-neutral-700'}`}>{idx + 1}</div>
                 */}
-                  <div className='flex flex-col gap-[12px]'>
+                  <div className='flex flex-col gap-[2px]'>
                     <div className="font-bold text-customLightTextColor dark:text-white text-lg md:text-20 ">
                       {step.title}
                     </div>
-                    <div className="text-customBoldTextColor dark:text-gray-300 text-base md:text-17 ">
+                    <div className="text-customBoldTextColor dark:text-gray-300 text-base md:text-20 ">
                       {step.desc}
                     </div>
                   </div>

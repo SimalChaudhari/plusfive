@@ -37,10 +37,10 @@ function HeroComponent({ language }) {
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-40 pb-16 px-4">
         {/* Main heading */}
         
-        <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-78 text-center text-white font-testtiemposfine">
+        <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-70 text-center text-white font-testtiemposfine">
         {heading1}
       </h1>
-      <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-78 text-center text-white mb-6 font-testtiemposfine">
+      <h1 className="md:block flex flex-wrap justify-center text-4xl md:text-70 text-center text-white mb-6 font-testtiemposfine">
         
         {heading2}
       </h1>

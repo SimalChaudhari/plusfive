@@ -54,6 +54,7 @@ export default {
         '48': ['48px', { lineHeight: '60px' }],
         '56': ['56px', { lineHeight: '68px' }],
         '64': ['64px', { lineHeight: '76px' }],
+        '70': ['70px', { lineHeight: '1.3' }],
         '72': ['72px', { lineHeight: '1.4' }],
         '78': ['78px', { lineHeight: '1.4' }],
         '96': ['96px', { lineHeight: '1' }],
