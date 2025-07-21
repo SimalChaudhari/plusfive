@@ -18,7 +18,10 @@ function GrowthComponent({ language }) {
 
             <CommonGradientText className="text-3xl md:text-48 font-extrabold  font-testtiemposfine">
               {t.heading2}
-            </CommonGradientText>
+            </CommonGradientText> 
+            <span className="md:pl-2 pl-1 text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white font-testtiemposfine">
+            {t.heading3}
+          </span>
           </h3>
           <p className="text-lg md:text-20 font-semibold text-customLightTextColor dark:text-white mb-2">
             {t.subheading}
