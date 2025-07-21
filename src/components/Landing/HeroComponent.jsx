@@ -58,6 +58,9 @@ function HeroComponent({ language }) {
           />
         </div>
         {/* Trial info */}
+        <div className="mb-12">
+          {/* <span className="text-white text-14">{trialInfo}000</span> */}
+        </div>
         <div className="container mx-auto px-4 flex justify-center">
           <img src={tableimage} alt="tableimage" className="md:w-[60%] w-full object-cover rounded-xl" />
         </div>
