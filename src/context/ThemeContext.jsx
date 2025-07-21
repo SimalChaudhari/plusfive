@@ -17,8 +17,9 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme) {
       return savedTheme === 'dark';
     }
-    // Check system preference
-    return window.matchMedia('(prefers-color-scheme: light)').matches;
+    // Default to light theme
+    return false;
+    // return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   const toggleTheme = () => {
