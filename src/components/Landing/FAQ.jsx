@@ -19,9 +19,11 @@ function FAQ({ language }) {
         {/* FAQ Heading */}
         <div className="flex flex-col items-center justify-center gap-[16px]">
           <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center font-testtiemposfine">{heading}</h2>
-          <p className="text-customBoldTextColor dark:text-gray-300 text-center max-w-xl text-20">
-            {subheading}
-          </p>
+          {/*
+            <p className="text-customBoldTextColor dark:text-gray-300 text-center max-w-xl text-20">
+              {subheading}
+            </p>
+          */}
         </div>
 
         {/* FAQ Accordions */}
