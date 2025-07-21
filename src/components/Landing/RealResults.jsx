@@ -44,7 +44,7 @@ const RealResults = ({ language }) => {
           {heading}<br />
           {heading2}
         </h2>
-        <p className="text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium max-w-[456px]">
+        <p className="text-20 text-customBoldTextColor dark:text-gray-300 text-center font-medium max-w-[456px]">
           {subheading}
         </p>
       </div>

@@ -53,7 +53,7 @@ function PricingPlans({ language }) {
               </span>
               <span className="font-bold text-white font-testtiemposfine">&nbsp;{heading2}</span>
             </h2>
-            <p className="text-lg md:text-16 text-gray-300 text-center font-medium max-w-2xl">{subheading}</p>
+            <p className="text-lg md:text-20 text-gray-300 text-center font-medium max-w-2xl">{subheading}</p>
           </div>
           {/* Toggle */}
           <div className="flex items-center gap-4 mb-2">

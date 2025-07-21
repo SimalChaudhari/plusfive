@@ -13,7 +13,7 @@ function HowItWorks({ language }) {
       {/* Heading */}
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center gap-[16px]">
         <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight font-testtiemposfine">{t.heading}</h2>
-        <p className="text-lg md:text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium">{t.subheading}</p>
+        <p className="text-lg md:text-20 text-customBoldTextColor dark:text-gray-300 text-center font-medium">{t.subheading}</p>
       </div>
       {/* Content Row */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-[88px] md:gap-20">
@@ -61,7 +61,7 @@ function HowItWorks({ language }) {
                     <div className="font-bold text-customLightTextColor dark:text-white text-lg md:text-20 ">
                       {step.title}
                     </div>
-                    <div className="text-customBoldTextColor dark:text-gray-300 text-base md:text-16 ">
+                    <div className="text-customBoldTextColor dark:text-gray-300 text-base md:text-17 ">
                       {step.desc}
                     </div>
                   </div>

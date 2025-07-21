@@ -32,7 +32,7 @@ function AiAgent({ language }) {
             </div>
 
             <div>
-              <span className="text-customBoldTextColor dark:text-white text-base md:text-16 ">
+              <span className="text-customBoldTextColor dark:text-white text-base md:text-20 ">
                 {t.description}
               </span>
             </div>
@@ -43,7 +43,7 @@ function AiAgent({ language }) {
               text={t.button}
               icon={<GoArrowRight />}
               iconPosition="right"
-              className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-16"
+              className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-20"
             />
           </div>
         </div>

@@ -30,7 +30,7 @@ function BeforeVsAfter({ language }) {
         <div className='flex flex-col md:w-[830px] gap-[16px]'>
           {/* Heading */}
           <h2 className="text-3xl md:text-48 font-extrabold text-center text-white font-testtiemposfine">{t.heading}</h2>
-          <p className="text-center text-gray-300 max-w-lg mx-auto text-16">
+          <p className="text-center text-gray-300 max-w-lg mx-auto text-20">
             {t.subheading}
           </p>
         </div>

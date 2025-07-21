@@ -29,7 +29,7 @@ function Trusted({ language }) {
         <div className='flex flex-col items-center justify-center gap-[16px]'>
           {/* Heading */}
           <h2 className="text-4xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight font-testtiemposfine">{t.heading}</h2>
-          <p className="text-lg md:text-16 text-customBoldTextColor dark:text-gray-300 text-center font-medium  max-w-[556px]">
+          <p className="text-lg md:text-20 text-customBoldTextColor dark:text-gray-300 text-center font-medium  max-w-[556px]">
             {t.subheading}
           </p>
         </div>
@@ -56,8 +56,8 @@ function Trusted({ language }) {
                     <div className="text-3xl md:text-48 font-extrabold text-customLightTextColor">{item.stat}</div>
                     
                     <div className='flex flex-col items-center justify-center gap-[16px]'>
-                    <div className="text-20 text-customLightTextColor text-center">{item.label}0000</div>
-                    <div className="text-14 text-customBoldTextColor text-center">{item.desc} aaaa</div>
+                    <div className="text-20 text-customLightTextColor text-center">{item.label}</div>
+                    <div className="text-14 text-customBoldTextColor text-center">{item.desc}</div>
                     </div>
                   </div>
 

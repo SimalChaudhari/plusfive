@@ -20,15 +20,15 @@ function GrowthComponent({ language }) {
               {t.heading2}
             </CommonGradientText>
           </h3>
-          <p className="text-lg md:text-20 font-semibold text-customLightTextColor dark:text-white mb-5 font-aktivgrotesk">
+          <p className="text-lg md:text-20 font-semibold text-customLightTextColor dark:text-white mb-2">
             {t.subheading}
           </p>
-          <div className="text-customLightTextColor dark:text-white text-base md:text-18 mb-6 space-y-1 ">
+          <div className="text-customBoldTextColor dark:text-white text-base md:text-20 mb-2 -space-y-2 ">
             {t.points && t.points.map((point, idx) => (
-              <p key={idx} className="font-aktivgrotesk">{point}</p>
+              <p key={idx} className="">{point}</p>
             ))}
           </div>
-          <p className="font-bold text-customBoldTextColor dark:text-white mt-6 text-base md:text-18 font-aktivgrotesk">{t.cta}</p>
+          <p className="font-bold text-customBoldTextColor dark:text-white mt-2 text-base md:text-20 ">{t.cta}</p>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex items-center justify-center w-full">

@@ -37,6 +37,21 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'AktivGrotesk_Trial_Hair';
+  src: url('/public/fonts/AktivGrotesk_Trial_Hair.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AktivGrotesk_Trial_Th';
+  src: url('/public/fonts/AktivGrotesk_Trial_Th.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 
 * {
   margin: 0;
