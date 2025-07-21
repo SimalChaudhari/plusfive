@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CommonButton, CommonOutlineGradintButton } from '../index';
+import { CommonButton, CommonGradientText, CommonOutlineGradintButton } from '../index';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
 import Bg from '../../assets/Bg.png';
@@ -40,6 +40,7 @@ function PricingPlans({ language }) {
         <div className="relative z-10 flex flex-col items-center gap-[24px]">
           <div className='flex flex-col items-center justify-center gap-[16px]'>
             <h2 className="text-4xl md:text-48 text-center">
+            {/*
               <span
                 className="font-bold font-testtiemposfine"
                 style={{
@@ -51,6 +52,11 @@ function PricingPlans({ language }) {
               >
                 {heading1}
               </span>
+               */}
+
+              <CommonGradientText className="text-3xl md:text-48 font-bold font-testtiemposfine">
+                &nbsp;{heading1}&nbsp;
+              </CommonGradientText>
               <span className="font-bold text-white font-testtiemposfine">&nbsp;{heading2}</span>
             </h2>
             <p className="text-lg md:text-20 text-gray-300 text-center font-medium max-w-2xl">{subheading}</p>
