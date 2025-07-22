@@ -1,11 +1,13 @@
 import React from 'react';
 import { CommonButton } from '../index';
+import { useNavigate } from 'react-router-dom';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
 import cardBg from "../../assets/card.png";
 import { FaArrowRight } from 'react-icons/fa';
 
 function Banner({ language }) {
+  const navigate = useNavigate();
   const lang = language === 'he' ? he : en;
   const ctaHeading = lang.faq.ctaHeading;
   const ctaText = lang.faq.ctaText;
@@ -36,6 +38,7 @@ function Banner({ language }) {
             <div className="flex-shrink-0 w-full md:w-auto ">
               <CommonButton
                 text={ctaButtonText}
+                onClick={() => navigate('/login')}
                 icon={<FaArrowRight />}
                 iconPosition="right"
                 gap="gap-[6px]"

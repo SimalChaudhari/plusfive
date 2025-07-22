@@ -16,7 +16,8 @@ const isDarkMode = () =>
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 const SquaresAnim = (props) => {
-  const { isDarkMode } = useTheme();
+  const { isDarkMode: themeIsDarkMode } = useTheme();
+  const isDarkMode = props.isDarkMode !== undefined ? props.isDarkMode : themeIsDarkMode;
   const canvasRef = useRef(null);
   const requestRef = useRef(null);
   const numSquaresX = useRef(0);

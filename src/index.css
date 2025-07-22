@@ -114,3 +114,79 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: white;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide-left {
+  display: flex;
+  animation: 35s slide-left infinite linear;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: max-content;
+}
+
+.logos-slide-right {
+  display: flex;
+  animation: 35s slide-right infinite linear;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: max-content;
+}
+
+.logos-slide-left img,
+.logos-slide-right img {
+  height: 50px;
+  margin: 0 40px;
+  flex-shrink: 0;
+}

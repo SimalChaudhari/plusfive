@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaTimes, FaCheck } from 'react-icons/fa'
 import { CommonBorderButton, CommonButton } from '../index'
+import { useNavigate } from 'react-router-dom'
 import en from '../../i18/en.json'
 import he from '../../i18/he.json'
 import bgvs from "../../assets/Bgvs.png"; // <-- Image import
@@ -10,6 +11,7 @@ import { FiCheck } from 'react-icons/fi'
 import { GoArrowRight } from 'react-icons/go'
 
 function BeforeVsAfter({ language }) {
+  const navigate = useNavigate();
   const t = language === 'he' ? he.beforeVsAfter : en.beforeVsAfter;
   return (
     <section className="w-full min-h-screen md:flex flex-col items-center justify-center py-8 px-8">
@@ -96,6 +98,7 @@ function BeforeVsAfter({ language }) {
         {/* Button */}
         <CommonBorderButton
           text={t.button}
+          onClick={() => navigate('/login')}
           className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-24 mx-auto mt-2"
           icon={<GoArrowRight />}
           iconPosition="right"

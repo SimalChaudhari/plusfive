@@ -2,10 +2,12 @@ import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Login from '../pages/auth/login';
 import Register from '../pages/auth/register';
+import ThankYou from '../pages/auth/thankYou';
 // import ForgotPassword from '../pages/auth/forgotPassword'; // Uncomment if you have this page
 import NotFound from '../pages/404';
 import { useSelector } from 'react-redux';
 import LandingPage from '../pages/landingpage';
+import ContactSales from '../pages/contactSales';
 import { useLanguage } from '../context/LanguageContext';
 
 function PublicRouteGuard({ children }) {
@@ -32,6 +34,7 @@ function PublicRoutes() {
       {/* <div>Current language: {language}</div> */}
       <Routes>
         <Route path="/" element={<LandingPage language={language} />} />
+        <Route path="contact-sales" element={<ContactSales language={language} />} />
         <Route path="login" element={
           <PublicRouteGuard>
             <Login />
@@ -42,6 +45,7 @@ function PublicRoutes() {
             <Register />
           </PublicRouteGuard>
         } />
+        <Route path="thank-you" element={<ThankYou />} />
         {/* <Route path="forgot-password" element={<ForgotPassword />} /> */}
         {/* Add more public routes here in the future */}
         <Route path="*" element={<NotFound />} />

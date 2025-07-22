@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { CommonInput, CommonButton, SquaresAnim, CommonNormalDropDown } from '../../components/index';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import LoginBG from '../../assets/LoginBG.png';
 import FB from '../../assets/fb.svg';
 import Google from '../../assets/google.svg';
+import { emailService } from '../../services/emailService';
 
 const businessTypes = [
   { value: '', label: 'Select business type' },
-  { value: 'retail', label: 'Retail' },
-  { value: 'service', label: 'Service' },
-  { value: 'manufacturing', label: 'Manufacturing' },
-  { value: 'education', label: 'Education' },
-  { value: 'other', label: 'Other' },
+  { value: 'salon', label: 'Salon' },
+  { value: 'barbershop', label: 'Barbershop' },
+  { value: 'nails-salon', label: 'Nails Salon' },
+  { value: 'spa', label: 'Spa' },
+  { value: 'medspa', label: 'Medspa' },
+  { value: 'massage', label: 'Massage' },
+  { value: 'tattoo-piercing', label: 'Tattoo & Piercing' },
+  { value: 'tanning-studio', label: 'Tanning Studio' },
 ];
 
 function Register() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -63,16 +68,23 @@ function Register() {
     const newError = validate();
     setError(newError);
     if (Object.keys(newError).length > 0) return;
+    
+    // Success message
     toast.success('Registration successful!');
-    setForm({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      password: '',
-      confirmPassword: '',
-      businessName: '',
-      businessType: '',
+    
+    // Prepare user data with actual form values
+    const userData = {
+      email: form.email,
+      password: form.password,
+      firstName: form.firstName,
+      lastName: form.lastName,
+      businessName: form.businessName,
+      businessType: form.businessType
+    };
+    
+    // Navigate to thank you page with real user data
+    navigate('/thank-you', {
+      state: { userData }
     });
   };
 
@@ -89,7 +101,7 @@ function Register() {
       pointer-events-none"
         />
       </div>
-      <div className="w-full max-w-md bg-white dark:bg-customBrown rounded-2xl shadow-2xl border border-gray-200 dark:border-customBorderColor backdrop-blur-md p-8"
+      <div className="w-full max-w-4xl mx-auto bg-white dark:bg-customBrown rounded-2xl shadow-2xl border border-gray-200 dark:border-customBorderColor backdrop-blur-md p-8"
         style={{
           backgroundImage: `url(${LoginBG})`,
           backgroundSize: 'cover',
@@ -104,159 +116,172 @@ function Register() {
           Welcome back! Let's build something great.
         </p>
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="flex gap-4">
-            <div className="w-1/2">
-              <CommonInput
-                label="First Name"
-                id="firstName"
-                name="firstName"
-                value={form.firstName}
-                onChange={handleChange}
-                placeholder="First name"
-                error={error.firstName}
-                textColor="text-white"
-                labelColor="text-white"
-                inputBg="bg-gray-100/10"
-                labelFontSize="text-16"
-              />
-            </div>
-            <div className="w-1/2">
-              <CommonInput
-                label="Last Name"
-                id="lastName"
-                name="lastName"
-                value={form.lastName}
-                onChange={handleChange}
-                placeholder="Last name"
-                error={error.lastName}
-                textColor="text-white"
-                labelColor="text-white"
-                inputBg="bg-gray-100/10"
-                labelFontSize="text-16"
-              />
-            </div>
-          </div>
-          <CommonInput
-            label="Email"
-            id="email"
-            name="email"
-            type="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Enter email"
-            error={error.email}
-            textColor="text-white"
-            labelColor="text-white"
-            inputBg="bg-gray-100/10"
-            labelFontSize="text-16"
-          />
-          <CommonInput
-            label="Phone Number"
-            id="phone"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            placeholder="Enter phone number"
-            error={error.phone}
-            textColor="text-white"
-            labelColor="text-white"
-            inputBg="bg-gray-100/10"
-            labelFontSize="text-16"
-          />
-          <div className="relative">
+          {/* Row 1: First Name & Last Name */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <CommonInput
-              label="Password"
-              id="password"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              value={form.password}
+              label="First Name"
+              id="firstName"
+              name="firstName"
+              value={form.firstName}
               onChange={handleChange}
-              placeholder="Enter password"
-              error={error.password}
+              placeholder="First name"
+              error={error.firstName}
               textColor="text-white"
               labelColor="text-white"
               inputBg="bg-gray-100/10"
               labelFontSize="text-16"
             />
-            <button
-              type="button"
-              className="absolute right-4 top-[3rem] text-xl text-white hover:text-pink-500 transition-colors"
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
-              {showPassword ? <BsEyeSlash /> : <BsEye />}
-            </button>
-          </div>
-          <div className="relative">
             <CommonInput
-              label="Confirm Password"
-              id="confirmPassword"
-              name="confirmPassword"
-              type={showConfirmPassword ? "text" : "password"}
-              value={form.confirmPassword}
+              label="Last Name"
+              id="lastName"
+              name="lastName"
+              value={form.lastName}
               onChange={handleChange}
-              placeholder="Enter confirm password"
-              error={error.confirmPassword}
+              placeholder="Last name"
+              error={error.lastName}
               textColor="text-white"
               labelColor="text-white"
               inputBg="bg-gray-100/10"
               labelFontSize="text-16"
             />
-            <button
-              type="button"
-              className="absolute right-4 top-[3rem] text-xl text-white hover:text-pink-500 transition-colors"
-              onClick={() => setShowConfirmPassword((prev) => !prev)}
-            >
-              {showConfirmPassword ? <BsEyeSlash /> : <BsEye />}
-            </button>
           </div>
-          <CommonInput
-            label="Business Name"
-            id="businessName"
-            name="businessName"
-            value={form.businessName}
-            onChange={handleChange}
-            placeholder="Enter business name"
-            error={error.businessName}
-            textColor="text-white"
-            labelColor="text-white"
-            inputBg="bg-gray-100/10"
-            labelFontSize="text-16"
-          />
-          <div>
-            <label className="block text-16 font-medium mb-2 text-white">Business Type</label>
-            <CommonNormalDropDown
-              options={businessTypes}
-              value={form.businessType}
-              onChange={handleDropDownChange}
-              bgColor="bg-gray-100/10"
+
+          {/* Row 2: Email & Phone */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CommonInput
+              label="Email"
+              id="email"
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Enter email"
+              error={error.email}
               textColor="text-white"
-              fontSize="text-16"
-              showIcon={false}
-              borderRadius="rounded-xl"
-              width="w-full"
-              inputWidth="w-full"
-              inputBorderRadius="rounded-lg"
+              labelColor="text-white"
+              inputBg="bg-gray-100/10"
+              labelFontSize="text-16"
             />
-            {error.businessType && <p className="text-customRed text-lg mt-1">{error.businessType}</p>}
+            <CommonInput
+              label="Phone Number"
+              id="phone"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="Enter phone number"
+              error={error.phone}
+              textColor="text-white"
+              labelColor="text-white"
+              inputBg="bg-gray-100/10"
+              labelFontSize="text-16"
+            />
           </div>
+
+          {/* Row 3: Password & Confirm Password */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="relative">
+              <CommonInput
+                label="Password"
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Enter password"
+                error={error.password}
+                textColor="text-white"
+                labelColor="text-white"
+                inputBg="bg-gray-100/10"
+                labelFontSize="text-16"
+              />
+              <button
+                type="button"
+                className="absolute right-4 top-[3rem] text-xl text-white hover:text-pink-500 transition-colors"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <BsEyeSlash /> : <BsEye />}
+              </button>
+            </div>
+            <div className="relative">
+              <CommonInput
+                label="Confirm Password"
+                id="confirmPassword"
+                name="confirmPassword"
+                type={showConfirmPassword ? "text" : "password"}
+                value={form.confirmPassword}
+                onChange={handleChange}
+                placeholder="Enter confirm password"
+                error={error.confirmPassword}
+                textColor="text-white"
+                labelColor="text-white"
+                inputBg="bg-gray-100/10"
+                labelFontSize="text-16"
+              />
+              <button
+                type="button"
+                className="absolute right-4 top-[3rem] text-xl text-white hover:text-pink-500 transition-colors"
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+              >
+                {showConfirmPassword ? <BsEyeSlash /> : <BsEye />}
+              </button>
+            </div>
+          </div>
+
+          {/* Row 4: Business Name & Business Type */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CommonInput
+              label="Business Name"
+              id="businessName"
+              name="businessName"
+              value={form.businessName}
+              onChange={handleChange}
+              placeholder="Enter business name"
+              error={error.businessName}
+              textColor="text-white"
+              labelColor="text-white"
+              inputBg="bg-gray-100/10"
+              labelFontSize="text-16"
+            />
+            <div>
+              <label className="block text-16 font-medium mb-2 text-white">Business Type</label>
+              <CommonNormalDropDown
+                options={businessTypes}
+                value={form.businessType}
+                onChange={handleDropDownChange}
+                bgColor="bg-gray-100/10"
+                textColor="text-white"
+                fontSize="text-16"
+                showIcon={false}
+                borderRadius="rounded-xl"
+                width="w-full"
+                inputWidth="w-full"
+                inputBorderRadius="rounded-lg"
+              />
+              {error.businessType && <p className="text-customRed text-lg mt-1">{error.businessType}</p>}
+            </div>
+          </div>
+
+          {/* Sign Up Button */}
           <CommonButton text="Sign Up" type="submit" className="w-full !text-white rounded-lg py-3 text-16 shadow-lg bg-gradient-to-r from-pink-500 to-orange-400" />
         </form>
-        <div className="space-y-3 mt-6">
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
-          >
-            <img src={Google} alt="Google" className="w-6 h-6" />
-            <span>SignUp with Google</span>
-          </button>
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
-          >
-            <img src={FB} alt="Facebook" className="w-6 h-6" />
-            <span>SignUp with Facebook</span>
-          </button>
-        </div>
+        {/*
+          <div className="space-y-3 mt-6">
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
+            >
+              <img src={Google} alt="Google" className="w-6 h-6" />
+              <span>SignUp with Google</span>
+            </button>
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
+            >
+              <img src={FB} alt="Facebook" className="w-6 h-6" />
+              <span>SignUp with Facebook</span>
+            </button>
+          </div>
+        */}
         <p className="mt-6 text-right text-[#7A828A] text-14">
           Already have an account?{' '}
           <Link to="/login" className="font-semibold text-[#675DFF] hover:underline transition-colors duration-200">Login</Link>

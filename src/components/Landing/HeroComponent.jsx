@@ -1,11 +1,13 @@
 import React from 'react'
 import { LandingHeader, CommonButton, CommonBorderButton } from '../index'
 import { GoArrowRight } from 'react-icons/go';
+import { useNavigate } from 'react-router-dom';
 import en from '../../i18/en.json';
 import he from '../../i18/he.json';
 import tableimage from "../../assets/tableimage.png";
 
 function HeroComponent({ language }) {
+  const navigate = useNavigate();
   // Language-based text selection
   const t = language === 'he' ? he.hero : en.hero;
   const brandName = (language === 'he' ? he.header : en.header)?.brandName || 'PlusFive';
@@ -23,7 +25,7 @@ function HeroComponent({ language }) {
   
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-black ">
+    <div id="home" className="relative min-h-screen flex flex-col items-center justify-start overflow-hidden bg-black ">
       {/* Animated grid background */}
 
       {/* Header (z-10 for above bg) */}
@@ -52,6 +54,7 @@ function HeroComponent({ language }) {
         <div className="mb-2">
           <CommonBorderButton
             text={buttonText}
+            onClick={() => navigate('/login')}
             className=" !text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-16"
             icon={<GoArrowRight />}
             iconPosition="right"

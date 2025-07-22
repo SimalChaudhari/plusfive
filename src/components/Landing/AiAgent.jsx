@@ -1,11 +1,13 @@
 import React from 'react'
 import aiImg from '../../assets/AiBg.svg'
 import { GoArrowRight } from 'react-icons/go'
+import { useNavigate } from 'react-router-dom'
 import { CommonBorderButton, CommonButton, CommonGradientText } from '../index'
 import en from '../../i18/en.json'
 import he from '../../i18/he.json'
 
 function AiAgent({ language }) {
+  const navigate = useNavigate();
   const t = language === 'he' ? he.aiAgent : en.aiAgent;
   return (
     <div className="mx-auto w-full">
@@ -41,6 +43,7 @@ function AiAgent({ language }) {
           <div>
             <CommonBorderButton
               text={t.button}
+              onClick={() => navigate('/login')}
               icon={<GoArrowRight />}
               iconPosition="right"
               className="!text-white rounded-lg px-[18px] pt-[12px] pb-[10px] font-bold text-20"

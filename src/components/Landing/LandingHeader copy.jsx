@@ -14,7 +14,7 @@ function LandingHeader() {
     const menuItems = t.menuItems || [];
     const menuLinks = [
         { href: '/' },
-        { href: '/#how-it-works' },
+        { href: '/#howitworks' },
         { href: '/#features' },
         { href: '/#pricing' },
         { href: '/#success-stories' },

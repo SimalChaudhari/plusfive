@@ -139,7 +139,7 @@
         "priceUnit": "/month",
         "description": "Start risk-free with basic churn risk tracking.",
         "features": [
-          "Everything in Regular Plan, plus",
+          "Complete AI churn prediction & customer health scoring",
           "You get notifications when action is needed",
           "No access to customer details or campaign flows",
           "Perfect to see your churn risk before upgrading"
@@ -175,7 +175,7 @@
           "Dedicated account manager & strategic consulting",
           "Advanced analytics & API integrations"
         ],
-        "buttonText": "Upgrade Enterprise",
+        "buttonText": "Contact Sales",
         "highlight": false,
         "custom": true
       }

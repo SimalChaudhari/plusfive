@@ -139,7 +139,7 @@
         "priceUnit": "/חודש",
         "description": "התחל ללא סיכון עם מעקב בסיסי אחרי סיכון נטישה.",
         "features": [
-          "הכל בתוכנית הרגילה, ועוד",
+          "Complete AI churn prediction & customer health scoring",
           "תקבל התראות כשצריך לפעול",
           "אין גישה לפרטי לקוחות או קמפיינים",
           "מושלם לראות את סיכון הנטישה לפני שדרוג"
@@ -175,7 +175,7 @@
           "מנהל חשבון ייעודי וייעוץ אסטרטגי",
           "אנליטיקה מתקדמת ואינטגרציות API"
         ],
-        "buttonText": "שדרג לאנטרפרייז",
+        "buttonText": "Contact Sales",
         "highlight": false,
         "custom": true
       }

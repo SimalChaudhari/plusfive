@@ -139,22 +139,24 @@ function Login() {
             className="w-full !text-white rounded-lg py-3 text-xl shadow-lg"
           />
         </form>
-        <div className="space-y-3 mt-6">
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
-          >
-            <img src={Google} alt="Google" className="w-6 h-6" />
-            <span class="text-16">Signin with Google</span>
-          </button>
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
-          >
-            <img src={FB} alt="Facebook" className="w-6 h-6" />
-            <span class="text-16">Signin with Facebook</span>
-          </button>
-        </div>
+        {/*
+          <div className="space-y-3 mt-6">
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
+            >
+              <img src={Google} alt="Google" className="w-6 h-6" />
+              <span class="text-16">Signin with Google</span>
+            </button>
+            <button
+              type="button"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-[#ffffff29] hover:bg-[#232136]/90 transition-colors duration-200 text-white font-semibold text-16 shadow"
+            >
+              <img src={FB} alt="Facebook" className="w-6 h-6" />
+              <span class="text-16">Signin with Facebook</span>
+            </button>
+          </div>
+        */}
         <p className="mt-6 text-right text-[#7A828A] text-14">
           Don't have an account?{' '}
           <Link to="/register" className="font-semibold text-[#675DFF] hover:underline transition-colors duration-200">Register</Link>

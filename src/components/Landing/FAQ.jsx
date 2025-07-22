@@ -12,7 +12,7 @@ function FAQ({ language }) {
   const [open, setOpen] = useState(null);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center bg-transparent md:py-[64px] py-8 md:px-[24px] px-8">
+    <section id="faq" className="w-full flex flex-col items-center justify-center bg-transparent md:py-[64px] py-8 md:px-[24px] px-8">
 
       <div className='flex flex-col items-center justify-center gap-[64px]'>
 

@@ -5,9 +5,11 @@ import he from '../../i18/he.json';
 import Bg from '../../assets/Bg.png';
 import CheckIcon from '../../assets/CheckIcon.svg';
 import { MdAutoAwesome } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function PricingPlans({ language }) {
   const [yearly, setYearly] = useState(false);
+  const navigate = useNavigate();
   const lang = language === 'he' ? he : en;
   const plans = lang.pricingPlans.plans;
 
@@ -21,6 +23,7 @@ function PricingPlans({ language }) {
 
   return (
     <section
+      id="pricing"
       className="relative w-full flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8 overflow-hidden"
       style={{
         backgroundImage: `url(${Bg})`,
@@ -74,7 +77,7 @@ function PricingPlans({ language }) {
               />
             </button>
             <span className={`text-16 font-medium ${yearly ? 'text-white' : 'text-gray-400'}`}>{toggleYearly}</span>
-            {yearly && <span className="ml-2 px-2 py-0.5 rounded bg-pink-600/20 text-pink-400 text-xs font-bold">{yearlyBadge}</span>}
+            <span className={`ml-2 px-2 py-0.5 rounded text-xs font-bold ${yearly ? 'bg-pink-600/20 text-pink-400' : 'text-gray-400'}`}>{yearlyBadge}</span>
           </div>
         </div>
 
@@ -164,11 +167,19 @@ function PricingPlans({ language }) {
                   {plan.highlight ? (
                     <CommonButton
                       text={plan.buttonText}
+                      onClick={() => navigate('/login')}
                       className="w-full py-3 text-16 font-bold rounded-xl"
+                    />
+                  ) : plan.buttonText === "Contact Sales" ? (
+                    <CommonOutlineGradintButton
+                      text={plan.buttonText}
+                      onClick={() => navigate('/contact-sales')}
+                      className="w-full py-3 text-16 font-bold rounded-xl cursor-pointer"
                     />
                   ) : (
                     <CommonOutlineGradintButton
                       text={plan.buttonText}
+                      onClick={() => navigate('/login')}
                       className="w-full py-3 text-16 font-bold rounded-xl "
                     // textColor="text-white"
                     />

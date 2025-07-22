@@ -13,7 +13,7 @@ function LandingHeader() {
     const menuItems = t.menuItems || [];
     const menuLinks = [
         { href: '/' },
-        { href: '/#how-it-works' },
+        { href: '/#howitworks' },
         { href: '/#features' },
         { href: '/#pricing' },
         { href: '/#success-stories' },
@@ -23,8 +23,9 @@ function LandingHeader() {
     // Helper function/component
     const location = useLocation();
 
-    // State for scroll trigger
+    // State for scroll trigger and active section
     const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState('');
 
     // Scroll event handler
     useEffect(() => {
@@ -38,6 +39,35 @@ function LandingHeader() {
             } else {
                 setIsScrolled(false);
             }
+
+            // Update active section based on scroll position
+            const sections = ['home', 'howitworks', 'features', 'pricing', 'success-stories', 'faq'];
+            const headerHeight = 80;
+            
+            // Debug: Log section positions
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    console.log(`${sectionId}: offsetTop = ${section.offsetTop}, scrollTop = ${scrollTop}`);
+                }
+            });
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section) {
+                    const sectionTop = section.offsetTop - headerHeight - 100; // 100px threshold
+                    if (scrollTop >= sectionTop) {
+                        console.log(`Setting active section to: ${sections[i]}`);
+                        setActiveSection(sections[i]);
+                        break;
+                    }
+                }
+            }
+
+            // If at top, set active section to home
+            if (scrollTop < 100) {
+                setActiveSection('');
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -47,8 +77,13 @@ function LandingHeader() {
     const renderMenu = (className) => (
         menuItems.map((label, idx) => {
             const href = menuLinks[idx]?.href || "#";
-            const isActive = (href === '/' && location.pathname === '/') ||
-                             (href !== '/' && location.hash === href.replace('/', ''));
+            const currentHash = location.hash;
+            const sectionId = href.replace('/#', '');
+            
+            // Check if this section is active based on URL hash
+            const isActive = (href === '/' && (currentHash === '' || currentHash === '#')) ||
+                             (href !== '/' && currentHash === href.replace('/', ''));
+            
             return (
                 <li key={label}>
                     <a
@@ -76,15 +111,33 @@ function LandingHeader() {
     // State for active tab
     const [activeTab, setActiveTab] = useState(menuItems[0]); // Default: Home
 
-    // Alert handler for nav links
+    // Navigation handler for nav links
     const handleNavClick = (label, href) => {
         if (href === '/') {
+            // Scroll to top for home
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Clear URL hash for home
+            window.location.hash = '';
         } else if (href.startsWith('/#')) {
+            // Extract section ID from href
             const id = href.replace('/#', '');
             const el = document.getElementById(id);
+            
             if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                // Get header height for offset
+                const headerHeight = 80; // Approximate header height
+                const elementPosition = el.offsetTop - headerHeight;
+                
+                // Smooth scroll to section with offset
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL hash
+                window.location.hash = href.replace('/', '');
+            } else {
+                console.warn(`Section with id "${id}" not found`);
             }
         }
         setMenuOpen(false);

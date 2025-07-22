@@ -24,7 +24,7 @@ const icons = [
 function WhatHappens({ language }) {
   const t = language === 'he' ? he.whatHappens : en.whatHappens;
   return (
-    <section className="w-full flex flex-col items-center justify-center px-8 md:px-0 bg-white dark:bg-customGray">
+    <section id="features" className="w-full flex flex-col items-center justify-center px-8 md:px-0 bg-white dark:bg-customGray">
       <div className="container md:p-[64px] md:gap-[64px] inline-flex flex-col ">
         <div>
           {/* Heading */}

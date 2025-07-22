@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import CommonButton from "../commonComponent/CommonButton";
+import { useNavigate } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import en from '../../i18/en.json';
@@ -17,6 +18,7 @@ const resolveImage = (img) => {
 };
 
 const RealResults = ({ language }) => {
+  const navigate = useNavigate();
   const lang = language === 'he' ? he : en;
   const testimonials = lang.realResults.testimonials;
   const heading = lang.realResults.heading;
@@ -38,7 +40,7 @@ const RealResults = ({ language }) => {
   const sliderRef = React.useRef();
 
   return (
-    <div className="flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8 md:gap-[64px] gap-[32px] ">
+    <div id="success-stories" className="flex flex-col items-center justify-center md:py-[64px] py-8 md:px-[80px] px-8 md:gap-[64px] gap-[32px] ">
       <div className="flex flex-col items-center justify-center gap-[16px]">
         <h2 className="text-3xl md:text-48 font-extrabold text-customLightTextColor dark:text-white text-center tracking-tight max-w-[575px] font-testtiemposfine">
           {heading}<br />
@@ -92,6 +94,7 @@ const RealResults = ({ language }) => {
                       </div>
                       <CommonButton
                         text={buttonText}
+                        onClick={() => navigate('/login')}
                         icon={<FaArrowRight />}
                         iconPosition="right"
                         gap="gap-[10px]"
