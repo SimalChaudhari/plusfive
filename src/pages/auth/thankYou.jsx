@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { CommonButton, SquaresAnim } from '../../components/index';
 import { toast } from 'react-toastify';
@@ -10,6 +10,22 @@ function ThankYou() {
   const location = useLocation();
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const userData = location.state?.userData;
+
+  // useEffect to show email sent toast after 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      toast.success('Email sent successfully! 🎉', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
   
   // If no user data, redirect to register
   if (!userData) {
@@ -177,21 +193,12 @@ function ThankYou() {
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Link to="/login" >
           <CommonButton
-            text={isSendingEmail ? "Sending Email..." : "Send Login Info to Email"}
-            onClick={sendEmail}
-            disabled={isSendingEmail}
-            className="w-full !text-white rounded-xl py-4 text-18 font-bold shadow-2xl bg-gradient-to-r from-pink-500 to-orange-400 hover:from-pink-600 hover:to-orange-600 transform hover:scale-105 transition-all duration-300"
+            text="Go to Login"
+            className="w-auto !text-white rounded-lg py-3 text-xl shadow-lg px-20"
           />
-          
-          <Link to="/login" className="w-full">
-            <CommonButton
-              text="Go to Login"
-              className="w-full !text-white rounded-xl py-4 text-18 font-bold shadow-2xl bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300"
-            />
-          </Link>
-        </div>
+        </Link>
 
         {/* Additional Info */}
         <div className="mt-8 text-center">

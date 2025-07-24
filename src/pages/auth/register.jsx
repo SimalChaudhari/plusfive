@@ -262,7 +262,7 @@ function Register() {
           </div>
 
           {/* Sign Up Button */}
-          <CommonButton text="Sign Up" type="submit" className="w-full !text-white rounded-lg py-3 text-16 shadow-lg bg-gradient-to-r from-pink-500 to-orange-400" />
+          <CommonButton text="Sign Up" type="submit" className="w-auto px-20 !text-white rounded-lg py-3 text-16 shadow-lg" />
         </form>
         {/*
           <div className="space-y-3 mt-6">

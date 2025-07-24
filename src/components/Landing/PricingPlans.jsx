@@ -8,7 +8,7 @@ import { MdAutoAwesome } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 function PricingPlans({ language }) {
-  const [yearly, setYearly] = useState(false);
+  const [yearly, setYearly] = useState(true);
   const navigate = useNavigate();
   const lang = language === 'he' ? he : en;
   const plans = lang.pricingPlans.plans;
@@ -77,7 +77,7 @@ function PricingPlans({ language }) {
               />
             </button>
             <span className={`text-16 font-medium ${yearly ? 'text-white' : 'text-gray-400'}`}>{toggleYearly}</span>
-            <span className={`ml-2 px-2 py-0.5 rounded text-xs font-bold ${yearly ? 'bg-pink-600/20 text-pink-400' : 'text-gray-400'}`}>{yearlyBadge}</span>
+            <span className={`ml-2 px-2 pt-.5 py-1 rounded-lg text-xs ${yearly ? 'bg-pink-600/20 text-pink-400' : 'text-gray-400'}`}>{yearlyBadge}</span>
           </div>
         </div>
 
