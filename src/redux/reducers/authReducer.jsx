@@ -31,7 +31,7 @@ if (isBrowser) {
       token: token,
     };
   } else {
-    console.log("No data in localStorage");
+    // console.log("No data in localStorage");
   }
 }
 

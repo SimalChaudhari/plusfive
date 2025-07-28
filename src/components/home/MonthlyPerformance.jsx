@@ -13,7 +13,7 @@ function MonthlyPerformance() {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white transition-colors duration-200">
+        <h2 className="text-20 font-semibold text-gray-900 dark:text-white transition-colors duration-200">
           Monthly Performance
         </h2>
       </div>

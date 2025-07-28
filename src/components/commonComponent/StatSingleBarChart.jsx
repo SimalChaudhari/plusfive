@@ -41,7 +41,7 @@ const StatSingleBarChart = ({ title, dataMap, filters }) => {
   return (
     <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 relative shadow-md dark:shadow-none transition-colors duration-200 dark:hover:bg-customBlack hover:bg-customBody hover:shadow-sm">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="text-24 text-gray-900 dark:text-white">{title}</h2>
         {filters && dataMap && (
           <CommonDropDown
             options={filters}

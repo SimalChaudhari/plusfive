@@ -28,7 +28,7 @@ const StatPieChart = ({ title, data }) => {
 
   return (
     <div className="bg-white dark:bg-customBrown rounded-xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none transition-colors duration-200 dark:hover:bg-customBlack hover:bg-customBody shadow-md hover:shadow-sm">
-      <h2 className="text-xl text-gray-900 dark:text-white mb-6">{title}</h2>
+      <h2 className="text-24 text-gray-900 dark:text-white mb-6">{title}</h2>
       
       <div className="flex justify-center">
         <div className="w-[250px] h-[250px] relative">
@@ -75,9 +75,9 @@ const StatPieChart = ({ title, data }) => {
           <div key={index} className="flex-col items-center">
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: item.color }}></div>
-            <span className="text-gray-900 dark:text-white mr-2">{item.name}</span>
+            <span className="text-gray-900 dark:text-white mr-2 text-16">{item.name}</span>
             </div>
-            <span className="text-gray-600 dark:text-gray-400 ml-5">{item.value} ({item.percentage})</span>
+            <span className="text-gray-600 dark:text-white ml-5 text-14">{item.value} ({item.percentage})</span>
           </div>
         ))}
       </div>

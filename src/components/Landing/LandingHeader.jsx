@@ -48,7 +48,7 @@ function LandingHeader() {
             sections.forEach(sectionId => {
                 const section = document.getElementById(sectionId);
                 if (section) {
-                    console.log(`${sectionId}: offsetTop = ${section.offsetTop}, scrollTop = ${scrollTop}`);
+                    // console.log(`${sectionId}: offsetTop = ${section.offsetTop}, scrollTop = ${scrollTop}`);
                 }
             });
             
@@ -57,7 +57,7 @@ function LandingHeader() {
                 if (section) {
                     const sectionTop = section.offsetTop - headerHeight - 100; // 100px threshold
                     if (scrollTop >= sectionTop) {
-                        console.log(`Setting active section to: ${sections[i]}`);
+                        // console.log(`Setting active section to: ${sections[i]}`);
                         setActiveSection(sections[i]);
                         break;
                     }

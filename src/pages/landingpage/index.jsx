@@ -5,6 +5,14 @@ import { TbMessageCircleFilled } from "react-icons/tb";
 function LandingPage({ language }) {
   const [showSupportButton, setShowSupportButton] = useState(false);
 
+  // WhatsApp support function
+  const handleWhatsAppSupport = () => {
+    const phoneNumber = "919876543210"; // Fake number - client will provide real number
+    const message = "Hi! I need support with PlusFive. Can you help me?";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -46,7 +54,10 @@ function LandingPage({ language }) {
         
         {/* Get Support Button - Fixed Position */}
         {showSupportButton && (
-          <button className="fixed bottom-6 right-6 w-[45px] h-[45px] bg-white rounded-full flex items-center justify-start cursor-pointer  overflow-hidden transition-all duration-300 shadow-lg z-50 hover:w-[150px] hover:rounded-[40px] group">
+          <button 
+            onClick={handleWhatsAppSupport}
+            className="fixed bottom-6 right-6 w-[45px] h-[45px] bg-white rounded-full flex items-center justify-start cursor-pointer  overflow-hidden transition-all duration-300 shadow-lg z-50 hover:w-[150px] hover:rounded-[40px] group"
+          >
             <div className="w-full transition-all duration-300 flex items-center justify-center group-hover:w-[30%] group-hover:pl-5">
               <TbMessageCircleFilled className="w-7 h-7 " />
             </div>

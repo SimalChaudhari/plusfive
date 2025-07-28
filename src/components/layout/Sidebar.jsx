@@ -1,9 +1,4 @@
-import {
-  MdQrCode2, MdShare, MdPeople, MdAnalytics,
-  MdCreditCard, MdSettings, MdHelp, MdLogout,
-  MdChevronLeft, MdChevronRight,
-  MdOutlineAdd
-} from 'react-icons/md';
+import { MdLogout, MdChevronLeft, MdChevronRight, MdOutlineAdd } from 'react-icons/md';
 import { IoHomeOutline } from 'react-icons/io5';
 import UpgradeCard from './UpgradeCard';
 import SidebarNavItem from './SidebarNavItem';
@@ -53,7 +48,7 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
   const navLinks = userRole === 'admin' ? adminNavLinks : userNavLinks;
 
   return (
-    <>
+    <span>
       {isMobile && isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-[99]"
@@ -124,7 +119,7 @@ const Sidebar = ({ isCollapsed, onCollapse, isMobile, isMobileMenuOpen, setIsMob
         title="Confirm Logout"
         message="Are you sure you want to log out?"
       />
-    </>
+    </span>
   );
 };
 

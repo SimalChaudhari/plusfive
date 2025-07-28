@@ -112,30 +112,31 @@ const Header = ({ onMobileMenuToggle }) => {
           </button>
           <div className="hidden lg:block">
             {isDashboard ? (
-              <>
-                <p className="text-gray-600 dark:text-white">Hi {userName},</p>
-                <h1 className="text-gray-900 dark:text-white text-xl font-semibold flex items-center">
+              <span>
+                <p className="text-gray-600 dark:text-white text-16">Hi {userName},</p>
+                <h1 className="text-gray-900 dark:text-white font-semibold flex items-center md:text-24">
                   Welcome back<span className="font-sans">!</span> <span className="ml-2">👋</span>
                 </h1>
-              </>
+              </span>
             ) : (
-              <div className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{pageTitle}</div>
+              <div className="text-lg font-semibold text-gray-900 dark:text-white mb-1 md:text-24">{pageTitle}</div>
             )}
           </div>
         </div>
         {/* Right side - Search and icons */}
         <div className="flex items-center space-x-2 lg:space-x-4 ml-auto">
           {/* Search bar - Hidden on mobile */}
-          <div className="hidden lg:block relative w-72">
+          <div className="hidden lg:block relative">
             <div className="flex items-center border-2 border-gray-200 dark:border-gray-600 rounded-lg bg-transparent px-3 py-1.5 w-full">
-              <FiSearch className="text-xl text-gray-400 mr-2" />
+              <FiSearch className="text-20px text-gray-400 mr-2" />
               <input
                 type="text"
                 placeholder="Search"
-                className="flex-1 bg-transparent outline-none border-none text-gray-300 placeholder-gray-400 text-base"
+                className="flex-1 bg-transparent outline-none border-none text-gray-300 placeholder-gray-400 text-16"
               />
-              <span className="flex items-center px-2 py-0.5 ml-2 rounded border-2 border-gray-200 dark:border-gray-600 dark:text-white bg-transparent font-mono text-sm">
-                ⌘K
+              <span className="flex items-center gap-1 px-[5px] pt-[5px] pb-[1px] ml-2 rounded border border-gray-200 dark:border-gray-600 dark:text-white bg-transparent font-mono text-12">
+                <span className="text-10">⌘</span>
+                <span className="text-12">K</span>
               </span>
             </div>
           </div>

@@ -27,51 +27,51 @@ function ContactSales({ language }) {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required';
     }
-    
+
     if (!formData.lastName.trim()) {
       newErrors.lastName = 'Last name is required';
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
-    
+
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
       newErrors.phone = 'Please enter a valid phone number';
     }
-    
+
     if (!formData.requirements.trim()) {
       newErrors.requirements = 'Please tell us about your requirements';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
       // Handle form submission here
       console.log('Form submitted:', formData);
-      
+
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Reset form after successful submission
       setFormData({
         firstName: '',
@@ -81,7 +81,7 @@ function ContactSales({ language }) {
         requirements: ''
       });
       setErrors({});
-      
+
       toast.success('Thank you! We will contact you within 24 hours.');
     } catch (error) {
       console.error('Submission error:', error);
@@ -106,8 +106,7 @@ function ContactSales({ language }) {
         />
       </div>
       <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
-        
-        {/* Left Side - Form */}
+
         <div className="flex-1 rounded-2xl shadow-2xl border border-customBorderColor backdrop-blur-md md:py-[64px] md:px-[80px] p-8 bg-cover bg-center"
           style={{
             backgroundImage: `url(${LoginBG})`,
@@ -122,7 +121,7 @@ function ContactSales({ language }) {
           <p className="text-17 mt-3 mb-8 text-center text-white">
             Tell us about your business needs and we'll get back to you within 24 hours.
           </p>
-          
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <CommonInput
@@ -210,24 +209,7 @@ function ContactSales({ language }) {
           </form>
         </div>
 
-        {/* Right Side - Video/Image Box */}
-        <div className="flex-1 flex items-center justify-center h-full">
-          <div className="relative w-full h-full max-w-md">
-            <div className="bg-gray-200 rounded-2xl h-full flex items-center justify-center shadow-xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=face" 
-                alt="Sales Team" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                <div className="w-20 h-20 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300 cursor-pointer">
-                  <div className="w-0 h-0 border-l-[12px] border-l-black border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent ml-1"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
+
       </div>
     </div>
   );
