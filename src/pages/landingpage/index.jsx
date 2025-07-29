@@ -7,7 +7,8 @@ function LandingPage({ language }) {
 
   // WhatsApp support function
   const handleWhatsAppSupport = () => {
-    const phoneNumber = "919876543210"; // Fake number - client will provide real number
+    // const phoneNumber = "919876543210"; // Fake number - client will provide real number
+    const phoneNumber = "91xxxxxxxxxx"; // Fake number - client will provide real number
     const message = "Hi! I need support with PlusFive. Can you help me?";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -56,12 +57,12 @@ function LandingPage({ language }) {
         {showSupportButton && (
           <button 
             onClick={handleWhatsAppSupport}
-            className="fixed bottom-6 right-6 w-[45px] h-[45px] bg-white rounded-full flex items-center justify-start cursor-pointer  overflow-hidden transition-all duration-300 shadow-lg z-50 hover:w-[150px] hover:rounded-[40px] group"
+            className="fixed bottom-6 right-6 w-[150px] h-[45px] bg-white rounded-[40px] flex items-center justify-start cursor-pointer shadow-lg z-50"
           >
-            <div className="w-full transition-all duration-300 flex items-center justify-center group-hover:w-[30%] group-hover:pl-5">
-              <TbMessageCircleFilled className="w-7 h-7 " />
+            <div className="w-[30%] flex items-center justify-center pl-5">
+              <TbMessageCircleFilled className="w-7 h-7" />
             </div>
-            <div className="absolute right-0 w-0 opacity-0 text-black text-lg whitespace-nowrap transition-all duration-300 group-hover:opacity-100 group-hover:w-[70%] group-hover:pr-2">
+            <div className="w-[70%] text-black text-lg whitespace-nowrap pr-2">
               Get Support
             </div>
           </button>
